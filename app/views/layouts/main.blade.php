@@ -70,5 +70,21 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         {{ HTML::script('js/vendor/bootstrap.min.js') }}
         {{ HTML::script('js/main.js') }}
+        <!-- Piwik -->
+<script type="text/javascript">
+var _paq = _paq || [];
+_paq.push(['trackPageView']);
+_paq.push(['enableLinkTracking']);
+(function() {
+  var u=(("https:" == document.location.protocol) ? "https" : "http") + "://stats.42dev.net/";
+  _paq.push(['setTrackerUrl', u+'piwik.php']);
+  _paq.push(['setSiteId', 32]);
+  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+  g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+})();
+</script>
+<noscript><p><img src="http://stats.42dev.net/piwik.php?idsite=32" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
     </body>
 </html>
