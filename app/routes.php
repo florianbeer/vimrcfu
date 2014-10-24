@@ -16,3 +16,5 @@ Route::get('login', ['as' => 'login', 'uses' => 'AuthorizationController@create'
 Route::get('logout', ['as' => 'logout', 'uses' => 'AuthorizationController@destroy']);
 Route::model('snippet', 'Snippet');
 Route::resource('snippet', 'SnippetsController');
+Route::model('user', 'User');
+Route::resource('user', 'UsersController');
