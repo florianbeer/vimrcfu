@@ -34,7 +34,7 @@ class AuthorizationController extends \BaseController {
       {
         $user = User::create([
           'github_id' => $result['id'],
-          'github_url' => $result['url'],
+          'github_url' => $result['html_url'],
           'avatar_url' => $result['avatar_url'],
           'email' => $result['email'],
           'name' => $result['name']
