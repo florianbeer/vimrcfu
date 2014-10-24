@@ -2,6 +2,11 @@
 
 class SnippetsController extends \BaseController {
 
+  public function __construct()
+  {
+    $this->beforeFilter('auth', ['only' => ['create', 'update', 'delete']]);
+  }
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -20,7 +25,7 @@ class SnippetsController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+    return View::make('snippets.create');
 	}
 
 
@@ -31,7 +36,23 @@ class SnippetsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+    $validation = Validator::make(Input::all(), Snippet::$rules);
+
+    if ( $validation->fails() )
+    {   
+      return Redirect::route('snippet.create')
+        ->withErrors($validation)
+        ->withInput();
+    }   
+
+    $snippet = Snippet::create([
+      'title' => Input::get('title'),
+      'body' => Input::get('body'),
+      'description' => Input::get('description'),
+      'user_id' => Auth::user()->id
+      ]);
+
+    return Redirect::route('snippet.show', $snippet->id);
 	}
 
 

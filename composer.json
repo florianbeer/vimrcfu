@@ -6,7 +6,8 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "4.2.*",
-    "artdarek/oauth-4-laravel": "dev-master"
+    "artdarek/oauth-4-laravel": "dev-master",
+		"michelf/php-markdown": "~1.4"
 	},
   "require-dev": {
 		"way/generators": "~3.0",

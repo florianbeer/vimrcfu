@@ -79,3 +79,9 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+Blade::extend(function($view, $compiler) {
+      $pattern = $compiler->createMatcher('markdown');
+      $replace = '<?php echo \Michelf\Markdown::defaultTransform$2; ?>';
+      return preg_replace($pattern, $replace, $view);
+});

@@ -42,7 +42,7 @@ class AuthorizationController extends \BaseController {
       }
 
       Auth::login($user);
-      return Redirect::home();
+      return Redirect::intended();
     }
 
     return Redirect::to((string) OAuth::consumer('GitHub')->getAuthorizationUri());

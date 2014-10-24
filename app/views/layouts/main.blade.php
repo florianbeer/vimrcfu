@@ -37,6 +37,9 @@
 <a class="navbar-brand" href="/"><tt>vimrcfu</tt></a>
 </div>
 <div class="navbar-collapse collapse">
+<ul class="nav navbar-nav">
+<li><a href="{{ URL::route('snippet.create') }}">New snippet</a></li>
+</ul>
 <div class="navbar-form navbar-right">
 @if(Auth::guest())
 <a href="/login" class="btn btn-social btn-github">

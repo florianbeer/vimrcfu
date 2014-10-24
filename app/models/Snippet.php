@@ -3,6 +3,12 @@
 class Snippet extends Eloquent {
   protected $fillable = ['title', 'body', 'user_id'];
 
+  public static $rules = [
+    'title' => 'required|min:4',
+    'body' => 'required',
+    'description' => 'required'
+    ];
+
   public function user() {
     return $this->belongsTo('User');
   }
