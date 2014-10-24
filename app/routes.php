@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', ['as' => 'home', 'uses' => 'PagesController@home']);
+Route::get('/', ['as' => 'home', 'uses' => 'PagesController@index']);
 
 Route::get('login', ['as' => 'login', 'uses' => 'AuthorizationController@create']);
