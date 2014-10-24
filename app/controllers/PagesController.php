@@ -9,7 +9,7 @@ class PagesController extends \BaseController {
 	 */
 	public function index()
 	{
-    $snippets = Snippet::orderBy('id', 'DESC')->take(3)->get();
+    $snippets = Snippet::orderBy('id', 'DESC')->take(6)->get();
     return View::make('pages.home')
       ->withSnippets($snippets);
 	}

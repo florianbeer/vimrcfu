@@ -3,10 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>vimrcfu - Share your best vimrc tipps &amp; tricks</title>
+        <title>vimrcfu - Share your best vimrc snippets</title>
         <meta name="description" content="Snippets of vimrc awesomeness.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        {{ HTML::style('css/font-awesome.css')}}
         {{ HTML::style('css/bootstrap.min.css')}}
         <style>
             body {
@@ -16,7 +17,6 @@
         </style>
         {{ HTML::style('css/bootstrap-theme.min.css')}}
         {{ HTML::style('css/bootstrap-social.css')}}
-        {{ HTML::style('css/font-awesome.css')}}
         {{ HTML::style('css/main.css')}}
 
         <!--[if lt IE 9]>
@@ -39,6 +39,7 @@
 <div class="navbar-collapse collapse">
 <ul class="nav navbar-nav">
 <li><a href="{{ URL::route('snippet.create') }}">New snippet</a></li>
+<li><a href="{{ URL::route('snippet.index') }}">Browse snippets</a></li>
 </ul>
 <div class="navbar-form navbar-right">
 @if(Auth::guest())
@@ -61,7 +62,10 @@
       <hr>
 
       <footer>
-        <p>&copy; <a href="http://blog.no-panic.at" target="_blank">Florian Beer</a> 2014 - made with VIM - hosted by <a href="http://42dev.eu" target="_blank">42dev</a></p>
+        <p class="pull-right">
+          <a href="https://twitter.com/azath0th" class="twitter-follow-button" data-show-count="false">Follow @azath0th</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </p>
+        <p>&copy; 2014 <a href="http://blog.no-panic.at" target="_blank">Florian Beer</a> - made with VIM - hosted by <a href="http://42dev.eu" target="_blank">42dev</a></p>
       </footer>
       </div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
