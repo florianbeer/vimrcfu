@@ -61,7 +61,7 @@
       <hr>
 
       <footer>
-        <p>&copy; Florian Beer 2014 - made with VIM</p>
+        <p>&copy; <a href="http://blog.no-panic.at" target="_blank">Florian Beer</a> 2014 - made with VIM - hosted by <a href="http://42dev.eu" target="_blank">42dev</a></p>
       </footer>
       </div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
