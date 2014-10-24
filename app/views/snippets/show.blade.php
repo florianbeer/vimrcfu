@@ -9,12 +9,12 @@
       </div>
       <div class="col-md-4">
         <img src="{{ $snippet['user']->avatar_url }}" class="img-rounded col-md-6 col-xs-2">
-        <strong>{{ HTML::link($snippet['user']->github_url, $snippet['user']->name) }}</strong>
+        <strong>{{ HTML::linkRoute('user.show', $snippet['user']->name,$snippet['user']->id) }}</strong>
         <p class="text-muted">{{ $snippet->created_at->diffForHumans() }}</p>
       </div>
       <div class="col-md-8">
         <p>{{{ $snippet->description }}}</p>
-        <pre>@markdown(htmlentities($snippet->body))</pre>
+        <pre>{{{ nl2br($snippet->body) }}}</pre>
       </div>
     </div>
   </div>

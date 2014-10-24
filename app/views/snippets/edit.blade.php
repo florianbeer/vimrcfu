@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-      <h1>New snippet</h1>
+      <h1>Edit snippet</h1>
     </div>
     <div class="col-md-8">
       @if($errors->has())

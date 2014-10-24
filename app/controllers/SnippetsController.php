@@ -26,7 +26,8 @@ class SnippetsController extends \BaseController {
 	 */
 	public function create()
 	{
-    return View::make('snippets.create');
+    return View::make('snippets.create')
+      ->withSnippet(new Snippet);
 	}
 
 
@@ -73,24 +74,44 @@ class SnippetsController extends \BaseController {
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  Snippet $snippet
 	 * @return Response
 	 */
-	public function edit($id)
-	{
-		//
+	public function edit(Snippet $snippet)
+  {
+    if ( Auth::user()->id != $snippet->user_id )
+    {
+      return Redirect::home();
+    }
+
+    return View::make('snippets.edit', ['snippet' => $snippet]);
 	}
 
 
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
+	 * @param  Snippet $snippet
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Snippet $snippet)
 	{
-		//
+    $validation = Validator::make(Input::all(), Snippet::$rules);
+
+    if( $validation->fails() )
+    {
+      return Redirect::route('snippet.edit')
+        ->withErrors($validation)
+        ->withInput();
+    }
+
+    $snippet->title = Input::get('title');
+    $snippet->body = Input::get('body');
+    $snippet->description = Input::get('description');
+    $snippet->save();
+  
+    return Redirect::route('snippet.show', $snippet->id);
+
 	}
 
 
