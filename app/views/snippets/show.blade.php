@@ -5,7 +5,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1>{{ $snippet->title  }}</h1>
+        <h1>{{{ $snippet->title }}}</h1>
       </div>
       <div class="col-md-4">
         <img src="{{ $snippet['user']->avatar_url }}" class="img-rounded col-md-6 col-xs-2">
