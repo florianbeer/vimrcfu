@@ -15,7 +15,6 @@
                 padding-bottom: 20px;
             }
         </style>
-        {{ HTML::style('css/bootstrap-theme.min.css')}}
         {{ HTML::style('css/bootstrap-social.css')}}
         {{ HTML::style('css/main.css')}}
 
@@ -38,8 +37,8 @@
 </div>
 <div class="navbar-collapse collapse">
 <ul class="nav navbar-nav">
-<li><a href="{{ URL::route('snippet.create') }}">New snippet</a></li>
-<li><a href="{{ URL::route('snippet.index') }}">Browse snippets</a></li>
+<li><a href="{{ URL::route('snippet.create') }}"><i class="fa fa-plus"></i> New snippet</a></li>
+<li><a href="{{ URL::route('snippet.index') }}"><i class="fa fa-code"></i> Browse snippets</a></li>
 </ul>
 <div class="navbar-form navbar-right">
 @if(Auth::guest())
@@ -47,7 +46,7 @@
 <i class="fa fa-github"></i> Sign in with GitHub 
 </a>
 @else
-  <a href="/logout" class="btn btn-info">
+  <a href="/logout" class="btn btn-default">
   <i class="fa fa-sign-out"></i> Sign out
   </a>  
   @endif

@@ -9,7 +9,7 @@
     </div>
     <div class="col-md-8">
       @if($errors->has())
-      <ul>
+      <ul class="text-danger">
       @foreach($errors->all() as $message)
         <li>{{ $message }}</li>
       @endforeach
@@ -30,7 +30,7 @@
           <p class="help-block">Paste your snippet here. This field will be parsed with <strong>markdown</strong>.</p>
           <textarea class="form-control" name="body" id="body" rows="6">{{ Input::old('body') }}</textarea>
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
       {{ Form::close() }}
     </div>
   </div>
