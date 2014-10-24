@@ -18,9 +18,11 @@ class CreateUsersTable extends Migration {
       $t->increments('id');
       $t->string('github_id');
       $t->string('github_url');
+      $t->string('avatar_url');
       $t->string('email')->nullable();
       $t->string('name');
 
+      $t->rememberToken();
       $t->timestamps();
     });
 	}

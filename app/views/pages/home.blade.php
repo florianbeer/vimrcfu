@@ -15,9 +15,10 @@
         <div class="col-md-4">
           <h2>{{ $snippet['title']  }}</h2>
           <p>{{ $snippet['body']  }}</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="{{ URL::route('snippet.show', $snippet['id']) }}" role="button">View details &raquo;</a></p>
         </div>
         @endforeach
       </div>
+    </div>
 
 @stop

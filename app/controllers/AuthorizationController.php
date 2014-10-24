@@ -30,19 +30,18 @@ class AuthorizationController extends \BaseController {
       $token = $github->requestAccessToken($code);
       $result = json_decode($github->request('user'), true);
       $user = User::whereGithubId($result['id'])->first();
-      if ($user)
+      if ( ! $user)
       {
-        Auth::login($user);
-      }
-      else
-      {
-        User::create([
+        $user = User::create([
           'github_id' => $result['id'],
           'github_url' => $result['url'],
+          'avatar_url' => $result['avatar_url'],
           'email' => $result['email'],
           'name' => $result['name']
           ]);
       }
+
+      Auth::login($user);
       return Redirect::home();
     }
 
@@ -100,12 +99,12 @@ class AuthorizationController extends \BaseController {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy()
 	{
-		//
+    Auth::logout();
+    return Redirect::home();
 	}
 
 

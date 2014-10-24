@@ -18,6 +18,7 @@ class CreateSnippetsTable extends Migration {
       $t->increments('id');
       $t->string('title');
       $t->text('body');
+      $t->text('description');
       $t->integer('user_id');
 
       $t->timestamps();
