@@ -13,8 +13,8 @@
         <p class="text-muted">{{ $snippet->created_at->diffForHumans() }}</p>
       </div>
       <div class="col-md-8">
-        <p>{{ $snippet->description }}</p>
-        <pre>@markdown($snippet->body)</pre>
+        <p>{{{ $snippet->description }}}</p>
+        <pre>@markdown(htmlentities($snippet->body))</pre>
       </div>
     </div>
   </div>
