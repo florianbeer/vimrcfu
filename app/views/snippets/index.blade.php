@@ -16,9 +16,9 @@
 
         @foreach($snippets as $snippet)
         <div class="col-md-8">
-          <h2>{{ $snippet['title']  }}</h2>
+          <h2>{{{ $snippet['title']  }}}</h2>
           <p class="text-muted">{{ $snippet['created_at']->diffForHumans() }} by <strong>{{ $snippet['user']->name }}</strong></p>
-          <p>{{ $snippet['description']  }}</p>
+          <p>{{{ $snippet['description']  }}}</p>
           <p><a class="btn btn-default" href="{{ URL::route('snippet.show', $snippet['id']) }}" role="button">View details &raquo;</a></p>
         </div>
         @endforeach
