@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', ['as' => 'home', 'uses' => 'PagesController@home']);
 
 Route::get('login', ['as' => 'login', 'uses' => 'AuthorizationController@create']);

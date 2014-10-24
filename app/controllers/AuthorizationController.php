@@ -1,4 +1,5 @@
 <?php
+use \User;
 
 class AuthorizationController extends \BaseController {
 
@@ -28,8 +29,21 @@ class AuthorizationController extends \BaseController {
     {
       $token = $github->requestAccessToken($code);
       $result = json_decode($github->request('user'), true);
-
-      dd($result);
+      $user = User::whereGithubId($result['id'])->first();
+      if ($user)
+      {
+        Auth::login($user);
+      }
+      else
+      {
+        User::create([
+          'github_id' => $result['id'],
+          'github_url' => $result['url'],
+          'email' => $result['email'],
+          'name' => $result['name']
+          ]);
+      }
+      return Redirect::home();
     }
 
     return Redirect::to((string) OAuth::consumer('GitHub')->getAuthorizationUri());
