@@ -14,7 +14,7 @@ class SnippetsController extends \BaseController {
 	 */
 	public function index()
 	{
-    $snippets = Snippet::paginate(10);
+    $snippets = Snippet::orderBy('id', 'DESC')->paginate(10);
     return View::make('snippets.index', compact('snippets'));
 	}
 

@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="container">
+@include('partials.paginator')
   <div class="row">
     <div class="col-md-12">
       <h1>{{ $user->name }}</h1>
@@ -24,6 +25,7 @@
       @endforeach
     </div>
   </div>
+@include('partials.paginator')
 </div>
 
 @stop
