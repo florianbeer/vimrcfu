@@ -12,7 +12,6 @@
         <ul>
           <li>Voting for snippets</li>
           <li>Search</li>
-          <li>User section to edit and delete snippets</li>
         </ul>
       </div>
 
@@ -27,10 +26,10 @@
       </div>
       <div class="row">
         @foreach($snippets as $snippet)
-        <div class="col-md-4">
+        <div class="col-md-4 snippet-box-sm">
           <h3><a href="{{ URL::route('snippet.show', $snippet['id']) }}">{{{ $snippet['title'] }}}</a></h3>
           <p class="text-muted">{{ $snippet['created_at']->diffForHumans() }} by <a href="{{ URL::route('user.show', $snippet['user']->id)  }}">{{ $snippet['user']->name }}</a></p>
-          <p>{{{ $snippet['description']  }}}</p>
+          <p>{{{ str_limit($snippet['description'], $limit = 150, $end = '...') }}}</p>
         </div>
         @endforeach
       </div>
