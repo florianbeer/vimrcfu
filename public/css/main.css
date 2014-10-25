@@ -32,3 +32,8 @@ code
 {
   font-size: 0.9em;
 }
+
+.comment-box code
+{
+  white-space: pre-line;
+}
