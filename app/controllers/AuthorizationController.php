@@ -30,7 +30,6 @@ class AuthorizationController extends \BaseController {
       $token = $github->requestAccessToken($code);
       $result = json_decode($github->request('user'), true);
       $user = User::whereGithubId($result['id'])->first();
-      if ( ! $user)
       {
         if ( empty($result['name']) )
         {
@@ -41,11 +40,13 @@ class AuthorizationController extends \BaseController {
           $name = $result['name'];
         }
 
+        $email = last(json_decode($github->request('user/emails'), true));
+
         $user = User::create([
           'github_id' => $result['id'],
           'github_url' => $result['html_url'],
           'avatar_url' => $result['avatar_url'],
-          'email' => $result['email'],
+          'email' => $email,
           'name' => $name
           ]);
       }
