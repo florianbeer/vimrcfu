@@ -7,16 +7,17 @@
         <meta name="description" content="Snippets of vimrc awesomeness.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        {{ HTML::style('css/font-awesome.css')}}
-        {{ HTML::style('css/bootstrap.min.css')}}
+        {{ HTML::style('css/font-awesome.css') }}
+        {{ HTML::style('css/bootstrap.min.css') }}
         <style>
             body {
                 padding-top: 50px;
                 padding-bottom: 20px;
             }
         </style>
-        {{ HTML::style('css/bootstrap-social.css')}}
-        {{ HTML::style('css/main.css?v=1.1')}}
+        {{ HTML::style('css/bootstrap-social.css') }}
+        {{ HTML::style('css/animate.min.css') }}
+        {{ HTML::style('css/main.css?v=1.1') }}
 
         <!--[if lt IE 9]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,6 +73,10 @@
       </div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         {{ HTML::script('js/vendor/bootstrap.min.js') }}
+        {{ HTML::script('js/vendor/wow.min.js') }}
+        <script>
+          new WOW().init();
+        </script>
         {{ HTML::script('js/main.js') }}
         <!-- Piwik -->
 <script type="text/javascript">

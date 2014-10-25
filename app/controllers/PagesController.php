@@ -9,9 +9,16 @@ class PagesController extends \BaseController {
 	 */
 	public function index()
 	{
-    $snippets = Snippet::orderBy('id', 'DESC')->take(6)->get();
+    $snippets = Snippet::orderBy('id', 'DESC')->take(4)->get();
+    $snippets_count = Snippet::all()->count();
+    $comments_count = Comment::all()->count();
+    $users_count = User::all()->count();
+
     return View::make('pages.home')
-      ->withSnippets($snippets);
+      ->withSnippets($snippets)
+      ->withSnippetsCount($snippets_count)
+      ->withCommentsCount($comments_count)
+      ->withUsersCount($users_count);
 	}
 
 

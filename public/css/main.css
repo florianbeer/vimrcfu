@@ -1,5 +1,18 @@
-.snippet-box-sm {
-  min-height: 200px;
+.jumbotron
+{
+  background: url('../img/home_bg.png') no-repeat top left fixed;
+  background-size: cover;
+  color: white;
+}
+
+.home-box
+{
+  margin-bottom: 10px;
+}
+
+.home-box h3
+{
+  margin-top: 0;
 }
 
 textarea.snippet 
@@ -36,4 +49,9 @@ code
 .comment-box code
 {
   white-space: pre-line;
+}
+
+abbr
+{
+  font-style: italic;
 }
