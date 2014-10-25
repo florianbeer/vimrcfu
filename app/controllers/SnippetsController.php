@@ -47,12 +47,12 @@ class SnippetsController extends \BaseController {
         ->withInput();
     }   
 
-    $snippet = Snippet::create([
-      'title' => Input::get('title'),
-      'body' => Input::get('body'),
-      'description' => Input::get('description'),
-      'user_id' => Auth::user()->id
-      ]);
+    $snippet = new Snippet;
+    $snippet->title = Input::get('title');
+    $snippet->body = Input::get('body');
+    $snippet->description = Input::get('description');
+    $snippet->user_id = Auth::user()->id;
+    $snippet->save();
 
     return Redirect::route('snippet.show', $snippet->id);
 	}

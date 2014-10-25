@@ -1,4 +1,4 @@
-@if(empty($snippet))
+@if(empty($snippet->title))
       {{ Form::model($snippet, ['route' => 'snippet.store']) }}
 @else
       {{ Form::model($snippet, ['route' => ['snippet.update', $snippet->id], 'method' => 'PUT']) }}
