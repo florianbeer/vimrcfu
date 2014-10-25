@@ -11,7 +11,8 @@
         <strong>Coming updates</strong>
         <ul>
           <li>Voting for snippets</li>
-          <li>Comments on snippets</li>
+          <li>Activity notifications</li>
+          <li>Statistics</li>
           <li>Search</li>
         </ul>
       </div>
