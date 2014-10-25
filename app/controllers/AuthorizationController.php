@@ -29,26 +29,35 @@ class AuthorizationController extends \BaseController {
     {
       $token = $github->requestAccessToken($code);
       $result = json_decode($github->request('user'), true);
-      $user = User::whereGithubId($result['id'])->first();
+
+      if ( empty($result['name']) )
       {
-        if ( empty($result['name']) )
-        {
-          $name = $resulti['login'];
-        }
-        else
-        {
-          $name = $result['name'];
-        }
+        $name = $result['login'];
+      }
+      else
+      {
+        $name = $result['name'];
+      }
 
-        $email = last(json_decode($github->request('user/emails'), true));
+      $email = last(json_decode($github->request('user/emails'), true));
 
-        $user = User::create([
-          'github_id' => $result['id'],
-          'github_url' => $result['html_url'],
-          'avatar_url' => $result['avatar_url'],
-          'email' => $email,
-          'name' => $name
-          ]);
+      $userData = [
+        'github_id' => $result['id'],
+        'github_url' => $result['html_url'],
+        'avatar_url' => $result['avatar_url'],
+        'email' => $email,
+        'name' => $name
+        ];
+
+      $user = User::whereGithubId($result['id'])->first();
+      if ( ! $user )
+      {
+        $user = User::create($userData);
+      }
+      else
+      {
+        $user->fill($userData);
+        $user->save();
       }
 
       Auth::login($user);
