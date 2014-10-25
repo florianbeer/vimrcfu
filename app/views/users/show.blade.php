@@ -20,11 +20,15 @@
       <p><a href="{{ $user->github_url }}">&raquo; GitHub Page</a></p>
     </div>
     <div class="col-sm-8 col-xs-12">
+      <div class="row">
       @include('partials.paginator')
+      </div>
       @foreach($snippets as $snippet)
         @include('partials.snippet')
       @endforeach
+      <div class="row">
       @include('partials.paginator')
+      </div>
     </div>
   </div>
 </div>
