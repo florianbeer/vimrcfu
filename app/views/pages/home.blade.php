@@ -4,22 +4,14 @@
 
     <div class="jumbotron">
       <div class="container">
-        <h1>Share your knowledge</h1>
+        <h1><i class="fa fa-fire"></i> Share your knowledge</h1>
         <p>VIM users are religious about their editor configuration. This site lets you share your fu so we can learn from each other by what we put into our <tt>vimrc</tt> files.</p>
         <p><a href="{{ URL::route('snippet.create') }}" class="btn btn-primary btn-lg" role="button">Post your first snippet &raquo;</a></p>
-      <div class="text-muted">
-        <strong>Coming updates</strong>
-        <ul>
-          <li>Voting for snippets</li>
-          <li>Comments on snippets</li>
-          <li>Search</li>
-        </ul>
-      </div>
 
-        <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="vimrcfu">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
       </div>
     </div>
     <div class="container">
+
       <div class="col-sm-6 col-xs-12">
         <div class="row">
           <div class="col-xs-12">
@@ -39,6 +31,7 @@
         </div>
         @endforeach
       </div>
+
       <div class="col-sm-4 col-sm-offset-2 col-xs-12">
         <div class="row">
           <div class="col-xs-12">
@@ -63,7 +56,23 @@
             </ul>  
           </div>
         </div>
+        
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="text-muted">
+              <h3>Coming updates</h3>
+              <ul>
+                <li>Voting for snippets</li>
+                <li>Comments on snippets</li>
+                <li>Search</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
       </div>
+
+
     </div>
 
 @stop
