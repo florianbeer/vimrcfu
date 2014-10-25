@@ -1,3 +1,10 @@
+.jumbotron
+{
+  background: url('../img/home_bg.png') no-repeat top left fixed;
+  background-size: cover;
+  color: white;
+}
+
 .home-box
 {
   margin-bottom: 10px;
