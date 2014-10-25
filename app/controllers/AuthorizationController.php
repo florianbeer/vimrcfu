@@ -32,12 +32,21 @@ class AuthorizationController extends \BaseController {
       $user = User::whereGithubId($result['id'])->first();
       if ( ! $user)
       {
+        if ( empty($result['name']) )
+        {
+          $name = $resulti['login'];
+        }
+        else
+        {
+          $name = $result['name'];
+        }
+
         $user = User::create([
           'github_id' => $result['id'],
           'github_url' => $result['html_url'],
           'avatar_url' => $result['avatar_url'],
           'email' => $result['email'],
-          'name' => $result['name']
+          'name' => $name
           ]);
       }
 
