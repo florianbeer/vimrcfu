@@ -4,7 +4,7 @@ class SnippetsController extends \BaseController {
 
   public function __construct()
   {
-    $this->beforeFilter('auth', ['only' => ['create', 'update', 'delete']]);
+    $this->beforeFilter('auth', ['only' => ['create', 'update', 'edit', 'store', 'delete']]);
   }
 
 	/**

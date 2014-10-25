@@ -2,6 +2,11 @@
 
 class CommentsController extends \BaseController {
 
+  public function __construct()
+  {
+    $this->beforeFilter('auth', ['only' => ['create', 'update', 'edit', 'store', 'delete']]);
+  }
+
 	/**
 	 * Display a listing of the resource.
 	 *

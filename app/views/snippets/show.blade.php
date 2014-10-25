@@ -23,6 +23,7 @@
   
   <div class="container">
     <div class="row">
+      @if(Auth::check())
       <div class="col-sm-5 col-xs-12 pull-right comment-form">
         {{ Form::open(['route' => 'comment.store']) }}
         {{ Form::hidden('snippet_id', $snippet->id) }}
@@ -37,6 +38,7 @@
           <button type="submit" class="btn btn-default pull-right" tabindex="2">Submit</button>
         {{ Form::close() }}
       </div>
+      @endif
       <div class="col-sm-7 col-xs-12">
       @foreach($comments as $comment)
         <div class=" comment-box">
@@ -54,6 +56,7 @@
             @if($comment->created_at != $comment->updated_at && $comment->created_at->diffInMinutes($comment->updated_at) > 5)
             <span class="pull-right text-muted" title="Edited" style="cursor:help;">&#9998;</span>
             @endif
+            </p>
             {{ $comment->getMarkdownBody($comment->body) }}
           </div>
         </div>
