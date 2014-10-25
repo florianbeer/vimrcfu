@@ -1,5 +1,11 @@
-.snippet-box-sm {
-  min-height: 200px;
+.home-box
+{
+  margin-bottom: 10px;
+}
+
+.home-box h3
+{
+  margin-top: 0;
 }
 
 textarea.snippet 

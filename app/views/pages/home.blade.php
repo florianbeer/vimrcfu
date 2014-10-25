@@ -20,19 +20,49 @@
       </div>
     </div>
     <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-          <h2>Newest snippets</h2>
+      <div class="col-sm-6 col-xs-12">
+        <div class="row">
+          <div class="col-xs-12">
+            <h2>Newest snippets</h2>
+          </div>
         </div>
-      </div>
-      <div class="row">
         @foreach($snippets as $snippet)
-        <div class="col-md-4 snippet-box-sm">
-          <h3><a href="{{ URL::route('snippet.show', $snippet['id']) }}">{{{ $snippet['title'] }}}</a></h3>
-          <p class="text-muted">{{ $snippet['created_at']->diffForHumans() }} by <a href="{{ URL::route('user.show', $snippet['user']->id)  }}">{{ $snippet['user']->name }}</a></p>
-          <p>{{{ str_limit($snippet['description'], $limit = 120, $end = '...') }}}</p>
+        <div class="row home-box">
+          <div class="col-md-2 col-sm-3 col-xs-3">
+            <img src="{{ $snippet['user']->avatar_url }}" class="img-rounded img-responsive">
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-9">
+            <h3><a href="{{ URL::route('snippet.show', $snippet['id']) }}">{{{ $snippet['title'] }}}</a></h3>
+            <p class="text-muted">{{ $snippet['created_at']->diffForHumans() }} by <a href="{{ URL::route('user.show', $snippet['user']->id)  }}">{{ $snippet['user']->name }}</a></p>
+            <p>{{{ str_limit($snippet['description'], $limit = 120, $end = '...') }}}</p>
+          </div>
         </div>
         @endforeach
+      </div>
+      <div class="col-sm-4 col-sm-offset-2 col-xs-12">
+        <div class="row">
+          <div class="col-xs-12">
+            <h2>Statisticks</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <span class="badge">{{ $snippets_count  }}</span>
+                Snippets 
+              </li>
+              <li class="list-group-item">
+                <span class="badge">{{ $comments_count  }}</span>
+                Comments
+              </li>
+              <li class="list-group-item">
+                <span class="badge">{{ $users_count  }}</span>
+                Users
+              </li>
+            </ul>  
+          </div>
+        </div>
       </div>
     </div>
 
