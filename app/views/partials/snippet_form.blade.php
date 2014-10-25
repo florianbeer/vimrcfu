@@ -14,8 +14,8 @@
         </div>
         <div class="form-group">
           <label for="body">Snippet</label>
-          <p class="help-block">Paste your snippet here.
-          {{ Form::textarea('body', null, ['class' => 'form-control', 'rows' => '6']) }}
+          <p class="help-block">Paste your snippet here.</p>
+          {{ Form::textarea('body', null, ['class' => 'form-control snippet', 'rows' => '6']) }}
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       {{ Form::close() }}

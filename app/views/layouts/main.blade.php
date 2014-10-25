@@ -16,7 +16,7 @@
             }
         </style>
         {{ HTML::style('css/bootstrap-social.css')}}
-        {{ HTML::style('css/main.css?v=1')}}
+        {{ HTML::style('css/main.css?v=1.1')}}
 
         <!--[if lt IE 9]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
