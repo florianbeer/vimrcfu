@@ -14,7 +14,7 @@
       <div class="col-sm-6 col-xs-12">
         <div class="row">
           <div class="col-xs-12">
-            <h2>Newest snippets</h2>
+            <h2>New snippets</h2>
           </div>
         </div>
         @foreach($snippets as $snippet)
@@ -59,7 +59,7 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="text-muted">
-              <h3>Coming updates</h3>
+              <h3>Upcoming features</h3>
               <ul>
                 <li>Voting for snippets</li>
                 <li>Activity notifications</li>

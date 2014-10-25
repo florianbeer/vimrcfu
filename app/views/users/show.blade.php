@@ -17,7 +17,7 @@
         <span class="badge">{{ count($user->comments) }}</span>
         {{ Str::plural('Comment', count($user->comments)) }}
       </p>
-      <p><a href="{{ $user->github_url }}">&raquo; GitHub Page</a></p>
+      <p><a href="{{ $user->github_url }}">GitHub Page &raquo;</a></p>
     </div>
     <div class="col-sm-8 col-xs-12">
       <div class="row">
