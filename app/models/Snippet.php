@@ -9,8 +9,15 @@ class Snippet extends Eloquent {
     'description' => 'required'
     ];
 
-  public function user() {
+  public function user()
+  {
     return $this->belongsTo('User');
+  }
+
+  public function comments()
+  {
+    return $this->hasMany('Comment')
+      ->orderBy('id', 'DESC');
   }
 
 }

@@ -30,4 +30,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     return $this->hasMany('Snippet')
       ->orderBy('id', 'DESC');
   }
+
+  public function comments()
+  {
+    return $this->hasMany('Comment')
+      ->orderBy('id', 'DESC');
+  }
 }

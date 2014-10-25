@@ -6,3 +6,29 @@ textarea.snippet
 {  
   font-family: "Courier";  
 }
+
+.comment-box
+{
+  padding: 10px 0;
+  overflow: auto;
+}
+
+.comment-box:nth-child(odd)
+{
+  background: rgba(28,120,220,.1);
+}
+
+.comment-form 
+{
+  margin-bottom: 20px;
+}
+
+code
+{
+  white-space: pre-line;
+}
+
+.comment-box blockquote
+{
+  font-size: 0.9em;
+}

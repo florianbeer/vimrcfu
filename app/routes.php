@@ -18,3 +18,5 @@ Route::model('snippet', 'Snippet');
 Route::resource('snippet', 'SnippetsController');
 Route::model('user', 'User');
 Route::resource('user', 'UsersController');
+Route::model('comment', 'Comment');
+Route::resource('comment', 'CommentsController');

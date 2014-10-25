@@ -17,6 +17,13 @@
         Snippets
         @endif
       </p>
+      <p><span class="badge">{{ count($user->comments) }}</span>
+        @if(count($user->comments) == 1)
+        Comment
+        @else
+        Comments
+        @endif
+      </p>
       <p><a href="{{ $user->github_url }}">&raquo; GitHub Page</a></p>
     </div>
     <div class="col-md-8">

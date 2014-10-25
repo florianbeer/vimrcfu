@@ -66,8 +66,8 @@ class SnippetsController extends \BaseController {
 	 */
 	public function show(Snippet $snippet)
 	{
-    $user = $snippet->user;
-    return View::make('snippets.show', ['snippet' => $snippet, 'user' => $user]);
+    $comments = $snippet->comments;
+    return View::make('snippets.show', ['snippet' => $snippet, 'comments' => $comments]);
 	}
 
 
@@ -84,7 +84,8 @@ class SnippetsController extends \BaseController {
       return Redirect::home();
     }
 
-    return View::make('snippets.edit', ['snippet' => $snippet]);
+    return View::make('snippets.edit')
+      ->withSnippet($snippet);
 	}
 
 
@@ -98,7 +99,7 @@ class SnippetsController extends \BaseController {
 	{
     $validation = Validator::make(Input::all(), Snippet::$rules);
 
-    if( $validation->fails() )
+    if ( $validation->fails() )
     {
       return Redirect::route('snippet.edit')
         ->withErrors($validation)

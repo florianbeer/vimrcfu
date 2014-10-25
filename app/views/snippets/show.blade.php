@@ -4,19 +4,52 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-xs-12">
         <h1>{{{ $snippet->title }}}</h1>
       </div>
-      <div class="col-md-4">
-        <img src="{{ $snippet['user']->avatar_url }}" class="img-rounded col-md-6 col-xs-2">
-        <strong>{{ HTML::linkRoute('user.show', $snippet['user']->name,$snippet['user']->id) }}</strong>
+      <div class="col-sm-4 col-xs-12">
+        <img src="{{ $snippet['user']->avatar_url }}" class="img-rounded col-sm-6 col-xs-4">
+        <strong>{{ HTML::linkRoute('user.show', $snippet['user']->name, $snippet['user']->id) }}</strong>
         <p class="text-muted">{{ $snippet->created_at->diffForHumans() }}</p>
       </div>
-      <div class="col-md-8">
+      <div class="col-sm-8 col-xs-12">
         <p>{{{ $snippet->description }}}</p>
         <pre>{{{ $snippet->body }}}</pre>
       </div>
     </div>
-  </div>
 
+    <hr>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5 col-xs-12 pull-right comment-form">
+        {{ Form::open(['route' => 'comment.store']) }}
+        {{ Form::hidden('snippet_id', $snippet->id) }}
+          <div class="form-group">
+            @if($errors->has())
+              <p class="help-block text-danger">{{ $errors->first('body') }}</p>
+            @endif
+            {{ Form::textarea('body', null, ['class' => 'form-control', 'rows' => '5', 'placeholder' => 'Your comment', 'tabindex' => '1', 'value' => Input::old('comment')]) }}
+            <p class="help-block"><span class="small text-muted">You can use <strong>some markdown</strong> in your comment.<br>
+            Italics (*), bold (**), inline code (`), code blocks without newlines (```) and blockquotes (>) are supported.</span></p>
+          </div>
+          <button type="submit" class="btn btn-default pull-right" tabindex="2">Submit</button>
+        {{ Form::close() }}
+      </div>
+      <div class="col-sm-7 col-xs-12">
+      @foreach($comments as $comment)
+        <div class=" comment-box">
+          <div class="col-xs-2">
+            <img src="{{ $comment->user->avatar_url }}" class="img-rounded img-responsive">
+          </div>
+          <div class="col-xs-10">
+            <p><a href="{{ URL::route('user.show', $comment->user_id) }}">{{ $comment->user->name }}</a> <span class="text-muted small">{{ $comment->created_at->diffForHumans() }}</span>
+            {{ $comment->getMarkdownBody($comment->body) }}
+          </div>
+        </div>
+      @endforeach
+      </div>
+    </div>
+  </div>
 @stop
