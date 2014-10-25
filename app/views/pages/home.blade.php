@@ -35,7 +35,7 @@
       <div class="col-sm-4 col-sm-offset-2 col-xs-12">
         <div class="row">
           <div class="col-xs-12">
-            <h2>Statisticks</h2>
+            <h2>Statistics</h2>
           </div>
         </div>
         <div class="row">
