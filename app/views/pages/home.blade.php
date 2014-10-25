@@ -62,7 +62,8 @@
               <h3>Coming updates</h3>
               <ul>
                 <li>Voting for snippets</li>
-                <li>Comments on snippets</li>
+                <li>Activity notifications</li>
+                <li>Snippet tagging</li>
                 <li>Search</li>
               </ul>
             </div>
