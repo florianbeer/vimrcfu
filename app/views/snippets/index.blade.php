@@ -3,20 +3,14 @@
 @section('content')
 
 <div class="container">
-
-@include('partials.paginator')
- 
    <div class="row">
-
-        @foreach($snippets as $snippet)
-          @include('partials.snippet')
-        @endforeach
-
-
+    <h1>Browse all snippets</h1>
+    @include('partials.paginator')
+    @foreach($snippets as $snippet)
+      @include('partials.snippet')
+    @endforeach
+    @include('partials.paginator')
   </div>
-
-@include('partials.paginator')
-
 </div>
 
 @stop

@@ -11,6 +11,9 @@
         <img src="{{ $snippet['user']->avatar_url }}" class="img-rounded col-sm-6 col-xs-4">
         <strong>{{ HTML::linkRoute('user.show', $snippet['user']->name, $snippet['user']->id) }}</strong>
         <p class="text-muted">{{ $snippet->created_at->diffForHumans() }}</p>
+        @if(Auth::check() && Auth::user()->id == $snippet->user_id)
+  <a class="btn btn-default btn-sm" href="{{ URL::route('snippet.edit', $snippet['id']) }}" role="button">Edit &raquo;</a>
+        @endif
       </div>
       <div class="col-sm-8 col-xs-12">
         <p>{{{ $snippet->description }}}</p>
