@@ -1,5 +1,7 @@
 <?php
 
+use Michelf\Markdown;
+
 class Snippet extends Eloquent {
   protected $fillable = ['title', 'description', 'body', 'user_id'];
 
@@ -8,6 +10,13 @@ class Snippet extends Eloquent {
     'body' => 'required',
     'description' => 'required'
     ];
+  
+  public function getMarkdownBody($body)
+  {
+    $body = Markdown::defaultTransform($body);
+    $body = strip_tags($body, '<em><strong><code><blockquote><p><br>');
+    return $body;
+  }
 
   public function user()
   {
