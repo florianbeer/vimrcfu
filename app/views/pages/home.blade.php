@@ -29,7 +29,7 @@
         <div class="col-md-4 snippet-box-sm">
           <h3><a href="{{ URL::route('snippet.show', $snippet['id']) }}">{{{ $snippet['title'] }}}</a></h3>
           <p class="text-muted">{{ $snippet['created_at']->diffForHumans() }} by <a href="{{ URL::route('user.show', $snippet['user']->id)  }}">{{ $snippet['user']->name }}</a></p>
-          <p>{{{ str_limit($snippet['description'], $limit = 150, $end = '...') }}}</p>
+          <p>{{{ str_limit($snippet['description'], $limit = 120, $end = '...') }}}</p>
         </div>
         @endforeach
       </div>
