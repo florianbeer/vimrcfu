@@ -20,11 +20,12 @@
         <pre>{{{ $snippet->body }}}</pre>
       </div>
     </div>
-
-    <hr>
   </div>
   
   <div class="container">
+    @if($snippet->comments->count() || Auth::check())
+    <hr>
+    @endif
     <div class="row">
       @if(Auth::check())
       <div class="col-sm-5 col-xs-12 pull-right comment-form">
