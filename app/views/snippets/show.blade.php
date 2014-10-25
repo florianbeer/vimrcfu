@@ -14,7 +14,7 @@
       </div>
       <div class="col-md-8">
         <p>{{{ $snippet->description }}}</p>
-        <pre>{{{ $snippet->body) }}}</pre>
+        <pre>{{{ $snippet->body }}}</pre>
       </div>
     </div>
   </div>
