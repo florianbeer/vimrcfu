@@ -10,8 +10,8 @@
     </div>
     <div class="col-md-4">
       <img src="{{ $user->avatar_url }}" class="img-rounded col-md-6 col-xs-2">
-      <p><span class="badge">{{ count($snippets) }}</span>
-        @if(count($snippets) == 1)
+      <p><span class="badge">{{ $snippets->getTotal() }}</span>
+        @if($snippets->getTotal() == 1)
         Snippet
         @else
         Snippets
