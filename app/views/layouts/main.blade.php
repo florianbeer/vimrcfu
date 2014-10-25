@@ -46,7 +46,10 @@
 <i class="fa fa-github"></i> Sign in with GitHub 
 </a>
 @else
-  <a href="/logout" class="btn btn-default">
+  <a href="{{ URL::route('user.show', Auth::user()->id) }}" class="btn btn-primary">
+  <i class="fa fa-user"></i> {{ Auth::user()->name }}
+  </a>
+  <a href="/logout" class="btn btn-primary">
   <i class="fa fa-sign-out"></i> Sign out
   </a>  
   @endif

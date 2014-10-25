@@ -9,7 +9,13 @@
     </div>
     <div class="col-md-4">
       <img src="{{ $user->avatar_url }}" class="img-rounded col-md-6 col-xs-2">
-      <p><span class="badge">{{ count($snippets) }}</span> Snippets</p>
+      <p><span class="badge">{{ count($snippets) }}</span>
+        @if(count($snippets) == 1)
+        Snippet
+        @else
+        Snippets
+        @endif
+      </p>
       <p><a href="{{ $user->github_url }}">&raquo; GitHub Page</a></p>
     </div>
     <div class="col-md-8">
