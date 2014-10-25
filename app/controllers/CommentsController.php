@@ -100,7 +100,7 @@ class CommentsController extends \BaseController {
     $comment->body = Input::get('body');
     $comment->save();
 
-    return Redirect('snippet.show', Input::get('snippet_id'));
+    return Redirect::route('snippet.show', Input::get('snippet_id'));
 	}
 
 
