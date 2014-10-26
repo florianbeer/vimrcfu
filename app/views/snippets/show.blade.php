@@ -7,8 +7,11 @@
       <div class="col-xs-12">
         <h1>{{{ $snippet->title }}}</h1>
       </div>
+    </div>
+    
+    <div class="row">
       <div class="col-sm-4 col-xs-12">
-        <img src="{{ $snippet['user']->avatar_url }}" class="img-rounded col-sm-6 col-xs-4">
+        <img src="{{ $snippet['user']->avatar_url }}" class="img-responsive img-profile">
         <strong>{{ HTML::linkRoute('user.show', $snippet['user']->name, $snippet['user']->id) }}</strong>
         <p class="text-muted">{{ $snippet->created_at->diffForHumans() }}</p>
         @if(Auth::check() && Auth::user()->id == $snippet->user_id)
@@ -21,11 +24,13 @@
           </div>
         @endif
       </div>
+
       <div class="col-sm-8 col-xs-12">
         <p>{{ $snippet->getMarkdownBody($snippet->description) }}</p>
         <pre>{{{ $snippet->body }}}</pre>
       </div>
     </div>
+
   </div>
   
   <div class="container">
