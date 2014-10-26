@@ -1,5 +1,7 @@
 <?php
 
+use \Michelf\Markdown;
+
 class Snippet extends Eloquent {
   protected $fillable = ['title', 'description', 'body', 'user_id'];
 
@@ -27,6 +29,13 @@ class Snippet extends Eloquent {
   public function getScore()
   {
     return $this->votes()->where('snippet_id', '=', $this->id)->sum('score');
+  }
+
+  public function getMarkdownBody($body)
+  {
+    $body = Markdown::defaultTransform($body);
+    $body = strip_tags($body, '<em><strong><code><blockquote><p><br>');
+    return $body;
   }
 
   public function hasUserVoted($user_id)

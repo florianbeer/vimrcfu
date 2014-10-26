@@ -22,7 +22,7 @@
         @endif
       </div>
       <div class="col-sm-8 col-xs-12">
-        <p>{{{ $snippet->description }}}</p>
+        <p>{{ $snippet->getMarkdownBody($snippet->description) }}</p>
         <pre>{{{ $snippet->body }}}</pre>
       </div>
     </div>
