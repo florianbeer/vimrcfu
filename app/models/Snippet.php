@@ -16,8 +16,7 @@ class Snippet extends Eloquent {
 
   public function comments()
   {
-    return $this->hasMany('Comment')
-      ->orderBy('id', 'DESC');
+    return $this->hasMany('Comment');
   }
 
 }
