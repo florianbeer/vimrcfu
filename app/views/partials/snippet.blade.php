@@ -1,7 +1,9 @@
 <div class="row snippet-box">
   @if($img == true)
   <div class="col-md-2 col-sm-3 col-xs-3">
-    <img src="{{ $snippet['user']->avatar_url }}" class="img-responsive">
+    <a href="{{ URL::route('snippet.show', $snippet['id']) }}">
+      <img src="{{ $snippet['user']->avatar_url }}" class="img-responsive">
+    </a>
   </div>
   <div class="col-md-10 col-xs-9">
   @else
