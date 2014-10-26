@@ -5,7 +5,9 @@
 <div class="container">
 
   <div class="col-md-8">
-    <h1>Browse all snippets</h1>
+    <div class="row">
+      <h1>Browse all snippets</h1>
+    </div>
   </div>
   @include('partials.paginator')
 
