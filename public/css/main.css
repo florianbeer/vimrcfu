@@ -13,6 +13,7 @@
 .snippet-box
 {
   margin-bottom: 10px;
+  min-height: 110px;
 }
 
 .snippet-box h3

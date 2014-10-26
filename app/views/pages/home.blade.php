@@ -20,6 +20,9 @@
         @foreach($snippets as $snippet)
           @include('partials.snippet', ['img' => true])
         @endforeach
+        <div class="row snippet-box">
+          <a href="{{ URL::route('snippet.index') }}" class="btn btn-default btn-sm pull-right">Browse all snippets &raquo;</a>
+        </div>
       </div>
 
       <div class="col-sm-4 col-sm-offset-2 col-xs-12">
@@ -33,22 +36,27 @@
             <ul class="list-group">
               <li class="list-group-item">
                 <span class="badge">{{ $top_snippet->points  }}</span>
+                 <i class="fa fa-fire"></i> 
                 <a href="{{ URL::route('snippet.show', $top_snippet->id) }}">Top Snippet</a>
               </li>
               <li class="list-group-item">
                 <span class="badge">{{ $top_comments->comments_count  }}</span>
+                <i class="fa fa-comments"></i>
                 <a href="{{ URL::route('snippet.show', $top_comments->id) }}">Most Comments</a>
               </li>
               <li class="list-group-item">
                 <span class="badge">{{ $snippets_count  }}</span>
+                <i class="fa fa-code"></i>
                 Snippets 
               </li>
               <li class="list-group-item">
                 <span class="badge">{{ $comments_count  }}</span>
+                <i class="fa fa-comments-o"></i>
                 Comments
               </li>
               <li class="list-group-item">
                 <span class="badge">{{ $users_count  }}</span>
+                <i class="fa fa-users"></i>
                 Users
               </li>
             </ul>  
