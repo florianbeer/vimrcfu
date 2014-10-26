@@ -32,6 +32,14 @@
           <div class="col-xs-12">
             <ul class="list-group">
               <li class="list-group-item">
+                <span class="badge">{{ $top_snippet->points  }}</span>
+                <a href="{{ URL::route('snippet.show', $top_snippet->id) }}">Top Snippet</a>
+              </li>
+              <li class="list-group-item">
+                <span class="badge">{{ $top_comments->comments_count  }}</span>
+                <a href="{{ URL::route('snippet.show', $top_comments->id) }}">Most Comments</a>
+              </li>
+              <li class="list-group-item">
                 <span class="badge">{{ $snippets_count  }}</span>
                 Snippets 
               </li>
