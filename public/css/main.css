@@ -64,8 +64,25 @@ img.img-profile
   margin-right: 10px
 }
 
-.disabled
+.votelink, .score
+{
+  font-family: Courier, serif;
+  font-size: 1.2em;
+}
+
+.votelink:hover
+{
+  cursor: text;
+  color: #2780e3;
+}
+
+.dark
+{
+  color: #333;
+}
+
+.dark:hover
 {
   cursor: pointer;
-  color: #333;
+  color: #2780e3;
 }

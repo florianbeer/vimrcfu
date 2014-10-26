@@ -24,9 +24,18 @@ class Snippet extends Eloquent {
     return $this->hasMany('Vote');
   }
 
-  public function getScore($id)
+  public function getScore()
   {
-    return $this->votes()->where('snippet_id', '=', $id)->sum('score');
+    return $this->votes()->where('snippet_id', '=', $this->id)->sum('score');
+  }
+
+  public function hasUserVoted($user_id)
+  {
+    $vote = $this->votes()->where('user_id', '=', $user_id)->first();
+    if ( $vote )
+    {
+      return (int)$vote->score;
+    }
   }
 
 }

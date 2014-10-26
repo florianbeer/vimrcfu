@@ -15,7 +15,7 @@ class VotesController extends \BaseController {
     $vote->score = 1;
     $vote->save();
 
-    $score = Snippet::find($id)->getScore($id);
+    $score = Snippet::find($id)->getScore();
     return Response::make($score, 200);; 
 	}
 
@@ -27,7 +27,7 @@ class VotesController extends \BaseController {
     $vote->score = -1;
     $vote->save();
 
-    $score = Snippet::find($id)->getScore($id);
+    $score = Snippet::find($id)->getScore();
     return Response::make($score, 200);; 
 	}
 

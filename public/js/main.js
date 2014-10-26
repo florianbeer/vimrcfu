@@ -4,11 +4,12 @@ $(function() {
     var link = $(this);
     e.preventDefault();
     $.get($(this).attr('href'), function (data) {
-      link.addClass('disabled');
+      link.removeClass('dark');
       if(link.hasClass('up')) {
-        $('.votelink.down').removeClass('disabled');
+        $('.votelink.down').addClass('dark');
       } else {
-        $('.votelink.up').removeClass('disabled');
+        $('.votelink.up').addClass('dark');
+        console.log($('here'));
       }
       $('.score').html(data);
     });

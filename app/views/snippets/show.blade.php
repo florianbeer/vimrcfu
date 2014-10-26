@@ -12,13 +12,14 @@
         <strong>{{ HTML::linkRoute('user.show', $snippet['user']->name, $snippet['user']->id) }}</strong>
         <p class="text-muted">{{ $snippet->created_at->diffForHumans() }}</p>
         @if(Auth::check() && Auth::user()->id == $snippet->user_id)
-  <a class="btn btn-default btn-sm" href="{{ URL::route('snippet.edit', $snippet['id']) }}" role="button">Edit &raquo;</a>
+          <a class="btn btn-default btn-sm" href="{{ URL::route('snippet.edit', $snippet['id']) }}" role="button">Edit &raquo;</a>
+        @elseif(Auth::check())
+          <div>
+            <a href="{{ URL::route('vote.up', $snippet['id']) }}" class="votelink up {{ $snippet->hasUserVoted(Auth::user()->id) === 1 ?: 'dark' }}"><i class="fa fa-arrow-circle-up"></i></a>
+            <span class="score text-center">{{ $snippet->getScore() }}</span>
+            <a href="{{ URL::route('vote.down', $snippet['id']) }}" class="votelink down {{ $snippet->hasUserVoted(Auth::user()->id) === -1 ?: 'dark' }}"><i class="fa fa-arrow-circle-down"></i></a>
+          </div>
         @endif
-        <p>
-          <a href="{{ URL::route('vote.up', $snippet['id']) }}" class="votelink up"><i class="fa fa-angle-up"></i></a>
-          <span class="score">{{ $snippet->getScore($snippet['id']) }}</span>
-          <a href="{{ URL::route('vote.down', $snippet['id']) }}" class="votelink down"><i class="fa fa-angle-down"></i></a>
-        </p>
       </div>
       <div class="col-sm-8 col-xs-12">
         <p>{{{ $snippet->description }}}</p>
