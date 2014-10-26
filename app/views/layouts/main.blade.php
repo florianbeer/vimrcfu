@@ -1,98 +1,93 @@
 <!DOCTYPE html>
 <html class="no-js">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>vimrcfu - Share your best vimrc snippets</title>
-        <meta name="description" content="Snippets of vimrc awesomeness.">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>vimrcfu - Share your best vimrc snippets</title>
+  <meta name="description" content="Snippets of vimrc awesomeness.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        {{ HTML::style('css/font-awesome.css') }}
-        {{ HTML::style('css/bootstrap.min.css') }}
-        <style>
-            body {
-                padding-top: 50px;
-                padding-bottom: 20px;
-            }
-        </style>
-        {{ HTML::style('css/bootstrap-social.css') }}
-        {{ HTML::style('css/animate.min.css') }}
-        {{ HTML::style('css/main.css?v=1.1') }}
+  {{ HTML::style('css/font-awesome.css') }}
+  {{ HTML::style('css/bootstrap.min.css') }}
+  <style>
+      body {
+          padding-top: 50px;
+          padding-bottom: 20px;
+      }
+  </style>
+  {{ HTML::style('css/bootstrap-social.css') }}
+  {{ HTML::style('css/animate.min.css') }}
+  {{ HTML::style('css/main.css?v=1.1') }}
 
-        <!--[if lt IE 9]>
-<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<script>window.html5 || document.write('{{ HTML::script('js/vendor/html5shiv.js') }}')</script>
-<![endif]-->
+  <!--[if lt IE 9]>
+  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <script>window.html5 || document.write('{{ HTML::script('js/vendor/html5shiv.js') }}')</script>
+  <![endif]-->
 </head>
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-<div class="container">
-<div class="navbar-header">
-<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-<span class="sr-only">Toggle navigation</span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</button>
-<a class="navbar-brand" href="/"><tt>vimrcfu</tt></a>
-</div>
-<div class="navbar-collapse collapse">
-<ul class="nav navbar-nav">
-<li><a href="{{ URL::route('snippet.create') }}"><i class="fa fa-plus"></i> New snippet</a></li>
-<li><a href="{{ URL::route('snippet.index') }}"><i class="fa fa-code"></i> Browse snippets</a></li>
-</ul>
-<div class="navbar-form navbar-right">
-@if(Auth::guest())
-<a href="/login" class="btn btn-social btn-github">
-<i class="fa fa-github"></i> Sign in with GitHub 
-</a>
-@else
-  <a href="{{ URL::route('user.show', Auth::user()->id) }}" class="btn btn-primary">
-  <i class="fa fa-user"></i> {{ Auth::user()->name }}
-  </a>
-  <a href="/logout" class="btn btn-primary">
-  <i class="fa fa-sign-out"></i> Sign out
-  </a>  
-  @endif
-  </div>
-  </div><!--/.navbar-collapse -->
-  </div>
-  </div>
-
-      @yield('content')
-
-      <div class="container">
-      <hr>
-
-      <footer>
-        <p class="pull-right">
-          <a href="https://twitter.com/azath0th" class="twitter-follow-button" data-show-count="false">Follow @azath0th</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-        </p>
-        <p>&copy; 2014 <a href="http://blog.no-panic.at" target="_blank">Florian Beer</a> - made with VIM - hosted by <a href="http://42dev.eu" target="_blank">42dev</a></p>
-      </footer>
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><tt>vimrcfu</tt></a>
       </div>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        {{ HTML::script('js/vendor/bootstrap.min.js') }}
-        {{ HTML::script('js/vendor/wow.min.js') }}
-        <script>
-          new WOW().init();
-        </script>
-        {{ HTML::script('js/main.js') }}
-        <!-- Piwik -->
-<script type="text/javascript">
-var _paq = _paq || [];
-_paq.push(['trackPageView']);
-_paq.push(['enableLinkTracking']);
-(function() {
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="{{ URL::route('snippet.create') }}"><i class="fa fa-plus"></i> New snippet</a></li>
+          <li><a href="{{ URL::route('snippet.index') }}"><i class="fa fa-code"></i> Browse snippets</a></li>
+        </ul>
+        @if(Auth::guest())
+        <div class="navbar-form navbar-right">
+          <a href="/login" class="btn btn-social btn-github"><i class="fa fa-github"></i> Sign in with GitHub </a>
+        </div>
+        @else
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{{ URL::route('user.show', Auth::user()->id) }}"><i class="fa fa-user"></i> {{ Auth::user()->name }}</a></li>
+          <li><a href="/logout"><i class="fa fa-sign-out"></i> Sign out</a></ul> 
+        </ul>
+        @endif
+      </div><!--/.navbar-collapse -->
+    </div>
+  </div>
+
+  @yield('content')
+
+  <div class="container">
+    <hr>
+    <footer>
+    <p class="pull-right">
+    <a href="https://twitter.com/azath0th" class="twitter-follow-button" data-show-count="false">Follow @azath0th</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </p>
+    <p>&copy; 2014 <a href="http://blog.no-panic.at" target="_blank">Florian Beer</a> - made with VIM - hosted by <a href="http://42dev.eu" target="_blank">42dev</a></p>
+    </footer>
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  {{ HTML::script('js/vendor/bootstrap.min.js') }}
+  {{ HTML::script('js/vendor/wow.min.js') }}
+  <script>
+    new WOW().init();
+  </script>
+  {{ HTML::script('js/main.js') }}
+  <!-- Piwik -->
+  <script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
   var u=(("https:" == document.location.protocol) ? "https" : "http") + "://stats.42dev.net/";
   _paq.push(['setTrackerUrl', u+'piwik.php']);
   _paq.push(['setSiteId', 32]);
   var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
   g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-})();
-</script>
-<noscript><p><img src="http://stats.42dev.net/piwik.php?idsite=32" style="border:0;" alt="" /></p></noscript>
-<!-- End Piwik Code -->
-
-    </body>
+  })();
+  </script>
+  <noscript><p><img src="http://stats.42dev.net/piwik.php?idsite=32" style="border:0;" alt="" /></p></noscript>
+  <!-- End Piwik Code -->
+</body>
 </html>
