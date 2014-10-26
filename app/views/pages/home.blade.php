@@ -60,7 +60,6 @@
             <div class="text-muted">
               <h3>Upcoming features</h3>
               <ul>
-                <li>Voting for snippets</li>
                 <li>Activity notifications</li>
                 <li>Snippet tagging</li>
                 <li>Search</li>
