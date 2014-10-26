@@ -4,7 +4,7 @@ class CommentsController extends \BaseController {
 
   public function __construct()
   {
-    $this->beforeFilter('auth', ['only' => ['create', 'update', 'edit', 'store', 'delete']]);
+    $this->beforeFilter('auth', ['only' => ['create', 'update', 'edit', 'store', 'destroy']]);
   }
 
 	/**

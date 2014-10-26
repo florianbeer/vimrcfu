@@ -20,3 +20,5 @@ Route::model('user', 'User');
 Route::resource('user', 'UsersController');
 Route::model('comment', 'Comment');
 Route::resource('comment', 'CommentsController');
+Route::get('snippet/{id}/up', ['as' => 'vote.up', 'uses' => 'VotesController@up']);
+Route::get('snippet/{id}/down', ['as' => 'vote.down', 'uses' => 'VotesController@down']);

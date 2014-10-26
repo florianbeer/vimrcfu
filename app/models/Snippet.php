@@ -19,4 +19,14 @@ class Snippet extends Eloquent {
     return $this->hasMany('Comment');
   }
 
+  public function votes()
+  {
+    return $this->hasMany('Vote');
+  }
+
+  public function getScore($id)
+  {
+    return $this->votes()->where('snippet_id', '=', $id)->sum('score');
+  }
+
 }

@@ -63,3 +63,9 @@ img.img-profile
   float: left;
   margin-right: 10px
 }
+
+.disabled
+{
+  cursor: pointer;
+  color: #333;
+}

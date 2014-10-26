@@ -14,6 +14,11 @@
         @if(Auth::check() && Auth::user()->id == $snippet->user_id)
   <a class="btn btn-default btn-sm" href="{{ URL::route('snippet.edit', $snippet['id']) }}" role="button">Edit &raquo;</a>
         @endif
+        <p>
+          <a href="{{ URL::route('vote.up', $snippet['id']) }}" class="votelink up"><i class="fa fa-angle-up"></i></a>
+          <span class="score">{{ $snippet->getScore($snippet['id']) }}</span>
+          <a href="{{ URL::route('vote.down', $snippet['id']) }}" class="votelink down"><i class="fa fa-angle-down"></i></a>
+        </p>
       </div>
       <div class="col-sm-8 col-xs-12">
         <p>{{{ $snippet->description }}}</p>
