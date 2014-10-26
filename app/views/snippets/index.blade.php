@@ -12,7 +12,7 @@
   <div class="col-sm-6 col-xs-12">
      <div class="row">
       @foreach($snippets as $snippet)
-        @include('partials.snippet')
+        @include('partials.snippet', ['img' => true])
       @endforeach
     </div>
   </div>

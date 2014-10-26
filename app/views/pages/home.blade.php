@@ -18,7 +18,7 @@
           </div>
         </div>
         @foreach($snippets as $snippet)
-          @include('partials.snippet')
+          @include('partials.snippet', ['img' => true])
         @endforeach
       </div>
 
