@@ -93,6 +93,18 @@ img.img-profile
   color: #2780e3;
 }
 
+.hidden
+{
+  position: absolute;
+  left: -200em;
+}
+
+.toggle-visibility
+{
+  cursor: pointer;
+  border-bottom: 1px dotted;
+}
+
 kbd
 {
   color: #000;

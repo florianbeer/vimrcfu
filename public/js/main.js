@@ -14,4 +14,13 @@ $(function() {
       $('.score').html(data);
     });
   });
+  $('.toggle-visibility').on('click', function () {
+    toggle_visibility($(this));
+  });
 });
+
+function toggle_visibility(id) {
+  elToHide = id.next();
+  elToHide.toggleClass('hidden');
+}
+
