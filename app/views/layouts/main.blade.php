@@ -28,7 +28,7 @@
         <p class="pull-right">
         <a href="https://twitter.com/azath0th" class="twitter-follow-button" data-show-count="false">Follow @azath0th</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
         </p>
-        <p>&copy; 2014 <a href="http://blog.no-panic.at" target="_blank">Florian Beer</a> - made with VIM - hosted by <a href="http://42dev.eu" target="_blank">42dev</a></p>
+        <p>&copy; 2014 <a href="http://blog.no-panic.at" target="_blank">Florian Beer</a> - made with Vim - hosted by <a href="http://42dev.eu" target="_blank">42dev</a></p>
       </footer>
     </div>
 
