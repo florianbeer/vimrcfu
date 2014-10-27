@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', ['as' => 'home', 'uses' => 'PagesController@index']);
+Route::get('/', ['as' => 'home', 'uses' => 'PagesController@home']);
 Route::get('login', ['as' => 'login', 'uses' => 'AuthorizationController@create']);
 Route::get('logout', ['as' => 'logout', 'uses' => 'AuthorizationController@destroy']);
 Route::model('snippet', 'Snippet');
