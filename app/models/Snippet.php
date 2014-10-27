@@ -34,7 +34,7 @@ class Snippet extends Eloquent {
   public function getMarkdownBody($body)
   {
     $body = Markdown::defaultTransform($body);
-    $body = strip_tags($body, '<em><strong><code><blockquote><p><br>');
+    $body = strip_tags($body, '<em><strong><code><blockquote><p><br><kbd>');
     return $body;
   }
 
