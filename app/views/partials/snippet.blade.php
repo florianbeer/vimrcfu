@@ -9,7 +9,7 @@
   @else
   <div class="col-md-10 col-xs-12">
   @endif
-    <h3 class="col-xs-12"><a href="{{ URL::route('snippet.show', $snippet['id']) }}">{{{ $snippet['title'] }}}</a></h3>
+    <h3><a href="{{ URL::route('snippet.show', $snippet['id']) }}">{{{ $snippet['title'] }}}</a></h3>
     <p class="text-muted small col-md-6 col-xs-12">
       {{ $snippet['created_at']->diffForHumans() }}<br>
       by <a href="{{ URL::route('user.show', $snippet['user']->id)  }}">{{ $snippet['user']->name }}</a>
