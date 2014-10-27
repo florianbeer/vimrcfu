@@ -54,6 +54,12 @@ class SnippetsController extends \BaseController {
     $snippet->user_id = Auth::user()->id;
     $snippet->save();
 
+    $vote = new Vote;
+    $vote->user_id = Auth::user()->id;
+    $vote->snippet_id = $snippet->id;
+    $vote->score = 1;
+    $vote->save();
+
     return Redirect::route('snippet.show', $snippet->id);
 	}
 
