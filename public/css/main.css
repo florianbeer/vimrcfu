@@ -1,3 +1,8 @@
+body
+{
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
 .jumbotron
 {
   background: url('../img/home_bg.png') no-repeat top left fixed;
