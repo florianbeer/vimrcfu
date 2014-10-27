@@ -4,7 +4,7 @@ class SnippetsController extends \BaseController {
 
   public function __construct()
   {
-    $this->beforeFilter('auth', ['only' => ['create', 'update', 'edit', 'store', 'delete']]);
+    $this->beforeFilter('auth', ['only' => ['create', 'store', 'edit', 'update']]);
   }
 
 	/**
@@ -114,18 +114,5 @@ class SnippetsController extends \BaseController {
     return Redirect::route('snippet.show', $snippet->id);
 
 	}
-
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
 
 }
