@@ -24,6 +24,10 @@ body
 .snippet-box h3
 {
   margin-top: 0;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
 }
 
 textarea.snippet 
