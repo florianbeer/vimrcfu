@@ -11,8 +11,7 @@
   <label for="description">Description</label>
   <p class="help-block">Describe exactly what your snippet achieves or which behaviour it adds.</p>
   {{ Form::textarea('description', null, ['class' => 'form-control', 'rows' => '3']) }}
-  <p class="help-block"><span class="small text-muted">You can use <strong>some markdown</strong>.<br>
-    Italics (*), bold (**), inline code (`), code blocks without newlines (```) and blockquotes (>) are supported.</span></p>
+  @include('partials.markdown_help')
 </div>
 <div class="form-group">
   <label for="body">Snippet</label>
