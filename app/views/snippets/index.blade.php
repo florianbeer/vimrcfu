@@ -4,27 +4,34 @@
 
 <div class="container">
 
-  <div class="col-md-8">
-    <div class="row">
+  <div class="row">
+    <div class="col-sm-8 col-xs-12">
       <h1>Browse all snippets</h1>
+      <div class="text-muted">
+        {{ $snippets->getTotal() }} {{ Str::plural('Snippet', $snippets->count()) }}<br>
+        Page {{ $snippets->getCurrentPage() }} of {{ $snippets->getLastPage() }}
+      </div>
     </div>
-  </div>
 
-  <div class="col-sm-4 col-xs-12">
     @include('partials.search_form')
   </div>
 
-  @include('partials.paginator')
+  <div class="row">
+    @include('partials.paginator')
+  </div>
 
-  <div class="col-sm-6 col-xs-12">
-    <div class="row">
+  <div class="row">
+    <div class="col-sm-6 col-xs-12">
       @foreach($snippets as $snippet)
-        @include('partials.snippet', ['img' => true])
+      @include('partials.snippet', ['img' => true])
       @endforeach
     </div>
   </div>
 
-  @include('partials.paginator')
+  <div class="row">
+    @include('partials.paginator')
+  </div>
+
 
 </div>
 
