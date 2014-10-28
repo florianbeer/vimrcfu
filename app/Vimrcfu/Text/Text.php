@@ -11,7 +11,7 @@ class Text {
 
   private function createiExternalLinks($text)
   {
-    $regex = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,63}([\w\.\/:\=\?\#\!]*)/"; 
+    $regex = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,63}([\w\.\/:\=\?\#\!-]*)/"; 
     if(preg_match($regex, $text, $url)) {
       $text = preg_replace($regex, '<a href="'.$url[0].'" target="_blank">'.$url[0].'</a>', $text);
     }
