@@ -8,13 +8,13 @@ Class SnippetsTableSeeder extends Seeder {
   {
     $faker = Faker::create();
 
-    foreach(range(1, 50) as $index)
+    foreach(range(1, 100) as $index)
     {
-      Snippet::create([
+      $snippet = Snippet::create([
         'title' => $faker->word,
         'body' => $faker->paragraph,
         'description' => $faker->paragraph,
-        'user_id' => 1
+        'user_id' => $faker->randomElement([1,2,3]) 
         ]);
     }
   }

@@ -27,7 +27,7 @@ class EnableSnippetsFulltextSearch extends Migration {
       $table->dropIndex('search');
     });
 
-    DB::statement('ALTER TABLE snippets ENGINE:InnoDB');
+    DB::statement('ALTER TABLE snippets ENGINE=InnoDB');
 	}
 
 }
