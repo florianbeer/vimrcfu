@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', 'Share your best vimrc snippets')
+
 @section('content')
 
 <div class="jumbotron">

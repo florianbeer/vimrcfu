@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', $snippet->title)
+
 @section('content')
 
 <div class="container">

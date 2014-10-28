@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>vimrcfu - Share your best vimrc snippets</title>
+    <title>@yield('title') | vimrcfu</title>
     <meta name="description" content="Snippets of vimrc awesomeness.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 

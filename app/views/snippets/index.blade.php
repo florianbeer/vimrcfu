@@ -1,12 +1,14 @@
 @extends('layouts.main')
 
+@section('title', 'Browse all Snippets')
+
 @section('content')
 
 <div class="container">
 
   <div class="row">
     <div class="col-sm-8 col-xs-12">
-      <h1>Browse all snippets</h1>
+      <h1>Browse all Snippets</h1>
       <div class="text-muted">
         {{ $snippets->getTotal() }} {{ Str::plural('Snippet', $snippets->count()) }}<br>
         Page {{ $snippets->getCurrentPage() }} of {{ $snippets->getLastPage() }}

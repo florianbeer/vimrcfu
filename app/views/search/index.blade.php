@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', 'Search Results')
+
 @section('content')
 
 <div class="container">

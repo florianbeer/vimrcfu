@@ -1,12 +1,14 @@
 @extends('layouts.main')
 
+@section('title', 'New Snippet')
+
 @section('content')
 
 <div class="container">
   
   <div class="row">
     <div class="col-xs-12">
-      <h1>New snippet</h1>
+      <h1>New Snippet</h1>
     </div>
   </div>
 

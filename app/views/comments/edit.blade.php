@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', 'Edit your comment');
+
 @section('content')
 
 <div class="container">

@@ -28,7 +28,9 @@ class PagesController extends \BaseController {
 
   public function faq()
   {
-    return View::make('pages.markdown');
+    return View::make('pages.markdown')
+      ->withTitle('Frequently Asked Questions')
+      ->withFile('faq');
   }
 
 }
