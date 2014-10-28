@@ -11,8 +11,9 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="{{ URL::route('snippet.create') }}"><i class="fa fa-plus"></i> New snippet</a></li>
-        <li><a href="{{ URL::route('snippet.index') }}"><i class="fa fa-code"></i> Browse snippets</a></li>
+        <li><a href="{{ URL::route('snippet.create') }}"><i class="fa fa-plus"></i> New Snippet</a></li>
+        <li><a href="{{ URL::route('snippet.index') }}"><i class="fa fa-code"></i> Browse Snippets</a></li>
+        <li><a href="{{ URL::route('faq') }}"><i class="fa fa-question"></i> FAQ</a></li>
       </ul>
       @if(Auth::guest())
       <div class="navbar-form navbar-right">

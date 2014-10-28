@@ -19,8 +19,7 @@
         <p class="help-block text-danger">{{ $errors->first('body') }}</p>
         @endif
         {{ Form::textarea('body', null, ['class' => 'form-control', 'rows' => '5', 'placeholder' => 'Your comment', 'tabindex' => '1', 'value' => Input::old('comment')]) }}
-        <p class="help-block"><span class="small text-muted">You can use <strong>some markdown</strong>.<br>
-          Italics (*), bold (**), inline code (`), code blocks without newlines (```) and blockquotes (>) are supported.</span></p>
+       @include('partials.markdown_help') 
       </div>
       <button type="submit" class="btn btn-default pull-right" tabindex="2">Submit</button>
       {{ Form::close() }}

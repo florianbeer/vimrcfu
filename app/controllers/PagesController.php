@@ -24,6 +24,11 @@ class PagesController extends \BaseController {
       ->withTopSnippet($top_snippet)
       ->withTopComments($top_comments);
 
-	}
+  }
+
+  public function faq()
+  {
+    return View::make('pages.markdown');
+  }
 
 }

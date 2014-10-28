@@ -1,6 +1,6 @@
 <?php
 
-class Comment extends BaseModel {
+class Comment extends Eloquent {
   protected $fillable = ['body', 'user_id', 'comment_id'];
 
   public static $rules = [

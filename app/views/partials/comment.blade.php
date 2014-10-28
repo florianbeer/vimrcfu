@@ -14,6 +14,6 @@
     <span class="pull-right text-muted" title="Edited" style="cursor:help;">&#9998;</span>
     @endif
     </p>
-    {{ $comment->getMarkdownBody($comment->body) }}
+    {{ Text::render($comment->body) }}
   </div>
 </div>

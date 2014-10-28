@@ -14,7 +14,7 @@
 
   <div class="row">
     <div class="col-sm-6 col-xs-12">
-      <h2>New snippets</h2>
+      <h2>New Snippets</h2>
       @foreach($snippets as $snippet)
       @include('partials.snippet', ['img' => true])
       @endforeach
@@ -38,12 +38,7 @@
       </div>
       <div class="row">
         <div class="col-xs-12 text-muted">
-          <h3>Upcoming features</h3>
-          <ul>
-            <li>Sort by time, number of comments or rating on snippet lists</li>
-            <li>Activity notifications</li>
-            <li>Snippet tagging</li>
-          </ul>
+          {{ Text::renderInclude('upcoming') }}
         </div>
       </div>
     </div>

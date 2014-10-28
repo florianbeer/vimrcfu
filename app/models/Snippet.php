@@ -1,6 +1,6 @@
 <?php
 
-class Snippet extends BaseModel {
+class Snippet extends Eloquent {
   protected $fillable = ['title', 'description', 'body', 'user_id'];
 
   public static $rules = [

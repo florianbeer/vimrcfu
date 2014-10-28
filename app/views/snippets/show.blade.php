@@ -33,7 +33,7 @@
     </div>
 
     <div class="col-sm-8 col-xs-12">
-      <p>{{ $snippet->getMarkdownBody($snippet->description) }}</p>
+      <p>{{ Text::render($snippet->description) }}</p>
       <pre>{{{ $snippet->body }}}</pre>
     </div>
   </div>
