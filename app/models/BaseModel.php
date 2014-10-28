@@ -7,7 +7,7 @@ class BaseModel extends Eloquent {
   public function getMarkdownBody($body)
   {
     $body = Markdown::defaultTransform($body);
-    $body = strip_tags($body, '<em><strong><code><blockquote><p><br>');
+    $body = strip_tags($body, '<em><strong><code><blockquote><p><br><kbd>');
     $URLregex = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,63}([\w\.\/:\=\?\#\!]*)/";
     if(preg_match($URLregex, $body, $url)) {
       $body = preg_replace($URLregex, '<a href="'.$url[0].'" target="_blank">'.$url[0].'</a>', $body);
