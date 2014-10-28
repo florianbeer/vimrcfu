@@ -12,27 +12,32 @@
 
 <div class="container">
 
-  <div class="col-sm-6 col-xs-12">
-    <div class="row">
-      <div class="col-xs-12">
-        <h2>New snippets</h2>
+  <div class="row">
+    <div class="col-sm-6 col-xs-12">
+      <h2>New snippets</h2>
+      @foreach($snippets as $snippet)
+      @include('partials.snippet', ['img' => true])
+      @endforeach
+      <div class="row snippet-box">
+        <div class="col-xs-12">
+          <a href="{{ URL::route('snippet.index') }}" class="btn btn-default btn-sm pull-right">Browse all snippets &raquo;</a>
+        </div>
       </div>
     </div>
-    @foreach($snippets as $snippet)
-    @include('partials.snippet', ['img' => true])
-    @endforeach
-    <div class="row snippet-box">
-      <a href="{{ URL::route('snippet.index') }}" class="btn btn-default btn-sm pull-right">Browse all snippets &raquo;</a>
-    </div>
-  </div>
 
-  <div class="col-sm-4 col-sm-offset-2 col-xs-12">
-    @include('partials.statistics')
-    @include('partials.search_form')
-
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="text-muted">
+    <div class="col-sm-4 col-sm-offset-2 col-xs-12">
+      <div class="row">
+        <div class="col-xs-12">
+        @include('partials.statistics')
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          @include('partials.search_form')
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 text-muted">
           <h3>Upcoming features</h3>
           <ul>
             <li>Sort by time, number of comments or rating on snippet lists</li>

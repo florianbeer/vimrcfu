@@ -74,10 +74,14 @@ img.img-profile
   margin-right: 10px
 }
 
-.votelink, .score
+.score
 {
-  font-family: Courier, serif;
-  font-size: 1.2em;
+  margin-top: 21px;
+  margin-bottom:10.5px;
+  line-height: 1.1;
+  font-size: 39px;
+  font-family: "Source Sans Pro",Calibri,Candara,Arial,sans-serif;
+  font-weight: 300;
 }
 
 .votelink:hover
@@ -88,7 +92,7 @@ img.img-profile
 
 .dark
 {
-  color: #333;
+  color: #999;
 }
 
 .dark:hover

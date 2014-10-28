@@ -26,13 +26,17 @@
 
     <div class="col-sm-8 col-xs-12">
       <div class="row">
-        @include('partials.paginator')
+        <div class="col-xs-12">
+          @include('partials.paginator')
+        </div>
       </div>
       @foreach($snippets as $snippet)
       @include('partials.snippet', ['img' => false])
       @endforeach
       <div class="row">
-        @include('partials.paginator')
+        <div class="col-xs-12">
+          @include('partials.paginator')
+        </div>
       </div>
     </div>
   </div>

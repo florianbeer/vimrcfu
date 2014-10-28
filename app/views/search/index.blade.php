@@ -13,11 +13,15 @@
       </div>
     </div>
 
-    @include('partials.search_form')
+    <div class="col-sm-4 col-xs-12">
+      @include('partials.search_form')
+    </div>
   </div>
 
   <div class="row">
-    @include('partials.paginator')
+    <div class="col-xs-12">
+      @include('partials.paginator')
+    </div>
   </div>
 
   <div class="row">
@@ -28,9 +32,10 @@
     </div>
   </div>
 
-
   <div class="row">
-    @include('partials.paginator')
+    <div class="col-xs-12">
+      @include('partials.paginator')
+    </div>
   </div>
 
 </div>

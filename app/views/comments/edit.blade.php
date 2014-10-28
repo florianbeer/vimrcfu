@@ -1,11 +1,17 @@
 @extends('layouts.main')
+
 @section('content')
+
 <div class="container">
+
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-xs-12">
       <h1>Edit comment</h1>
     </div>
-    <div class="col-md-8">
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 col-xs-12">
       {{ Form::model($comment, ['route' => ['comment.update', $comment->id], 'method' => 'PUT']) }}
       {{ Form::hidden('snippet_id', $comment->snippet->id) }}
       <div class="form-group">
@@ -21,4 +27,5 @@
     </div>
   </div>
 </div>
+
 @stop

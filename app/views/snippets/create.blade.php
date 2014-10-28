@@ -5,10 +5,13 @@
 <div class="container">
   
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-xs-12">
       <h1>New snippet</h1>
     </div>
-    <div class="col-md-8">
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 col-xs-12">
       @if($errors->has())
       <ul class="text-danger">
         @foreach($errors->all() as $message)

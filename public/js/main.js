@@ -9,9 +9,8 @@ $(function() {
         $('.votelink.down').addClass('dark');
       } else {
         $('.votelink.up').addClass('dark');
-        console.log($('here'));
       }
-      $('.score').html(data);
+      $('.points').html(data);
     });
   });
   $('.toggle-visibility').on('click', function () {
