@@ -9,9 +9,10 @@ class SearchController extends \BaseController {
    */
   public function index()
   {
-    if ( ! empty(Input::get('q')))
+    $search = Input::get('q');
+    if ( ! empty($search))
     {
-      $snippets = Snippet::whereRaw('MATCH(title,description,body) AGAINST(? IN BOOLEAN MODE)', [Input::get('q')])
+      $snippets = Snippet::whereRaw('MATCH(title,description,body) AGAINST(? IN BOOLEAN MODE)', [$search])
         ->paginate(10);
 
       return View::make('search.index', compact('snippets'));
