@@ -12,6 +12,7 @@
 */
 
 Route::get('/', ['as' => 'home', 'uses' => 'PagesController@home']);
+Route::get('search', ['as' => 'search', 'uses' => 'SearchController@index']);
 Route::get('login', ['as' => 'login', 'uses' => 'AuthorizationController@create']);
 Route::get('logout', ['as' => 'logout', 'uses' => 'AuthorizationController@destroy']);
 Route::model('snippet', 'Snippet');

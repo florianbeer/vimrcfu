@@ -6,7 +6,7 @@
 
   <div class="col-md-8">
     <div class="row">
-      <h1>Browse all snippets</h1>
+      <h1>{{ $snippets->count() }} Search {{ Str::plural('Result', $snippets->count()) }}</h1>
     </div>
   </div>
 
@@ -19,10 +19,11 @@
   <div class="col-sm-6 col-xs-12">
     <div class="row">
       @foreach($snippets as $snippet)
-        @include('partials.snippet', ['img' => true])
+      @include('partials.snippet', ['img' => true])
       @endforeach
     </div>
   </div>
+
 
   @include('partials.paginator')
 

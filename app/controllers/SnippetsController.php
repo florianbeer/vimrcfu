@@ -121,4 +121,8 @@ class SnippetsController extends \BaseController {
 
 	}
 
+  public function search()
+  {
+  }
+
 }
