@@ -1,5 +1,5 @@
 <div class="col-xs-12 clearfix">
   <div class="pull-right">
-    {{ $snippets->links() }}
+    {{ $snippets->appends(['q' => Input::get('q')])->links() }}
   </div>
 </div>
