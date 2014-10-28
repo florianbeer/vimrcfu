@@ -35,9 +35,9 @@
         <div class="text-muted">
           <h3>Upcoming features</h3>
           <ul>
+            <li>Sort by time, number of comments or rating on snippet lists</li>
             <li>Activity notifications</li>
             <li>Snippet tagging</li>
-            <li>Search</li>
           </ul>
         </div>
       </div>
