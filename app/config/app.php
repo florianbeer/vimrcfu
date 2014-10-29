@@ -26,7 +26,7 @@ return array(
   |
   */
 
-  'url' => 'http://localhost',
+  'url' => 'http://vimrcfu.com',
 
   /*
   |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return array(
   |
   */
 
-  'key' => 'YourSecretKey!!!',
+  'key' => getenv('APP_KEY'),
 
   'cipher' => MCRYPT_RIJNDAEL_128,
 

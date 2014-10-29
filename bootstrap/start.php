@@ -24,11 +24,11 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-$env = $app->detectEnvironment(array(
+$env = $app->detectEnvironment(function(){
 
-	'local' => array('vagrant-ubuntu-trusty-64'),
+    return getenv('APP_ENV') ?: 'local';
 
-));
+});
 
 /*
 |--------------------------------------------------------------------------

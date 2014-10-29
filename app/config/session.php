@@ -96,7 +96,7 @@ return array(
 	|
 	*/
 
-	'cookie' => 'laravel_session',
+	'cookie' => 'get_your_vimrc_fu_on',
 
 	/*
 	|--------------------------------------------------------------------------
