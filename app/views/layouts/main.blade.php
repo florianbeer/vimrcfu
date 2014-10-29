@@ -16,6 +16,7 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <script>window.html5 || document.write('{{ HTML::script('js/vendor/html5shiv.js') }}')</script>
     <![endif]-->
+    <link href="{{ Config::get('app.url') }}/feed" rel="alternate" type="application/rss+xml" title="vimrcfu - Share your best vimrc snippets.">
   </head>
   <body>
     @include('partials.navbar')

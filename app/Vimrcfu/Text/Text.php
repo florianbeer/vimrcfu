@@ -23,7 +23,7 @@ class Text {
    * @return string
    * @author Florian Beer
    */
-  private function createiExternalLinks($text)
+  private function createExternalLinks($text)
   {
     $regex = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,63}([\w\.\/:\=\?\#\!-]*)/";
     return preg_replace($regex, '<a href="$0" target="_blank">$0</a>', $text);
@@ -33,12 +33,17 @@ class Text {
    * Constructs clickable internal links to Snippets
    *
    * @param string $text
+   * @param bool $absolute
    * @return string
    * @author Florian Beer
    */
-  private function createSnippetLinks($text)
+  private function createSnippetLinks($text, $absolute = false)
   {
     $regex = "/snippet#([0-9]*)(\/\S*)?/";
+    if ( $absolute )
+    {
+      return preg_replace($regex, '<a href="' . \Config::get('app.url') . '/snippet/$1">Snippet #$1</a>', $text);
+    }
     return preg_replace($regex, '<a href="/snippet/$1">Snippet #$1</a>', $text);
   }
 
@@ -66,7 +71,7 @@ class Text {
   {
     $text = $this->renderMarkdown($text);
     $text = $this->stripTags($text);
-    $text = $this->createiExternalLinks($text);
+    $text = $this->createExternalLinks($text);
     $text = $this->createSnippetLinks($text);
     return $text;
   }
@@ -83,6 +88,22 @@ class Text {
     $text = \File::get(app_path().'/markdown/'.$file.'.md');
     $text = $this->renderMarkdown($text);
     $text = $this->createSnippetLinks($text);
+    return $text;
+  }
+
+  /**
+   * Returns rendered HTML with absolute links for RSS
+   *
+   * @param string $text
+   * @return string
+   * @author Florian Beer
+   */
+  public function renderForRss($text)
+  {
+    $text = $this->renderMarkdown($text);
+    $text = $this->stripTags($text);
+    $text = $this->createExternalLinks($text);
+    $text = $this->createSnippetLinks($text, true);
     return $text;
   }
 

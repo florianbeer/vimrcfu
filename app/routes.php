@@ -5,6 +5,7 @@ Route::get('login', ['as' => 'login', 'uses' => 'AuthorizationController@create'
 Route::get('logout', ['as' => 'logout', 'uses' => 'AuthorizationController@destroy']);
 Route::get('faq', ['as' => 'faq', 'uses' => 'PagesController@faq']);
 Route::get('sitemap.xml', 'PagesController@sitemap');
+Route::get('feed', 'FeedController@index');
 
 Route::model('snippet', 'Snippet');
 Route::resource('snippet', 'SnippetsController', ['except' => 'destroy']);
