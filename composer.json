@@ -10,8 +10,8 @@
 		"michelf/php-markdown": "~1.4"
 	},
   "require-dev": {
-		"way/generators": "~3.0",
-		"fzaninotto/faker": "~1.4"
+		"fzaninotto/faker": "~1.4",
+		"barryvdh/laravel-debugbar": "~1.7"
   },
 	"autoload": {
 		"classmap": [

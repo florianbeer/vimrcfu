@@ -3,7 +3,8 @@
 class AuthorizationController extends \BaseController {
 
 	/**
-	 * Show the form for creating a new resource.
+	 * Create a new User with data from GitHub
+   * if not already in database. Then log in User.
 	 *
 	 * @return Response
 	 */
@@ -20,21 +21,17 @@ class AuthorizationController extends \BaseController {
 
       if ( empty($result['name']) )
       {
-        $name = $result['login'];
-      }
-      else
-      {
-        $name = $result['name'];
+        $result['name'] = $result['login'];
       }
 
-      $email = last(json_decode($github->request('user/emails'), true));
+      $result['email'] = last(json_decode($github->request('user/emails'), true));
 
       $userData = [
         'github_id' => $result['id'],
         'github_url' => $result['html_url'],
         'avatar_url' => $result['avatar_url'],
-        'email' => $email,
-        'name' => $name
+        'email' => $result['email'],
+        'name' => $result['name']
         ];
 
       $user = User::whereGithubId($result['id'])->first();
@@ -56,7 +53,7 @@ class AuthorizationController extends \BaseController {
   }
 
 	/**
-	 * Remove the specified resource from storage.
+	 * Log out User
 	 *
 	 * @return Response
 	 */
@@ -65,6 +62,5 @@ class AuthorizationController extends \BaseController {
     Auth::logout();
     return Redirect::home();
 	}
-
 
 }

@@ -2,6 +2,7 @@
 
 class Snippet extends Eloquent {
   protected $fillable = ['title', 'description', 'body', 'user_id'];
+  protected $appends = array('score');
 
   public static $rules = [
     'title' => 'required|min:4',
@@ -24,9 +25,9 @@ class Snippet extends Eloquent {
     return $this->hasMany('Vote');
   }
 
-  public function getScore()
+  public function getScoreAttribute()
   {
-    return $this->votes()->where('snippet_id', '=', $this->id)->sum('score');
+    return $this->votes()->sum('score');
   }
 
   public function hasUserVoted($user_id)

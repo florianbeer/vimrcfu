@@ -16,12 +16,14 @@
     <div class="col-sm-4 col-xs-12">
       <img src="{{ $user->avatar_url }}" class="img-responsive img-profile">
       <p>
-      <span class="badge">{{ $snippets->getTotal() }}</span>
-      {{ Str::plural('Snippet', $snippets->getTotal()) }}
+      <?php $snippetsTotal = $snippets->getTotal(); ?>
+      <span class="badge">{{ $snippetsTotal }}</span>
+      {{ Str::plural('Snippet', $snippetsTotal) }}
       </p>
       <p>
-      <span class="badge">{{ count($user->comments) }}</span>
-      {{ Str::plural('Comment', count($user->comments)) }}
+      <?php $commentsTotal = count($user->comments); ?>
+      <span class="badge">{{ $commentsTotal }}</span>
+      {{ Str::plural('Comment', $commentsTotal) }}
       </p>
       <p><a href="{{ $user->github_url }}">GitHub Page &raquo;</a></p>
     </div>

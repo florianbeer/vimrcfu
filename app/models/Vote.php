@@ -23,4 +23,5 @@ class Vote extends Eloquent {
   {
     return $this->belongsTo('Snippet');
   }
+
 }

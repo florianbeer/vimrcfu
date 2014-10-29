@@ -14,7 +14,7 @@ class SnippetsController extends \BaseController {
 	 */
 	public function index()
 	{
-    $snippets = Snippet::orderBy('id', 'DESC')->paginate(10);
+    $snippets = Snippet::with('comments', 'user')->orderBy('id', 'DESC')->paginate(10);
     return View::make('snippets.index', compact('snippets'));
 	}
 
@@ -41,11 +41,11 @@ class SnippetsController extends \BaseController {
     $validation = Validator::make(Input::all(), Snippet::$rules);
 
     if ( $validation->fails() )
-    {   
+    {
       return Redirect::route('snippet.create')
         ->withErrors($validation)
         ->withInput();
-    }   
+    }
 
     $snippet = new Snippet;
     $snippet->title = Input::get('title');
@@ -103,6 +103,11 @@ class SnippetsController extends \BaseController {
 	 */
 	public function update(Snippet $snippet)
 	{
+    if ( Auth::user()->id != $snippet->user_id )
+    {
+      return Redirect::home();
+    }
+
     $validation = Validator::make(Input::all(), Snippet::$rules);
 
     if ( $validation->fails() )
@@ -116,13 +121,9 @@ class SnippetsController extends \BaseController {
     $snippet->body = Input::get('body');
     $snippet->description = Input::get('description');
     $snippet->save();
-  
+
     return Redirect::route('snippet.show', $snippet->id);
 
 	}
-
-  public function search()
-  {
-  }
 
 }

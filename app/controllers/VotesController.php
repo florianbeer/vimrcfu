@@ -7,6 +7,13 @@ class VotesController extends \BaseController {
     $this->beforeFilter('auth', ['only' => ['up', 'down']]);
   }
 
+  /**
+   * Upvote Snippet and return score
+   *
+   * @param string $id
+   * @return void
+   * @author Florian Beer
+   */
 	public function up($id)
 	{
     $vote = Vote::findOrCreate(Auth::user()->id, $id);
@@ -15,10 +22,17 @@ class VotesController extends \BaseController {
     $vote->score = 1;
     $vote->save();
 
-    $score = Snippet::find($id)->getScore();
-    return Response::make($score, 200);; 
+    $score = Snippet::find($id)->score;
+    return Response::make($score, 200);;
 	}
 
+  /**
+   * Downvore Snippet and return score
+   *
+   * @param string $id
+   * @return void
+   * @author Florian Beer
+   */
 	public function down($id)
 	{
     $vote = Vote::findOrCreate(Auth::user()->id, $id);
@@ -27,9 +41,8 @@ class VotesController extends \BaseController {
     $vote->score = -1;
     $vote->save();
 
-    $score = Snippet::find($id)->getScore();
-    return Response::make($score, 200);; 
+    $score = Snippet::find($id)->score;
+    return Response::make($score, 200);;
 	}
-
 
 }

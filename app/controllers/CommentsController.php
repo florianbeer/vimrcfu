@@ -35,7 +35,7 @@ class CommentsController extends \BaseController {
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param Comment $comment 
+	 * @param Comment $comment
 	 * @return Response
 	 */
 	public function edit($comment)
@@ -56,8 +56,13 @@ class CommentsController extends \BaseController {
 	 * @param  Comment $comment
 	 * @return Response
 	 */
-	public function update($comment)
+	public function update(Comment $comment)
 	{
+    if ( Auth::user()->id != $comment->user_id )
+    {
+      return Redirect::home();
+    }
+
     $validation = Validator::make(Input::all(), Comment::$rules);
 
     if ( $validation->fails() )
