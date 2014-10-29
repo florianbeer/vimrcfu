@@ -33,4 +33,18 @@ class PagesController extends \BaseController {
       ->withFile('faq');
   }
 
+  public function sitemap()
+  {
+    $static = [
+      'faq',
+      'search',
+      'snippet'
+    ];
+    
+    return View::make('pages.sitemap')
+      ->with('static', $static)
+      ->with('snippets', Snippet::all())
+      ->with('users', User::all());
+  }
+
 }

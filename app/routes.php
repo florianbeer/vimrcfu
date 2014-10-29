@@ -16,6 +16,7 @@ Route::get('search', ['as' => 'search', 'uses' => 'SearchController@index']);
 Route::get('login', ['as' => 'login', 'uses' => 'AuthorizationController@create']);
 Route::get('logout', ['as' => 'logout', 'uses' => 'AuthorizationController@destroy']);
 Route::get('faq', ['as' => 'faq', 'uses' => 'PagesController@faq']);
+Route::get('sitemap.xml', 'PagesController@sitemap');
 Route::model('snippet', 'Snippet');
 Route::resource('snippet', 'SnippetsController', ['except' => 'destroy']);
 Route::model('user', 'User');
