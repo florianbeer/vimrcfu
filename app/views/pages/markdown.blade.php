@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', $title);
+@section('title', $title)
 
 @section('content')
 
