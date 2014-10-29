@@ -11,9 +11,9 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="{{ URL::route('snippet.create') }}"><i class="fa fa-plus"></i> New Snippet</a></li>
-        <li><a href="{{ URL::route('snippet.index') }}"><i class="fa fa-code"></i> Browse Snippets</a></li>
-        <li><a href="{{ URL::route('faq') }}"><i class="fa fa-question"></i> FAQ</a></li>
+        <li><a href="{{ URL::route('snippet.create') }}"><i class="fa fa-plus fa-fw"></i> New Snippet</a></li>
+        <li><a href="{{ URL::route('snippet.index') }}"><i class="fa fa-code fa-fw"></i> Browse Snippets</a></li>
+        <li><a href="{{ URL::route('faq') }}"><i class="fa fa-question fa-fw"></i> FAQ</a></li>
       </ul>
       @if(Auth::guest())
       <div class="navbar-form navbar-right">
@@ -21,8 +21,8 @@
       </div>
       @else
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="{{ URL::route('user.show', Auth::user()->id) }}"><i class="fa fa-user"></i> {{ Auth::user()->name }}</a></li>
-        <li><a href="/logout"><i class="fa fa-sign-out"></i> Sign out</a></ul> 
+        <li><a href="{{ URL::route('user.show', Auth::user()->id) }}"><i class="fa fa-user fa-fw"></i> {{ Auth::user()->name }}</a></li>
+        <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Sign out</a></ul>
       </ul>
       @endif
     </div>
