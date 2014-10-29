@@ -11,7 +11,7 @@
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/bootstrap-social.css') }}
     {{ HTML::style('css/animate.min.css') }}
-    {{ HTML::style('css/main.css?v=1.1') }}
+    {{ HTML::style('css/main.css?v=1.2') }}
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <script>window.html5 || document.write('{{ HTML::script('js/vendor/html5shiv.js') }}')</script>
