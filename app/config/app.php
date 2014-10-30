@@ -123,7 +123,6 @@ return array(
     'Illuminate\Workbench\WorkbenchServiceProvider',
     'Artdarek\OAuth\OAuthServiceProvider',
     'Vimrcfu\Providers\TextServiceProvider',
-    'Barryvdh\Debugbar\ServiceProvider',
 
   ),
 
@@ -193,7 +192,6 @@ return array(
     'View'              => 'Illuminate\Support\Facades\View',
     'OAuth'             => 'Artdarek\OAuth\Facade\OAuth',
     'Text'              => 'Vimrcfu\Facades\TextFacade',
-    'Debugbar'          => 'Barryvdh\Debugbar\Facade',
 
   ),
 
