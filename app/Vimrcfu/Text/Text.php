@@ -5,7 +5,7 @@ use Michelf\Markdown;
 class Text {
 
   /**
-   * Remova unwanted HTML tags
+   * Remove unwanted HTML tags
    *
    * @param string $text
    * @return string
@@ -13,7 +13,8 @@ class Text {
    */
   private function stripTags($text)
   {
-    return strip_tags($text, '<em><strong><code><blockquote><p><br><kbd>');
+    $regex = "/<(?!\/?(em|strong|code|blockquote|p|br|kbd)(?=>))\/?.*?>/";
+    return preg_replace($regex, '', $text);
   }
 
   /**
