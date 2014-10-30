@@ -1,6 +1,6 @@
 <?php
 
-Class VotesTableSeeder extends Seeder {
+class VotesTableSeeder extends Seeder {
 
   public function run()
   {
@@ -14,4 +14,3 @@ Class VotesTableSeeder extends Seeder {
     }
   }
 }
-

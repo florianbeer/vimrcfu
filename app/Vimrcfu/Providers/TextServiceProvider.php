@@ -2,7 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 
-Class TextServiceProvider extends ServiceProvider {
+class TextServiceProvider extends ServiceProvider {
 
   public function register()
   {

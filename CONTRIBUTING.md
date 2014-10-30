@@ -20,13 +20,14 @@ If you have an idea for a new feature you would like to see added to **vimrcfu**
 
 ## Coding Standards
 
-**vimrcfu** follows the [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md) and [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md) coding standards. In addition to these standards, below is a list of other coding standards that should be followed:
+Adherence to coding standard can be enforced with [PHP Coding Standards Fixer](http://cs.sensiolabs.org).
 
+Install with `composer global require fabpot/php-cs-fixer @stable` and then in the direcotry where you checked out the repository execute: `php-cs-fixer fix --config-file="config.php_cs"`
+
+The following should be adhered to throughout the code base ([Laravel 4.2 Coding Style](http://laravel.com/docs/4.2/contributions#coding-style)):
 * Namespace declarations should be on the same line as `<?php`.
 * Class opening `{` should be on the same line as the class name.
 * Function and control structure opening `{` should be on a separate line.
-
-Although the current codebase may not be fully compliant at the moment, pull requests are required to adhere to these coding standards.
 
 ### Docblocks
 

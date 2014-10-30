@@ -2,7 +2,7 @@
 
 use Faker\Factory as Faker;
 
-Class SnippetsTableSeeder extends Seeder { 
+class SnippetsTableSeeder extends Seeder { 
   
   public function run()
   {

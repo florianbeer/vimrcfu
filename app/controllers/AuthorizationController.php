@@ -46,6 +46,7 @@ class AuthorizationController extends \BaseController {
       }
 
       Auth::login($user);
+
       return Redirect::intended();
     }
 
@@ -60,6 +61,7 @@ class AuthorizationController extends \BaseController {
   public function destroy()
   {
     Auth::logout();
+
     return Redirect::home();
   }
 

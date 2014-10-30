@@ -35,7 +35,7 @@ class Snippet extends Eloquent {
     $vote = $this->votes()->where('user_id', '=', $user_id)->first();
     if ( $vote )
     {
-      return (int)$vote->score;
+      return (int) $vote->score;
     }
   }
 
