@@ -193,7 +193,7 @@ return array(
     'View'              => 'Illuminate\Support\Facades\View',
     'OAuth'             => 'Artdarek\OAuth\Facade\OAuth',
     'Text'              => 'Vimrcfu\Facades\TextFacade',
-    'Debugbar' => 'Barryvdh\Debugbar\Facade',
+    'Debugbar'          => 'Barryvdh\Debugbar\Facade',
 
   ),
 

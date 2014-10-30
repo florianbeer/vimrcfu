@@ -7,12 +7,12 @@ class CommentsController extends \BaseController {
     $this->beforeFilter('auth', ['only' => ['store', 'edit', 'update']]);
   }
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
+  /**
+   * Store a newly created resource in storage.
+   *
+   * @return Response
+   */
+  public function store()
   {
     $validation = Validator::make(Input::all(), Comment::$rules);
 
@@ -30,16 +30,16 @@ class CommentsController extends \BaseController {
     $comment->save();
 
     return Redirect::route('snippet.show', Input::get('snippet_id'));
-	}
+  }
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param Comment $comment
-	 * @return Response
-	 */
-	public function edit($comment)
-	{
+  /**
+   * Show the form for editing the specified resource.
+   *
+   * @param Comment $comment
+   * @return Response
+   */
+  public function edit($comment)
+  {
     if ( Auth::user()->id != $comment->user_id )
     {
       return Redirect::home();
@@ -47,17 +47,17 @@ class CommentsController extends \BaseController {
 
     return View::make('comments.edit')
       ->withComment($comment);
-	}
+  }
 
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  Comment $comment
-	 * @return Response
-	 */
-	public function update(Comment $comment)
-	{
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param  Comment $comment
+   * @return Response
+   */
+  public function update(Comment $comment)
+  {
     if ( Auth::user()->id != $comment->user_id )
     {
       return Redirect::home();
@@ -76,6 +76,6 @@ class CommentsController extends \BaseController {
     $comment->save();
 
     return Redirect::route('snippet.show', Input::get('snippet_id'));
-	}
+  }
 
 }

@@ -2,13 +2,13 @@
 
 class PagesController extends \BaseController {
 
-	/**
-	 * Display the home page
-	 *
-	 * @return Response
-	 */
-	public function home()
-	{
+  /**
+   * Display the home page
+   *
+   * @return Response
+   */
+  public function home()
+  {
     $newSnippets = Snippet::with('comments', 'user')->orderBy('id', 'DESC')->take(4)->get();
 
     $topSnippet = Cache::remember('topSnippet', 5, function()

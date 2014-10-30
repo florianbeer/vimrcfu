@@ -2,14 +2,14 @@
 
 class AuthorizationController extends \BaseController {
 
-	/**
-	 * Create a new User with data from GitHub
+  /**
+   * Create a new User with data from GitHub
    * if not already in database. Then log in User.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
+   *
+   * @return Response
+   */
+  public function create()
+  {
     $code = Request::get('code');
 
     $github = OAuth::consumer('GitHub');
@@ -52,15 +52,15 @@ class AuthorizationController extends \BaseController {
     return Redirect::to((string) OAuth::consumer('GitHub')->getAuthorizationUri());
   }
 
-	/**
-	 * Log out User
-	 *
-	 * @return Response
-	 */
-	public function destroy()
-	{
+  /**
+   * Log out User
+   *
+   * @return Response
+   */
+  public function destroy()
+  {
     Auth::logout();
     return Redirect::home();
-	}
+  }
 
 }

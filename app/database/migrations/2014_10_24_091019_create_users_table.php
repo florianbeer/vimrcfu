@@ -5,13 +5,13 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateUsersTable extends Migration {
 
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
+  /**
+   * Run the migrations.
+   *
+   * @return void
+   */
+  public function up()
+  {
     Schema::table('users', function($t) {
       $t->create();
 
@@ -25,16 +25,16 @@ class CreateUsersTable extends Migration {
       $t->rememberToken();
       $t->timestamps();
     });
-	}
+  }
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
+  /**
+   * Reverse the migrations.
+   *
+   * @return void
+   */
+  public function down()
+  {
     Schema::drop('users');
-	}
+  }
 
 }

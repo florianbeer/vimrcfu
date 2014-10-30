@@ -5,13 +5,13 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateSnippetsTable extends Migration {
 
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
+  /**
+   * Run the migrations.
+   *
+   * @return void
+   */
+  public function up()
+  {
     Schema::table('snippets' , function($t) {
       $t->create();
 
@@ -23,16 +23,16 @@ class CreateSnippetsTable extends Migration {
 
       $t->timestamps();
     });
-	}
+  }
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
+  /**
+   * Reverse the migrations.
+   *
+   * @return void
+   */
+  public function down()
+  {
     Schema::drop('snippets');
-	}
+  }
 
 }

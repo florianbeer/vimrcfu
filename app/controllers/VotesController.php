@@ -14,8 +14,8 @@ class VotesController extends \BaseController {
    * @return void
    * @author Florian Beer
    */
-	public function up($id)
-	{
+  public function up($id)
+  {
     $vote = Vote::findOrCreate(Auth::user()->id, $id);
     $vote->user_id = Auth::user()->id;
     $vote->snippet_id = $id;
@@ -24,7 +24,7 @@ class VotesController extends \BaseController {
 
     $score = Snippet::find($id)->score;
     return Response::make($score, 200);;
-	}
+  }
 
   /**
    * Downvore Snippet and return score
@@ -33,8 +33,8 @@ class VotesController extends \BaseController {
    * @return void
    * @author Florian Beer
    */
-	public function down($id)
-	{
+  public function down($id)
+  {
     $vote = Vote::findOrCreate(Auth::user()->id, $id);
     $vote->user_id = Auth::user()->id;
     $vote->snippet_id = $id;
@@ -43,6 +43,6 @@ class VotesController extends \BaseController {
 
     $score = Snippet::find($id)->score;
     return Response::make($score, 200);;
-	}
+  }
 
 }

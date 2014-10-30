@@ -5,13 +5,13 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateCommentsTable extends Migration {
 
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
+  /**
+   * Run the migrations.
+   *
+   * @return void
+   */
+  public function up()
+  {
     Schema::table('comments', function($t) {
       $t->create();
 
@@ -22,16 +22,16 @@ class CreateCommentsTable extends Migration {
 
       $t->timestamps();
     });
-	}
+  }
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
+  /**
+   * Reverse the migrations.
+   *
+   * @return void
+   */
+  public function down()
+  {
     Schema::drop('comments');
-	}
+  }
 
 }
