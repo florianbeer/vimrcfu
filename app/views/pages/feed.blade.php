@@ -12,7 +12,7 @@
 
 <channel>
   <title>vimrcfu - Share your best vimrc snippets.</title>
-  <atom:link href="{{ Config::get('app.url') }}/feed/" rel="self" type="application/rss+xml" />
+  <atom:link href="{{ Config::get('app.url') }}/feed" rel="self" type="application/rss+xml" />
   <link>{{ Config::get('app.url') }}</link>
   <description>Gather your vimrc snippets on this site and let others learn from your fu.</description>
   <lastBuildDate>{{ \Carbon\Carbon::createFromTimeStamp(time())->toRssString() }}</lastBuildDate>
@@ -22,11 +22,11 @@
   <generator>http://vimrcfu.com</generator>
   @foreach($snippets as $snippet)
   <item>
-    <title>{{ $snippet->title }}</title>
-    <link>{{ Config::get('app.url') }}/{{ $snippet->id }}</link>
+    <title>{{ Text::xmlentities($snippet->title) }}</title>
+    <link>{{ Config::get('app.url') }}/snippet/{{ $snippet->id }}</link>
     <pubDate>{{ $snippet->created_at->toRssString() }}</pubDate>
     <dc:creator><![CDATA[{{ $snippet->user->name }}]]></dc:creator>
-    <guid isPermaLink="true">http://vimrcfu.com/{{ $snippet->id }}</guid>
+    <guid isPermaLink="true">http://vimrcfu.com/snippet/{{ $snippet->id }}</guid>
     <description><![CDATA[{{ Text::renderForRss($snippet->description) }}]]></description>
     <content:encoded><![CDATA[<p>{{ Text::renderForRss($snippet->description) }}</p><p><pre>{{ htmlentities($snippet->body) }}</pre></p>]]></content:encoded>
   </item>

@@ -107,4 +107,12 @@ class Text {
     return $text;
   }
 
+  public function xmlentities($text)
+  {
+    $text = str_replace('&', '&#x26;', $text);
+    $text = str_replace('<', '&#x3C;', $text);
+    $text = str_replace('>', '&#x3E;', $text);
+    return $text;
+  }
+
 }
