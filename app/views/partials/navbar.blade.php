@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/"><tt>vimrcfu</tt></a>
+      <a class="navbar-brand" href="/">vimrcfu</a>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -22,7 +22,7 @@
       @else
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{{ URL::route('user.show', Auth::user()->id) }}"><i class="fa fa-user fa-fw"></i> {{ Auth::user()->name }}</a></li>
-        <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Sign out</a></ul>
+        <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Sign out</a></li>
       </ul>
       @endif
     </div>

@@ -4,6 +4,11 @@ body
   padding-bottom: 20px;
 }
 
+a.navbar-brand
+{
+  font-family: Courier, monospace;
+}
+
 .wow
 {
   visibility: hidden;

@@ -2,7 +2,7 @@
   @if($img == true)
   <div class="col-md-2 col-sm-3 col-xs-3">
     <a href="{{ URL::route('snippet.show', $snippet['id']) }}">
-      <img src="{{ $snippet['user']->avatar_url }}" class="img-responsive">
+      <img src="{{ $snippet['user']->avatar_url }}" class="img-responsive" alt="{{ $snippet['user']->name }}">
     </a>
   </div>
   <div class="col-md-10 col-xs-9">
@@ -13,7 +13,7 @@
     <p class="text-muted small col-md-6 col-xs-12">
       {{ $snippet['created_at']->diffForHumans() }}
       @if (Auth::check() && $snippet['user_id'] === Auth::user()->id)
-        <a href="{{ URL::route('snippet.edit', $snippet['id']) }}""button">[edit]</a>
+        <a href="{{ URL::route('snippet.edit', $snippet['id']) }}">[edit]</a>
       @endif
       <br>
       by <a href="{{ URL::route('user.show', $snippet['user']->id)  }}">{{ $snippet['user']->name }}</a>

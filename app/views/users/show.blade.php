@@ -14,7 +14,7 @@
 
   <div class="row">
     <div class="col-sm-4 col-xs-12">
-      <img src="{{ $user->avatar_url }}" class="img-responsive img-profile">
+      <img src="{{ $user->avatar_url }}" class="img-responsive img-profile" alt="{{ $user->name }}">
       <p>
       <?php $snippetsTotal = $snippets->getTotal(); ?>
       <span class="badge">{{ $snippetsTotal }}</span>
