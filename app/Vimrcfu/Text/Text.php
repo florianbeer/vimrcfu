@@ -14,6 +14,7 @@ class Text {
   private function stripTags($text)
   {
     $regex = "/<(?!\/?(em|strong|code|blockquote|p|br|kbd)(?=>))\/?.*?>/";
+
     return preg_replace($regex, '', $text);
   }
 
@@ -27,6 +28,7 @@ class Text {
   private function createExternalLinks($text)
   {
     $regex = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,63}([\w\.\/:\=\?\#\!-]*)/";
+
     return preg_replace($regex, '<a href="$0" target="_blank">$0</a>', $text);
   }
 
@@ -45,6 +47,7 @@ class Text {
     {
       return preg_replace($regex, '<a href="' . \Config::get('app.url') . '/snippet/$1">Snippet #$1</a>', $text);
     }
+
     return preg_replace($regex, '<a href="/snippet/$1">Snippet #$1</a>', $text);
   }
 
@@ -74,6 +77,7 @@ class Text {
     $text = $this->stripTags($text);
     $text = $this->createExternalLinks($text);
     $text = $this->createSnippetLinks($text);
+
     return $text;
   }
 
@@ -89,6 +93,7 @@ class Text {
     $text = \File::get(app_path().'/markdown/'.$file.'.md');
     $text = $this->renderMarkdown($text);
     $text = $this->createSnippetLinks($text);
+
     return $text;
   }
 
@@ -105,6 +110,7 @@ class Text {
     $text = $this->stripTags($text);
     $text = $this->createExternalLinks($text);
     $text = $this->createSnippetLinks($text, true);
+
     return $text;
   }
 
@@ -113,6 +119,7 @@ class Text {
     $text = str_replace('&', '&#x26;', $text);
     $text = str_replace('<', '&#x3C;', $text);
     $text = str_replace('>', '&#x3E;', $text);
+
     return $text;
   }
 

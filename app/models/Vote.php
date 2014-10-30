@@ -11,7 +11,8 @@ class Vote extends Eloquent {
   {
     $obj = static::where('user_id', '=', $user_id)
       ->where('snippet_id', '=', $snippet_id)->first();
-    return $obj ?: new static;
+
+    return $obj ?: new static();
   }
 
   public function user()

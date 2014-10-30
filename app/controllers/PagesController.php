@@ -11,23 +11,25 @@ class PagesController extends \BaseController {
   {
     $newSnippets = Snippet::with('comments', 'user')->orderBy('id', 'DESC')->take(4)->get();
 
-    $topSnippet = Cache::remember('topSnippet', 5, function()
+    $topSnippet = Cache::remember('topSnippet', 5, function ()
     {
       $topSnippetResult = DB::select(DB::raw('
         SELECT snippets.id, sum(votes.score) points FROM snippets
         JOIN votes ON snippets.id = votes.snippet_id
         GROUP BY snippets.id ORDER BY points DESC, snippets.id DESC LIMIT 1'
       ));
+
       return (isset($topSnippetResult[0])) ? $topSnippetResult[0] : new Snippet();
     });
 
-    $topComment = Cache::remember('topComment', 5, function()
+    $topComment = Cache::remember('topComment', 5, function ()
     {
       $topCommentResult = DB::select(DB::raw('
         SELECT snippets.id, count(comments.id) comments_count FROM snippets
         JOIN comments ON snippets.id = comments.snippet_id
         GROUP BY snippet_id ORDER BY comments_count DESC LIMIT 1'
       ));
+
       return (isset($topCommentResult[0])) ? $topCommentResult[0] : new Comment();
     });
 

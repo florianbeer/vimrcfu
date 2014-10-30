@@ -2,7 +2,7 @@
 
 use Faker\Factory as Faker;
 
-Class CommentsTableSeeder extends Seeder {
+class CommentsTableSeeder extends Seeder {
 
   public function run()
   {

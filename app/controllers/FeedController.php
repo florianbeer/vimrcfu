@@ -16,5 +16,4 @@ class FeedController extends \BaseController {
       ->header('Content-Type', 'application/rss+xml');
   }
 
-
 }

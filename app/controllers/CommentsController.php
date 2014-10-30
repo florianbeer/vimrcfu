@@ -23,7 +23,7 @@ class CommentsController extends \BaseController {
         ->withInput();
     }
 
-    $comment = new Comment;
+    $comment = new Comment();
     $comment->body = Input::get('body');
     $comment->user_id = Auth::user()->id;
     $comment->snippet_id = Input::get('snippet_id');
@@ -48,7 +48,6 @@ class CommentsController extends \BaseController {
     return View::make('comments.edit')
       ->withComment($comment);
   }
-
 
   /**
    * Update the specified resource in storage.

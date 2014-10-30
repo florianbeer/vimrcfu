@@ -11,6 +11,7 @@ class UsersController extends \BaseController {
   public function show($user)
   {
     $snippets = $user->snippets()->with('comments', 'user')->paginate(10);
+
     return View::make('users.show')
       ->withUser($user)
       ->withSnippets($snippets);
