@@ -9,7 +9,7 @@ class PagesController extends \BaseController {
    */
   public function home()
   {
-    $newSnippets = Snippet::with('comments', 'user')->orderBy('id', 'DESC')->take(4)->get();
+    $newSnippets = Snippet::with('comments', 'user')->orderBy('id', 'DESC')->take(5)->get();
 
     $topSnippet = Cache::remember('topSnippet', 5, function ()
     {
