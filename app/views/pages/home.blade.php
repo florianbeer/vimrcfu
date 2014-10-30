@@ -40,7 +40,7 @@
       </div>
       <div class="row">
         <div class="col-xs-12 text-muted">
-          {{ Text::renderInclude('upcoming') }}
+          {{ Text::renderInclude('news') }}
         </div>
       </div>
     </div>
