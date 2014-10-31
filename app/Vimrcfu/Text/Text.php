@@ -114,6 +114,12 @@ class Text {
     return $text;
   }
 
+  /**
+   * Escape special chars for XML output
+   *
+   * @param string $text
+   * @return string
+   */
   public function xmlentities($text)
   {
     $text = str_replace('&', '&#x26;', $text);
