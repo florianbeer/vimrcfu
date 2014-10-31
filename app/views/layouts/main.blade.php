@@ -40,6 +40,7 @@
       new WOW().init();
     </script>
     {{ HTML::script('js/main.js') }}
+    @yield('script')
     <script type="text/javascript">
       var _paq = _paq || [];
       _paq.push(['trackPageView']);

@@ -9,14 +9,22 @@
 </div>
 <div class="form-group">
   <label for="description">Description</label>
-  <p class="help-block">Describe exactly what your snippet achieves or which behaviour it adds.</p>
-  {{ Form::textarea('description', null, ['class' => 'form-control', 'id' => 'description', 'rows' => '3']) }}
+  {{ Form::textarea('description', null, ['class' => 'form-control', 'id' => 'description', 'placeholder' => 'Describe exactly what your snippet achieves or which behaviour it adds.', 'rows' => '3']) }}
   @include('partials.markdown_help')
 </div>
 <div class="form-group">
+  <label for="description">Tags</label>
+  {{ Form::text('tags', null, ['class' => 'form-control', 'id' => 'tags', 'placeholder' => 'Choose tags', 'data-role' => 'tagsinput']) }}
+</div>
+<div class="form-group">
   <label for="body">Snippet</label>
-  <p class="help-block">Paste your snippet here.</p>
-  {{ Form::textarea('body', null, ['class' => 'form-control snippet', 'id' => 'body', 'rows' => '6']) }}
+  {{ Form::textarea('body', null, ['class' => 'form-control snippet', 'id' => 'body', 'placeholder' => 'Paste your snippet here.', 'rows' => '6']) }}
 </div>
 <button type="submit" class="btn btn-primary">Submit</button>
 {{ Form::close() }}
+
+@section('script')
+{{ HTML::script('js/vendor/bootstrap-tagsinput.min.js') }}
+{{ HTML::script('js/vendor/typeahead.bundle.min.js') }}
+{{ HTML::script('js/tagging.js') }}
+@stop
