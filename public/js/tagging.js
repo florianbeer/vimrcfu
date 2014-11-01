@@ -13,18 +13,21 @@ tags.initialize();
 $('#tags').tagsinput({
   tagClass: 'label label-default',
   trimValue: true,
-  itemValue: 'name',
-  itemText: 'name',
   typeaheadjs: {
     name: 'tags',
-  displayKey: 'name',
-  valueKey: 'id',
-  source: tags.ttAdapter()
+    displayKey: 'name',
+    valueKey: 'name',
+    source: tags.ttAdapter()
   }
 });
 
-$('#tags').tagsinput('input').on('focus', function () {
-  $('.bootstrap-tagsinput').addClass('focus');
+$origEl = $('#tags');
+$tagsEl = $('.bootstrap-tagsinput');
+tagsinput = $origEl.tagsinput('input');
+tagsinput.on('focus', function () {
+  $tagsEl.addClass('focus');
 }).on('blur', function () {
-  $('.bootstrap-tagsinput').removeClass('focus');
+  $tagsEl.removeClass('focus');
+  $origEl.tagsinput('add', $('.tt-input').val());
+  tagsinput.val('');
 });

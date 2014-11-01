@@ -41,8 +41,8 @@
       <pre>{{{ $snippet->body }}}</pre>
     </div>
     <div class="col-sm-offset-4 col-sm-8 col-xs-12">
-      @foreach($snippet->tags() as $tag)
-        <span class="label label-default">{{ $tag }}</span>
+      @foreach($snippet->tags as $tag)
+        <span class="label label-default">{{ $tag->name }}</span>
       @endforeach
     </div>
   </div>
@@ -58,7 +58,7 @@
       @endif
     </div>
     <div class="col-sm-7 col-xs-12">
-      @foreach($comments as $comment)
+      @foreach($snippet->comments as $comment)
       @include('partials.comment')
       @endforeach
     </div>

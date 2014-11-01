@@ -53,6 +53,8 @@ class SnippetsController extends \BaseController {
     $snippet->user_id = Auth::user()->id;
     $snippet->save();
 
+    $snippet->updateTags(explode(',', Input::get('tags')));
+
     $vote = new Vote();
     $vote->user_id = Auth::user()->id;
     $vote->snippet_id = $snippet->id;
@@ -70,7 +72,7 @@ class SnippetsController extends \BaseController {
    */
   public function show(Snippet $snippet)
   {
-    $comments = $snippet->comments;
+    $comments = $snippet->load('comments');
 
     return View::make('snippets.show', ['snippet' => $snippet, 'comments' => $comments]);
   }
@@ -118,6 +120,8 @@ class SnippetsController extends \BaseController {
     $snippet->body = Input::get('body');
     $snippet->description = Input::get('description');
     $snippet->save();
+
+    $snippet->updateTags(explode(',', Input::get('tags')));
 
     return Redirect::route('snippet.show', $snippet->id);
 

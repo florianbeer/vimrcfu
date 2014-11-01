@@ -14,7 +14,7 @@
 </div>
 <div class="form-group">
   <label for="description">Tags</label>
-  {{ Form::text('tags', null, ['class' => 'form-control', 'id' => 'tags', 'placeholder' => 'Choose tags', 'data-role' => 'tagsinput']) }}
+  {{ Form::text('tags', implode(',', $snippet->tagnames()), ['class' => 'form-control', 'id' => 'tags', 'placeholder' => 'Choose tags', 'data-role' => 'tagsinput']) }}
 </div>
 <div class="form-group">
   <label for="body">Snippet</label>

@@ -25,6 +25,11 @@ class Snippet extends Eloquent {
     return $this->hasMany('Vote');
   }
 
+  public function tags()
+  {
+    return $this->morphToMany('Tag', 'taggable');
+  }
+
   public function getScoreAttribute()
   {
     return $this->votes()->sum('score');
@@ -36,6 +41,52 @@ class Snippet extends Eloquent {
     if ( $vote )
     {
       return (int) $vote->score;
+    }
+  }
+
+  public function hasTag($tag)
+  {
+    return $this->tags->contains($tag->id);
+  }
+
+  public function tagnames()
+  {
+    $tagnames = [];
+    $tags = $this->tags()->get(array('name'));
+
+    foreach ($tags as $tag) {
+      $tagnames[] = $tag->name;
+    }
+
+    return $tagnames;
+  }
+
+  public function updateTags($tagnames)
+  {
+
+    $tags = $this->tagnames();
+
+    $tagsToRemove = array_diff($tags, $tagnames);
+    $tagsToAdd = array_diff($tagnames, $tags);
+
+    foreach($tagsToRemove as $tagname)
+    {
+      $tag = Tag::where('name', $tagname)->first();
+      $this->tags()->detach($tag->id);
+    }
+    foreach($tagsToAdd as $tagname)
+    {
+      $tag = Tag::findOrCreate($tagname);
+
+      if ( empty($tag->name) )
+      {
+        $tag->fill([
+          'name' => $tagname,
+          'slug' => Str::slug($tagname)
+          ]);
+        $tag->save();
+      }
+      $this->tags()->attach($tag->id);
     }
   }
 
