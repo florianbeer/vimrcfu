@@ -3,7 +3,8 @@
 class TagsController extends \BaseController {
 
   /**
-   * Display a listing of the resource.
+   * Incremental search for Tags
+   * Used in autocomplete input field
    *
    * @return Response
    */
@@ -15,12 +16,16 @@ class TagsController extends \BaseController {
   /**
    * Display the specified resource.
    *
-   * @param  int  $id
+   * @param  string  $slug
    * @return Response
    */
-  public function show($id)
+  public function show($slug)
   {
-    //
+    $tag = Tag::where('slug', $slug)->first();
+    $snippets = $tag->snippets()->paginate(10);
+
+    return View::make('snippets.index', compact('snippets'))
+      ->with('title', $tag->name);
   }
 
 }

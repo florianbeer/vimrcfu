@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
-@section('title', 'Browse all Snippets')
+@section('title')
+  {{{ $title or 'Browse all Snippets' }}}
+@stop
 
 @section('content')
 
@@ -8,7 +10,7 @@
 
   <div class="row">
     <div class="col-sm-8 col-xs-12">
-      <h1>Browse all Snippets</h1>
+      <h1>{{{ $title or 'Browse all Snippets' }}}</h1>
       <div class="text-muted">
         <?php $snippetsTotal = $snippets->getTotal(); ?>
         {{ $snippetsTotal }} {{ Str::plural('Snippet', $snippetsTotal) }}<br>

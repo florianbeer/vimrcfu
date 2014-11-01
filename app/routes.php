@@ -18,7 +18,8 @@ Route::resource('user', 'UsersController', ['only' => 'show']);
 Route::model('comment', 'Comment');
 Route::resource('comment', 'CommentsController', ['only' => ['store', 'edit', 'update']]);
 
-Route::get('tag/{name}', ['uses' => 'TagsController@search']);
+Route::get('tag/search/{name}', ['uses' => 'TagsController@search']);
+Route::get('tag/{slug}', ['as' => 'tag.show', 'uses' => 'TagsController@show']);
 
 Route::get('snake', function () {
     return Response::view('errors.503', ['title' => 'Snake'], 503);

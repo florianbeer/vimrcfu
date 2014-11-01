@@ -2,10 +2,10 @@ var tags = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     remote: {
-      url: '/tag/%QUERY',
-    filter: function(list) {
-      return list;
-    }
+      url: '/tag/search/%QUERY',
+      filter: function(list) {
+        return list;
+      }
     }
 });
 tags.initialize();
