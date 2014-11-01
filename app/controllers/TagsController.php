@@ -22,6 +22,12 @@ class TagsController extends \BaseController {
   public function show($slug)
   {
     $tag = Tag::where('slug', $slug)->first();
+
+    if ( ! $tag)
+    {
+      App::abort(404);
+    }
+
     $snippets = $tag->snippets()->paginate(10);
 
     return View::make('snippets.index', compact('snippets'))
