@@ -42,7 +42,7 @@
     </div>
     <div class="col-sm-offset-4 col-sm-8 col-xs-12">
       @foreach($snippet->tags as $tag)
-        <a href="{{ URL::route('tag.show', $tag->slug) }}"><span class="label label-default">{{ $tag->name }}</span></a>
+        <a href="{{ URL::route('tag.show', $tag->slug) }}" class="label label-default">{{ $tag->name }}</a>
       @endforeach
     </div>
   </div>

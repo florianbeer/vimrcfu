@@ -44,7 +44,7 @@
         <div class="col-xs-12">
           <h2>Popular Tags</h2>
           @foreach($top_tags as $tag)
-            <a href="/tag/{{{ $tag->slug }}}"><span class="label label-default">{{{ $tag->name }}}</span></a>
+            <a href="/tag/{{{ $tag->slug }}}" class="label label-default">{{{ $tag->name }}}</a>
           @endforeach
         </div>
       </div>
