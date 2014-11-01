@@ -50,7 +50,7 @@ class PagesController extends \BaseController {
       ->withUsersCount(User::remember(5)->get()->count())
       ->withTopSnippet($topSnippet)
       ->withTopComments($topComment)
-      ->withTopTags($topTags);
+      ->withTags($topTags);
 
   }
 

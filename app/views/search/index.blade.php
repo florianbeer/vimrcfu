@@ -11,7 +11,9 @@
       <h1>Search for <em>{{ Input::get('q') }}</em></h1>
       <div class="text-muted">
         {{ $total }} {{ Str::plural('Result', $total) }}<br>
-        Page {{ $snippets->getCurrentPage() }} of {{ $snippets->getLastPage() }}
+        @if($snippets->getLastPage() > 1)
+          Page {{ $snippets->getCurrentPage() }} of {{ $snippets->getLastPage() }}
+        @endif
       </div>
     </div>
 
@@ -31,6 +33,10 @@
       @foreach($snippets as $snippet)
       @include('partials.snippet', ['img' => true])
       @endforeach
+    </div>
+
+    <div class="col-sm-4 col-sm-offset-2 col-xs-12">
+      @include('partials.tagcloud', ['title' => 'Related ' . Str::plural('Tag', count($tags))])
     </div>
   </div>
 

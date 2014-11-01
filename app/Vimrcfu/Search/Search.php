@@ -25,4 +25,12 @@ class Search {
         'total' => $total
         ];
   }
+
+  public function relatedTags($search, $count = 20)
+  {
+    $tags = \Tag::where('name', 'LIKE', '%' . $search . '%')->take($count)->get();
+
+    return $tags;
+  }
+
 }

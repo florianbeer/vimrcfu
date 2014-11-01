@@ -17,10 +17,12 @@ class SearchController extends \BaseController {
 
       $Search = new Search();
       $searchresult = $Search->fulltext($search);
+      $tags = $Search->relatedTags($search);
 
       return View::make('search.index')
         ->withSnippets($searchresult['items'])
-        ->withTotal($searchresult['total']);
+        ->withTotal($searchresult['total'])
+        ->withTags($tags);
     }
 
     return Redirect::route('snippet.index');
