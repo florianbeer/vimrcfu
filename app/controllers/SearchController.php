@@ -1,5 +1,7 @@
 <?php
 
+use Vimrcfu\Search\Search;
+
 class SearchController extends \BaseController {
 
   /**
@@ -12,14 +14,17 @@ class SearchController extends \BaseController {
     $search = Input::get('q');
     if ( ! empty($search))
     {
-      $snippets = Snippet::whereRaw('MATCH(title,description,body) AGAINST(? IN BOOLEAN MODE)', [$search])
-        ->with('comments', 'user')
-        ->paginate(10);
 
-      return View::make('search.index', compact('snippets'));
+      $Search = new Search();
+      $searchresult = $Search->fulltext($search);
+
+      return View::make('search.index')
+        ->withSnippets($searchresult['items'])
+        ->withTotal($searchresult['total']);
     }
 
     return Redirect::route('snippet.index');
   }
 
 }
+

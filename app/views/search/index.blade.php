@@ -10,8 +10,7 @@
     <div class="col-sm-8 col-xs-12">
       <h1>Search for <em>{{ Input::get('q') }}</em></h1>
       <div class="text-muted">
-        <?php $snippetsTotal = $snippets->getTotal(); ?>
-        {{ $snippetsTotal }} {{ Str::plural('Result', $snippetsTotal) }}<br>
+        {{ $total }} {{ Str::plural('Result', $total) }}<br>
         Page {{ $snippets->getCurrentPage() }} of {{ $snippets->getLastPage() }}
       </div>
     </div>
