@@ -3,14 +3,21 @@
   @foreach($snippets as $snippet)
   <url>
     <loc>{{ URL::route('snippet.show', $snippet->id) }}</loc>
-    <lastmod>{{date('Y-m-d', strtotime($snippet->updated_at))}}</lastmod>
+    <lastmod>{{ date('Y-m-d', strtotime($snippet->updated_at)) }}</lastmod>
   </url>
   @endforeach
 
   @foreach($users as $user)
   <url>
     <loc>{{ URL::route('user.show', $user->id) }}</loc>
-    <lastmod>{{date('Y-m-d', strtotime($user->updated_at))}}</lastmod>
+    <lastmod>{{ date('Y-m-d', strtotime($user->updated_at)) }}</lastmod>
+  </url>
+  @endforeach
+
+  @foreach($tags as $tag)
+  <url>
+    <loc>{{ URL::route('tag.show', $tag->slug) }}</loc>
+    <lastmod>{{ date('Y-m-d', strtotime($tag->updated_at)) }}</lastmod>
   </url>
   @endforeach
 

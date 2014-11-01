@@ -84,6 +84,7 @@ class PagesController extends \BaseController {
     return View::make('pages.sitemap')
       ->with('static', $static)
       ->with('snippets', Snippet::all())
+      ->with('tags', Tag::all())
       ->with('users', User::all());
   }
 
