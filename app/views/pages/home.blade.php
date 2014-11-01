@@ -33,11 +33,22 @@
         @include('partials.statistics')
         </div>
       </div>
+
       <div class="row">
         <div class="col-xs-12">
           @include('partials.search_form')
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Popular Tags</h2>
+          @foreach($top_tags as $tag)
+            <a href="/tag/{{{ $tag->slug }}}"><span class="label label-default">{{{ $tag->name }}}</span></a>
+          @endforeach
+        </div>
+      </div>
+
       <div class="row">
         <div class="col-xs-12 text-muted">
           {{ Text::renderInclude('news') }}
