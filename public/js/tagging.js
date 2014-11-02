@@ -1,12 +1,16 @@
 var tags = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    remote: {
-      url: '/tag/search/%QUERY',
-      filter: function(list) {
-        return list;
-      }
-    }
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  dupDetector: function(remoteMatch, localMatch) {
+    return remoteMatch.id === localMatch.id;
+  },
+  prefetch: {
+    url: '/tag/prefetch',
+    ttl: 300000
+  },
+  remote: {
+    url: '/tag/search/%QUERY'
+  }
 });
 tags.initialize();
 

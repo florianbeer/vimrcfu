@@ -33,15 +33,7 @@ class PagesController extends \BaseController {
       return (isset($topCommentResult[0])) ? $topCommentResult[0] : new Comment();
     });
 
-    $topTags = Cache::remember('topTags', 5, function ()
-    {
-      $topTagsResult = DB::select(DB::raw('
-        SELECT tags.name, tag_id, count(tag_id) count, tags.slug FROM taggables
-        JOIN tags ON taggables.tag_id = tags.id
-        GROUP BY tag_id ORDER BY count DESC LIMIT 14'
-      ));
-      return (isset($topTagsResult)) ? $topTagsResult : [];
-    });
+    $topTags = Tag::topTags();
 
     return View::make('pages.home')
       ->withSnippets($newSnippets)

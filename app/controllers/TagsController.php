@@ -13,6 +13,11 @@ class TagsController extends \BaseController {
     return Tag::where('name', 'LIKE', '%'.$string.'%')->get();
   }
 
+  public function prefetch()
+  {
+    return Tag::topTags();
+  }
+
   /**
    * Display the specified resource.
    *

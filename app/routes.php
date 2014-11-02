@@ -19,6 +19,7 @@ Route::model('comment', 'Comment');
 Route::resource('comment', 'CommentsController', ['only' => ['store', 'edit', 'update']]);
 
 Route::get('tag/search/{name}', ['uses' => 'TagsController@search']);
+Route::get('tag/prefetch', ['uses' => 'TagsController@prefetch']);
 Route::get('tag/{slug}', ['as' => 'tag.show', 'uses' => 'TagsController@show']);
 
 Route::get('snake', function () {
