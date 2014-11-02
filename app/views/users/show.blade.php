@@ -16,16 +16,19 @@
     <div class="col-sm-4 col-xs-12">
       <img src="{{ $user->avatar_url }}" class="img-responsive img-profile" alt="{{ $user->name }}">
       <p>
-      <?php $snippetsTotal = $snippets->getTotal(); ?>
-      <span class="badge">{{ $snippetsTotal }}</span>
-      {{ Str::plural('Snippet', $snippetsTotal) }}
+        <span class="badge">{{ $total }}</span>
+        {{ Str::plural('Snippet', $total) }}
       </p>
       <p>
-      <?php $commentsTotal = count($user->comments); ?>
-      <span class="badge">{{ $commentsTotal }}</span>
-      {{ Str::plural('Comment', $commentsTotal) }}
+        <span class="badge">{{ $user->comments->count() }}</span>
+        {{ Str::plural('Comment', $user->comments->count()) }}
+      </p>
+      <p>
+        <span class="badge">{{ $tags->count() }}</span>
+        {{ Str::plural('Tag', $tags->count()) }}
       </p>
       <p><a href="{{ $user->github_url }}">GitHub Page &raquo;</a></p>
+      <div>@include('partials.tagcloud', ['title' => ''])</div>
     </div>
 
     <div class="col-sm-8 col-xs-12">

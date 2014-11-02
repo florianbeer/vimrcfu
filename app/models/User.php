@@ -42,4 +42,19 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     return $this->hasMany('Votes');
   }
 
+  public function tags()
+  {
+    $tag_ids = [];
+    $snippets = $this->snippets()->with('tags')->get();
+    foreach($snippets as $snippet)
+    {
+      foreach($snippet->tags as $tag)
+      {
+        $tag_ids[] = $tag->id;
+      }
+    }
+    $tag_ids = array_unique($tag_ids);
+
+    return Tag::find($tag_ids);
+  }
 }

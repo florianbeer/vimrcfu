@@ -3,18 +3,19 @@
 class UsersController extends \BaseController {
 
   /**
-   * Display the specified resource.
+   * Displays a User.
    *
    * @param  User $user
-   * @return Response
+   * @return View
    */
   public function show($user)
   {
-    $snippets = $user->snippets()->with('comments', 'user')->paginate(10);
+    $snippetsResult = $user->snippets();
+    $total          = $snippetsResult->count();
+    $snippets       = $snippetsResult->with('comments')->simplePaginate(10);
+    $tags           = $user->tags();
 
-    return View::make('users.show')
-      ->withUser($user)
-      ->withSnippets($snippets);
+    return View::make('users.show', compact('user', 'snippets', 'total', 'tags'));
   }
 
 }

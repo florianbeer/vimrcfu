@@ -8,9 +8,9 @@ class SnippetsController extends \BaseController {
   }
 
   /**
-   * Display a listing of the resource.
+   * Displays all Snippets paginated.
    *
-   * @return Response
+   * @return View
    */
   public function index()
   {
@@ -20,20 +20,19 @@ class SnippetsController extends \BaseController {
   }
 
   /**
-   * Show the form for creating a new resource.
+   * Shows the form for creating a new Snippet.
    *
-   * @return Response
+   * @return View
    */
   public function create()
   {
-    return View::make('snippets.create')
-      ->withSnippet(new Snippet());
+    return View::make('snippets.create')->withSnippet(new Snippet());
   }
 
   /**
-   * Store a newly created resource in storage.
+   * Validates form input and stores a new Snippet.
    *
-   * @return Response
+   * @return Redirect
    */
   public function store()
   {
@@ -65,23 +64,23 @@ class SnippetsController extends \BaseController {
   }
 
   /**
-   * Display the specified resource.
+   * Displays a Snippet.
    *
    * @param  Snippet  $snippet
-   * @return Response
+   * @return View
    */
   public function show(Snippet $snippet)
   {
     $comments = $snippet->load('comments');
 
-    return View::make('snippets.show', ['snippet' => $snippet, 'comments' => $comments]);
+    return View::make('snippets.show', compact('snippet', 'comments'));
   }
 
   /**
-   * Show the form for editing the specified resource.
+   * Shows the form for editing a Snippet.
    *
    * @param  Snippet $snippet
-   * @return Response
+   * @return Redirect|View
    */
   public function edit(Snippet $snippet)
   {
@@ -90,15 +89,14 @@ class SnippetsController extends \BaseController {
       return Redirect::home();
     }
 
-    return View::make('snippets.edit')
-      ->withSnippet($snippet);
+    return View::make('snippets.edit', compact('snippet'));
   }
 
   /**
-   * Update the specified resource in storage.
+   * Updates a Snippet in storage.
    *
    * @param  Snippet $snippet
-   * @return Response
+   * @return Redirect
    */
   public function update(Snippet $snippet)
   {

@@ -5,7 +5,7 @@
     <title>@yield('title') | vimrcfu</title>
     <meta name="description" content="Snippets of vimrc awesomeness.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     {{ HTML::style('css/font-awesome.css') }}
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/bootstrap-social.css') }}
@@ -27,8 +27,9 @@
       <footer class="small text-muted">
         <div class="row">
           <p class="col-sm-6 col-xs-12">
-            &copy; 2014 <a href="http://blog.no-panic.at" target="_blank">Florian Beer</a> - made with Vim<br>Hosted by <a href="http://42dev.eu" target="_blank">42dev</a><br>
-            Source code on <a href="https://github.com/florianbeer/vimrcfu">GitHub</a>
+            &copy; 2014 <a href="http://blog.no-panic.at" target="_blank">Florian Beer</a> - made with Vim<br>
+            Source code on <a href="https://github.com/florianbeer/vimrcfu">GitHub</a><br>
+            Hosted by <a href="http://42dev.eu" target="_blank">42dev</a>
           </p>
           <p class="col-sm-6 col-xs-12">
             <a href="https://twitter.com/azath0th" class="twitter-follow-button pull-right" data-show-count="false">Follow @azath0th</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
