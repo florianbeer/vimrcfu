@@ -74,7 +74,7 @@ class Snippet extends Eloquent {
     }
     foreach($tagsToAdd as $tagname)
     {
-      $tag = Tag::findOrCreate($tagname);
+      $tag = Tag::firstOrCreate(['name' => $tagname]);
 
       if ( empty($tag->name) )
       {

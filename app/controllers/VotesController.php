@@ -1,5 +1,7 @@
 <?php
 
+use Vimrcfu\Snippets\Snippet;
+
 class VotesController extends \BaseController {
 
   public function __construct()
@@ -16,7 +18,7 @@ class VotesController extends \BaseController {
    */
   public function up($id)
   {
-    $vote = Vote::findOrCreate(Auth::user()->id, $id);
+    $vote = Vote::firstOrCreate(['user_id' => Auth::user()->id, 'snippet_id' => $id]);
     $vote->user_id = Auth::user()->id;
     $vote->snippet_id = $id;
     $vote->score = 1;
@@ -36,7 +38,7 @@ class VotesController extends \BaseController {
    */
   public function down($id)
   {
-    $vote = Vote::findOrCreate(Auth::user()->id, $id);
+    $vote = Vote::firstOrCreate(['user_id' => Auth::user()->id, 'snippet_id' => $id]);
     $vote->user_id = Auth::user()->id;
     $vote->snippet_id = $id;
     $vote->score = -1;
