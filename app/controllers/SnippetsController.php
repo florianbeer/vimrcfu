@@ -1,20 +1,32 @@
 <?php
 
+use Vimrcfu\Snippets\Snippet;
+use Vimrcfu\Snippets\SnippetsRepository;
+
 class SnippetsController extends \BaseController {
 
-  public function __construct()
+  /*
+   * @var \Vimrc\Snippets\SnippetsRepository
+   */
+  private $repository;
+
+  /*
+   * @param Vimrcfu\Snippets\SnippetsRepository $respository
+   */
+  public function __construct(SnippetsRepository $repository)
   {
     $this->beforeFilter('auth', ['only' => ['create', 'store', 'edit', 'update']]);
+    $this->repository = $repository;
   }
 
   /**
    * Displays all Snippets paginated.
    *
-   * @return View
+   * @return mixed
    */
   public function index()
   {
-    $snippets = Snippet::with('comments', 'user')->orderBy('id', 'DESC')->paginate(10);
+    $snippets = $this->repository->snippetsWithCommentsPaginated();
 
     return View::make('snippets.index', compact('snippets'));
   }
@@ -22,7 +34,7 @@ class SnippetsController extends \BaseController {
   /**
    * Shows the form for creating a new Snippet.
    *
-   * @return View
+   * @return mixed
    */
   public function create()
   {
@@ -30,57 +42,33 @@ class SnippetsController extends \BaseController {
   }
 
   /**
-   * Validates form input and stores a new Snippet.
+   * Stores a new Snippet.
    *
-   * @return Redirect
+   * @return mixed
    */
   public function store()
   {
-    $validation = Validator::make(Input::all(), Snippet::$rules);
+    $snippet = $this->repository->create(Input::all());
 
-    if ( $validation->fails() )
-    {
-      return Redirect::route('snippet.create')
-        ->withErrors($validation)
-        ->withInput();
-    }
-
-    $snippet = new Snippet();
-    $snippet->title = Input::get('title');
-    $snippet->body = Input::get('body');
-    $snippet->description = Input::get('description');
-    $snippet->user_id = Auth::user()->id;
-    $snippet->save();
-
-    $snippet->updateTags(explode(',', Input::get('tags')));
-
-    $vote = new Vote();
-    $vote->user_id = Auth::user()->id;
-    $vote->snippet_id = $snippet->id;
-    $vote->score = 1;
-    $vote->save();
-
-    return Redirect::route('snippet.show', $snippet->id);
+    return \Redirect::route('snippet.show', $snippet->id);
   }
 
   /**
    * Displays a Snippet.
    *
-   * @param  Snippet  $snippet
-   * @return View
+   * @param Vimrcfu\Snippets\Snippet $snippet
+   * @return mixed
    */
   public function show(Snippet $snippet)
   {
-    $comments = $snippet->load('comments');
-
-    return View::make('snippets.show', compact('snippet', 'comments'));
+    return View::make('snippets.show', compact('snippet'));
   }
 
   /**
    * Shows the form for editing a Snippet.
    *
-   * @param  Snippet $snippet
-   * @return Redirect|View
+   * @param  Vimrcfu\Snippets\Snippet $snippet
+   * @return mixed
    */
   public function edit(Snippet $snippet)
   {
@@ -95,8 +83,8 @@ class SnippetsController extends \BaseController {
   /**
    * Updates a Snippet in storage.
    *
-   * @param  Snippet $snippet
-   * @return Redirect
+   * @param  Vimrcfu\Snippets\Snippet $snippet
+   * @return mixed
    */
   public function update(Snippet $snippet)
   {
@@ -105,21 +93,7 @@ class SnippetsController extends \BaseController {
       return Redirect::home();
     }
 
-    $validation = Validator::make(Input::all(), Snippet::$rules);
-
-    if ( $validation->fails() )
-    {
-      return Redirect::route('snippet.edit')
-        ->withErrors($validation)
-        ->withInput();
-    }
-
-    $snippet->title = Input::get('title');
-    $snippet->body = Input::get('body');
-    $snippet->description = Input::get('description');
-    $snippet->save();
-
-    $snippet->updateTags(explode(',', Input::get('tags')));
+    $this->repository->update($snippet, Input::all());
 
     return Redirect::route('snippet.show', $snippet->id);
 

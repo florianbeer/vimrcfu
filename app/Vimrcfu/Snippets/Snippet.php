@@ -1,14 +1,12 @@
-<?php
+<?php namespace Vimrcfu\Snippets;
+
+use Tag;
+use Str;
+use Eloquent;
 
 class Snippet extends Eloquent {
   protected $fillable = ['title', 'description', 'body', 'user_id'];
   protected $appends = array('score');
-
-  public static $rules = [
-    'title' => 'required|min:4',
-    'body' => 'required',
-    'description' => 'required'
-    ];
 
   public function user()
   {

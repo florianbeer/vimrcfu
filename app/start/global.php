@@ -51,6 +51,13 @@ App::error(function(Exception $exception, $code)
 	Log::error($exception);
 });
 
+App::error(function(Vimrcfu\Exceptions\ValidationException $exception, $code)
+{
+      return Redirect::back()
+        ->withErrors($exception->getErrors())
+        ->withInput();
+});
+
 App::missing(function($exception)
 {
   return Response::view('errors.404', array(), 404);

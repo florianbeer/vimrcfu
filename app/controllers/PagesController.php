@@ -1,6 +1,22 @@
 <?php
 
+use Vimrcfu\Snippets\Snippet;
+use Vimrcfu\Snippets\SnippetsRepository;
+
 class PagesController extends \BaseController {
+
+  /*
+   * @var \Vimrc\Snippets\SnippetsRepository
+   */
+  private $repository;
+
+  /*
+   * @param Vimrcfu\Snippets\SnippetsRepository $respository
+   */
+  public function __construct(SnippetsRepository $repository)
+  {
+    $this->repository = $repository;
+  }
 
   /**
    * Display the home page
@@ -9,18 +25,9 @@ class PagesController extends \BaseController {
    */
   public function home()
   {
-    $newSnippets = Snippet::with('comments', 'user')->orderBy('id', 'DESC')->take(5)->get();
+    $newSnippets = $this->repository->newSnippets();
 
-    $topSnippet = Cache::remember('topSnippet', 5, function ()
-    {
-      $topSnippetResult = DB::select(DB::raw('
-        SELECT snippets.id, sum(votes.score) points FROM snippets
-        JOIN votes ON snippets.id = votes.snippet_id
-        GROUP BY snippets.id ORDER BY points DESC, snippets.id DESC LIMIT 1'
-      ));
-
-      return (isset($topSnippetResult[0])) ? $topSnippetResult[0] : new Snippet();
-    });
+    $topSnippet = $this->repository->topSnippet();
 
     $topComment = Cache::remember('topComment', 5, function ()
     {

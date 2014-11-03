@@ -124,6 +124,7 @@ return array(
     'Artdarek\OAuth\OAuthServiceProvider',
     'Vimrcfu\Providers\TextServiceProvider',
     'Vimrcfu\Providers\SearchServiceProvider',
+    'Vimrcfu\Providers\PersistenceServiceProvider',
 
   ),
 
