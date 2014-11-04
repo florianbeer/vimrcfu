@@ -1,5 +1,7 @@
 <?php
 
+use Vimrcfu\Users\User;
+
 class UsersTableSeeder extends Seeder {
 
   public function run()
@@ -21,11 +23,11 @@ class UsersTableSeeder extends Seeder {
       ]);
 
     User::create([
-      'github_id' => 2723,
-      'github_url' => 'https://github.com/holman',
-      'avatar_url' => 'https://avatars2.githubusercontent.com/u/2723?v=2',
-      'email' => 'zach@zachholman.com',
-      'name' => 'Zach Holman'
+      'github_id' => 75873,
+      'github_url' => 'https://github.com/sommero',
+      'avatar_url' => 'https://avatars1.githubusercontent.com/u/75873?v=2&s=400',
+      'email' => 'office@ojs.at',
+      'name' => 'Oliver J. Sommer'
       ]);
   }
 }

@@ -1,46 +1,45 @@
 <?php
 
+use Vimrcfu\Tags\Tag;
+use Vimrcfu\Users\User;
+use Vimrcfu\Comments\Comment;
 use Vimrcfu\Snippets\Snippet;
+use Vimrcfu\Tags\TagsRepository;
 use Vimrcfu\Snippets\SnippetsRepository;
 
 class PagesController extends \BaseController {
 
-  /*
-   * @var \Vimrc\Snippets\SnippetsRepository
+  /**
+   * @var Vimrc\Snippets\SnippetsRepository
    */
   private $repository;
 
-  /*
-   * @param Vimrcfu\Snippets\SnippetsRepository $respository
+  /**
+   * @var Vimrcfu\Tags\TagRepository
    */
-  public function __construct(SnippetsRepository $repository)
+  private $tagsRepository;
+
+  /**
+   * @param Vimrcfu\Snippets\SnippetsRepository $respository
+   * @param Vimrcfu\Tags\TagsRepository $tagsRespository
+   */
+  public function __construct(SnippetsRepository $repository, TagsRepository $tagsRepository)
   {
     $this->repository = $repository;
+    $this->tagsRepository = $tagsRepository;
   }
 
   /**
-   * Display the home page
+   * Displays the home page.
    *
    * @return Response
    */
   public function home()
   {
     $newSnippets = $this->repository->newSnippets();
-
     $topSnippet = $this->repository->topSnippet();
-
-    $topComment = Cache::remember('topComment', 5, function ()
-    {
-      $topCommentResult = DB::select(DB::raw('
-        SELECT snippets.id, count(comments.id) comments_count FROM snippets
-        JOIN comments ON snippets.id = comments.snippet_id
-        GROUP BY snippet_id ORDER BY comments_count DESC LIMIT 1'
-      ));
-
-      return (isset($topCommentResult[0])) ? $topCommentResult[0] : new Comment();
-    });
-
-    $topTags = Tag::topTags();
+    $topCommented = $this->repository->topCommented();
+    $topTags = $this->tagsRepository->topTags();
 
     return View::make('pages.home')
       ->withSnippets($newSnippets)
@@ -48,16 +47,15 @@ class PagesController extends \BaseController {
       ->withCommentsCount(Comment::remember(5)->get()->count())
       ->withUsersCount(User::remember(5)->get()->count())
       ->withTopSnippet($topSnippet)
-      ->withTopComments($topComment)
+      ->withTopComments($topCommented)
       ->withTags($topTags);
 
   }
 
   /**
-   * Display Frequently Asked Questions
+   * Displays Frequently Asked Questions.
    *
    * @return void
-   * @author Florian Beer
    */
   public function faq()
   {
@@ -67,10 +65,9 @@ class PagesController extends \BaseController {
   }
 
   /**
-   * Construct an XML sitemap
+   * Displays the XML sitemap.
    *
    * @return void
-   * @author Florian Beer
    */
   public function sitemap()
   {

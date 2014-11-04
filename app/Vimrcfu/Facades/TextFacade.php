@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Facade;
 
-class TextFacade extends Facade 
+class TextFacade extends Facade
 {
-
-    protected static function getFacadeAccessor() { return 'text'; }
-
+    protected static function getFacadeAccessor()
+    {
+      return 'text';
+    }
 }

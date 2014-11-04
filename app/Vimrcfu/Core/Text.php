@@ -1,15 +1,14 @@
-<?php namespace Vimrcfu\Text;
+<?php namespace Vimrcfu\Core;
 
 use Michelf\Markdown;
 
 class Text {
 
   /**
-   * Remove unwanted HTML tags
+   * Remove unwanted HTML tags.
    *
    * @param string $text
    * @return string
-   * @author Florian Beer
    */
   private function stripTags($text)
   {
@@ -19,11 +18,10 @@ class Text {
   }
 
   /**
-   * Creates clickable links from URLs
+   * Creates clickable links from URLs.
    *
    * @param string $text
    * @return string
-   * @author Florian Beer
    */
   private function createExternalLinks($text)
   {
@@ -33,12 +31,11 @@ class Text {
   }
 
   /**
-   * Constructs clickable internal links to Snippets
+   * Constructs clickable internal links to Snippets.
    *
    * @param string $text
    * @param bool $absolute
    * @return string
-   * @author Florian Beer
    */
   private function createSnippetLinks($text, $absolute = false)
   {
@@ -56,7 +53,6 @@ class Text {
    *
    * @param string $text
    * @return string
-   * @author Florian Beer
    */
   private function renderMarkdown($text)
   {
@@ -65,11 +61,10 @@ class Text {
 
   /**
    * Returns HTML without unwanted tags
-   * with external and internal links
+   * with external and internal links.
    *
    * @param string $text
    * @return string
-   * @author Florian Beer
    */
   public function render($text)
   {
@@ -82,15 +77,14 @@ class Text {
   }
 
   /**
-   * Returns HTML with all tags intact
+   * Returns HTML from Markdown file with all tags intact.
    *
-   * @param string $file
+   * @param string $filename
    * @return string
-   * @author Florian Beer
    */
-  public function renderInclude($file)
+  public function renderInclude($filename)
   {
-    $text = \File::get(app_path().'/markdown/'.$file.'.md');
+    $text = \File::get(app_path().'/markdown/'.$filename.'.md');
     $text = $this->renderMarkdown($text);
     $text = $this->createSnippetLinks($text);
 
@@ -98,11 +92,10 @@ class Text {
   }
 
   /**
-   * Returns rendered HTML with absolute links for RSS
+   * Returns rendered HTML with absolute links for RSS.
    *
    * @param string $text
    * @return string
-   * @author Florian Beer
    */
   public function renderForRss($text)
   {
@@ -115,7 +108,7 @@ class Text {
   }
 
   /**
-   * Escape special chars for XML output
+   * Escape special characters for XML output.
    *
    * @param string $text
    * @return string

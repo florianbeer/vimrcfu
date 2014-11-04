@@ -1,23 +1,43 @@
 <?php
 
-use Vimrcfu\Search\Search;
+use Vimrcfu\Tags\TagsRepository;
+use Vimrcfu\Snippets\SnippetsRepository;
 
 class SearchController extends \BaseController {
 
   /**
-   * MySQL fulltext search for snippets
+   * @var Vimrcfu\Snippets\SnippetsRepository
+   */
+  private $snippetsRepository;
+
+  /**
+   * @var Vimrcfu\Tags\TagsRepository
+   */
+  private $tagsRepository;
+
+  /**
+   * @param Vimrcfu\Snippets\SnippetsRepository $snippetsRepository
+   * @param Vimrcfu\Tags\TagsRepository $tagsRepository
+   */
+  public function __construct(SnippetsRepository $snippetsRepository, TagsRepository $tagsRepository)
+  {
+    $this->snippetsRepository = $snippetsRepository;
+    $this->tagsRepository = $tagsRepository;
+  }
+
+  /**
+   * Shows the search page or redirects to Snippets
+   * index page in case no searchterm was entered.
    *
-   * @return Response
+   * @return mixed
    */
   public function index()
   {
     $search = Input::get('q');
     if ( ! empty($search))
     {
-
-      $Search = new Search();
-      $searchresult = $Search->fulltext($search);
-      $tags = $Search->relatedTags($search);
+      $searchresult = $this->snippetsRepository->fulltextSearch($search);
+      $tags = $this->tagsRepository->relatedTags($search);
 
       return View::make('search.index')
         ->withSnippets($searchresult['items'])
@@ -29,4 +49,3 @@ class SearchController extends \BaseController {
   }
 
 }
-

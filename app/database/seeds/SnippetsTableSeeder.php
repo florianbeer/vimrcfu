@@ -1,9 +1,10 @@
 <?php
 
 use Faker\Factory as Faker;
+use Vimrcfu\Snippets\Snippet;
 
-class SnippetsTableSeeder extends Seeder { 
-  
+class SnippetsTableSeeder extends Seeder {
+
   public function run()
   {
     $faker = Faker::create();
@@ -14,7 +15,7 @@ class SnippetsTableSeeder extends Seeder {
         'title' => $faker->word,
         'body' => $faker->paragraph,
         'description' => $faker->paragraph,
-        'user_id' => $faker->randomElement([1,2,3]) 
+        'user_id' => $faker->randomElement([1,2,3])
         ]);
     }
   }

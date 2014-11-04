@@ -5,17 +5,17 @@ use Illuminate\Validation\Factory as IlluminateValidator;
 
 abstract class Validator {
 
-  /*
+  /**
    * @var Illuminate\Validation\Factory
    */
   protected $validator;
 
-  /*
+  /**
    * @var mixed
    */
   protected $validation;
 
-  /*
+  /**
    * @param Illuminate\Validation\Factory $validator
    */
   public function __construct(IlluminateValidator $validator)
@@ -23,9 +23,9 @@ abstract class Validator {
     $this->validator = $validator;
   }
 
-  /*
+  /**
    * @param array $data
-   * @throws ValidationException
+   * @throws Vimrcfu\Exceptions\ValidationException
    */
   public function validate(array $data)
   {
@@ -39,7 +39,7 @@ abstract class Validator {
     return true;
   }
 
-  /*
+  /**
    * @return array
    */
   protected function getRules()
@@ -47,7 +47,7 @@ abstract class Validator {
     return $this->rules;
   }
 
-  /*
+  /**
    * @return mixed
    */
   protected function getErrors()

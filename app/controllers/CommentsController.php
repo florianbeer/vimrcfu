@@ -1,59 +1,57 @@
 <?php
 
+use Vimrcfu\Comments\Comment;
+use Vimrcfu\Comments\CommentsRepository;
+
 class CommentsController extends \BaseController {
 
-  public function __construct()
+  /**
+   * @var Vimrcfu\Comments\CommentsRepository
+   */
+  private $repository;
+
+  /**
+   * @param Vimrcfu\Comments\CommentsRepository $repository
+   */
+  public function __construct(CommentsRepository $repository)
   {
     $this->beforeFilter('auth', ['only' => ['store', 'edit', 'update']]);
+    $this->repository = $repository;
   }
 
   /**
-   * Store a newly created resource in storage.
+   * Stores new Comment in storage.
    *
-   * @return Response
+   * @return mixed
    */
   public function store()
   {
-    $validation = Validator::make(Input::all(), Comment::$rules);
+    $comment = $this->repository->create(Input::all());
 
-    if( $validation->fails() )
-    {
-      return Redirect::route('snippet.show', Input::get('snippet_id'))
-        ->withErrors($validation)
-        ->withInput();
-    }
-
-    $comment = new Comment();
-    $comment->body = Input::get('body');
-    $comment->user_id = Auth::user()->id;
-    $comment->snippet_id = Input::get('snippet_id');
-    $comment->save();
-
-    return Redirect::route('snippet.show', Input::get('snippet_id'));
+    return Redirect::route('snippet.show', $comment->snippet->id);
   }
 
   /**
-   * Show the form for editing the specified resource.
+   * Shows the form for editing a Comment.
    *
-   * @param Comment $comment
-   * @return Response
+   * @param Vimrcfu\Comments\Comment $comment
+   * @return mixed
    */
-  public function edit($comment)
+  public function edit(Comment $comment)
   {
     if ( Auth::user()->id != $comment->user_id )
     {
       return Redirect::home();
     }
 
-    return View::make('comments.edit')
-      ->withComment($comment);
+    return View::make('comments.edit', compact('comment'));
   }
 
   /**
-   * Update the specified resource in storage.
+   * Update a Comment in storage.
    *
-   * @param  Comment $comment
-   * @return Response
+   * @param  Vimrcfu\Comments\Comment $comment
+   * @return mixed
    */
   public function update(Comment $comment)
   {
@@ -62,19 +60,9 @@ class CommentsController extends \BaseController {
       return Redirect::home();
     }
 
-    $validation = Validator::make(Input::all(), Comment::$rules);
+    $comment = $this->repository->update($comment, Input::all());
 
-    if ( $validation->fails() )
-    {
-      return Redirect::route('comments.edit')
-        ->withErrors($validation)
-        ->withInput();
-    }
-
-    $comment->body = Input::get('body');
-    $comment->save();
-
-    return Redirect::route('snippet.show', Input::get('snippet_id'));
+    return Redirect::route('snippet.show', $comment->snippet->id);
   }
 
 }

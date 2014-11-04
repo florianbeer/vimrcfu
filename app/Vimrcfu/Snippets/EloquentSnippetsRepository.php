@@ -2,39 +2,50 @@
 
 use DB;
 use Auth;
-use Vote;
 use Cache;
+use Vimrcfu\Votes\Vote;
+use Vimrcfu\Tags\TagsRepository;
 use Vimrcfu\Validation\SnippetValidator;
-use Vimrcfu\Exceptions\ValidationException;
 
 class EloquentSnippetsRepository implements SnippetsRepository {
 
-  /*
+  /**
    * @var Vimrcfu\Validation\SnippetValidator
    */
   protected $validator;
 
-  /*
-   * @param Vimrcfu\Validation\SnippetValidator $validator
+  /**
+   * @var Vimrcfu\Tags\TagsRepository
    */
-  public function __construct(SnippetValidator $validator)
+  protected $tagsRepository;
+
+  /**
+   * @param Vimrcfu\Validation\SnippetValidator $validator
+   * @param Vimrcfu\Tags\TagsRepository $tagsRepository
+   */
+  public function __construct(SnippetValidator $validator, TagsRepository $tagsRepository)
   {
     $this->validator = $validator;
+    $this->tagsRepository = $tagsRepository;
   }
 
-  /*
-   * @preturn mixed
+  /**
+   * @return mixed
    */
-  public function snippetsWithCommentsPaginated()
+  public function snippetsWithCommentsAndUsersPaginated()
   {
-    $snippets =  Snippet::with('comments', 'user')
-      ->orderBy('id', 'DESC')
-      ->paginate(10);
-
-    return $snippets;
+    return  Snippet::with('comments', 'user')->orderBy('id', 'DESC')->paginate(10);
   }
 
-  /*
+  /**
+   * @return mixed
+   */
+  public function snippetsForFeed()
+  {
+    return Snippet::with('user')->orderBy('id', 'desc')->take(20)->get();
+  }
+
+  /**
    * @return mixed
    */
   public function newSnippets()
@@ -42,8 +53,8 @@ class EloquentSnippetsRepository implements SnippetsRepository {
     return Snippet::with('comments', 'user')->orderBy('id', 'DESC')->take(5)->get();
   }
 
-  /*
-   * return mixed
+  /**
+   * @return mixed
    */
   public function topSnippet()
   {
@@ -59,7 +70,24 @@ class EloquentSnippetsRepository implements SnippetsRepository {
     });
   }
 
-  /*
+  /**
+   * @return mixed
+   */
+  public function topCommented()
+  {
+    return Cache::remember('topComment', 5, function ()
+    {
+      $topCommentResult = DB::select(DB::raw('
+        SELECT snippets.id, count(comments.id) comments_count FROM snippets
+        JOIN comments ON snippets.id = comments.snippet_id
+        GROUP BY snippet_id ORDER BY comments_count DESC LIMIT 1'
+      ));
+
+      return (isset($topCommentResult[0])) ? $topCommentResult[0] : new Comment();
+    });
+  }
+
+  /**
    * @param array $input
    * @return mixed
    */
@@ -73,7 +101,7 @@ class EloquentSnippetsRepository implements SnippetsRepository {
     $snippet->user_id = Auth::user()->id;
     $snippet->save();
 
-    $snippet->updateTags(explode(',', $input['tags']));
+    $this->tagsRepository->updateTags($snippet, $input['tags']);
 
     $vote = new Vote();
     $vote->user_id = Auth::user()->id;
@@ -84,7 +112,7 @@ class EloquentSnippetsRepository implements SnippetsRepository {
     return $snippet;
   }
 
-  /*
+  /**
    * @param Vimrcfu\Snippets\Snippet $snippet
    * @param array $input
    * @return mixed
@@ -98,9 +126,35 @@ class EloquentSnippetsRepository implements SnippetsRepository {
     $snippet->description = $input['description'];
     $snippet->save();
 
-    $snippet->updateTags(explode(',', $input['tags']));
+    $this->tagsRepository->updateTags($snippet, $input['tags']);
 
     return $snippet;
+  }
+
+  /**
+   * @param string $search
+   * @return array
+   */
+  public function fulltextSearch($search) {
+    // Need to use simplePaginate() here and then run
+    // an extra count() query because Laravel 2.4's Paginator class
+    // cannot determine the correct total number automatically in this case.
+    $items = Snippet::whereRaw('MATCH(title,description,body) AGAINST(? IN BOOLEAN MODE)')
+      ->select('*')
+      ->addSelect( DB::raw('MATCH (title) AGAINST(?) title_relevance') )
+      ->addSelect( DB::raw('MATCH (title,description,body) AGAINST (?) relevance') )
+      ->setBindings([$search,$search,$search])
+      ->orderBy('title_relevance', 'desc')
+      ->orderBy('relevance', 'desc')
+      ->with('comments', 'user')
+      ->simplePaginate(10);
+
+    $total = Snippet::whereRaw('MATCH(title,description,body) AGAINST(? IN BOOLEAN MODE)', [$search])->count();
+
+    return [
+      'items' => $items,
+      'total' => $total
+      ];
   }
 
 }

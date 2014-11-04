@@ -1,6 +1,7 @@
 <?php
 
 use Faker\Factory as Faker;
+use Vimrcfu\Comments\Comment;
 
 class CommentsTableSeeder extends Seeder {
 

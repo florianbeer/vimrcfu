@@ -16,9 +16,9 @@
         <?php $score = $snippet->score; ?>
         <span class="text-center"><i class="fa fa-fire"></i> <span class="points">{{ $score }}</span> {{ Str::plural('Point', $score) }}</span>
         @if(Auth::check())
-        <?php $voted = $snippet->hasUserVoted(Auth::user()->id); ?>
-        <a href="{{ URL::route('vote.up', $snippet['id']) }}" title="vote up" class="votelink up {{ $voted === 1 ?: 'dark' }}"><i class="fa fa-arrow-circle-up"></i></a>
-        <a href="{{ URL::route('vote.down', $snippet['id']) }}" title="vote down" class="votelink down {{ $voted === -1 ?: 'dark' }}"><i class="fa fa-arrow-circle-down"></i></a>
+          <?php $voted = $snippet->hasUserVoted(Auth::user()->id); ?>
+          <a href="{{ URL::route('vote.up', $snippet['id']) }}" title="vote up" class="votelink up {{ $voted === 1 ?: 'dark' }}"><i class="fa fa-arrow-circle-up"></i></a>
+          <a href="{{ URL::route('vote.down', $snippet['id']) }}" title="vote down" class="votelink down {{ $voted === -1 ?: 'dark' }}"><i class="fa fa-arrow-circle-down"></i></a>
         @endif
       </div>
     </div>
@@ -32,7 +32,7 @@
       <strong>{{ HTML::linkRoute('user.show', $snippet['user']->name, $snippet['user']->id) }}</strong>
       <p class="text-muted">{{ $snippet->created_at->diffForHumans() }}</p>
       @if(Auth::check() && Auth::user()->id == $snippet->user_id)
-      <a class="btn btn-default btn-sm" href="{{ URL::route('snippet.edit', $snippet['id']) }}" role="button">Edit &raquo;</a>
+        <a class="btn btn-default btn-sm" href="{{ URL::route('snippet.edit', $snippet['id']) }}" role="button">Edit &raquo;</a>
       @endif
     </div>
 
@@ -54,12 +54,12 @@
   <div class="row">
     <div class="col-sm-5 col-xs-12 pull-right">
       @if(Auth::check())
-      @include('partials.comment_form')
+        @include('partials.comment_form')
       @endif
     </div>
     <div class="col-sm-7 col-xs-12">
       @foreach($snippet->comments as $comment)
-      @include('partials.comment')
+        @include('partials.comment')
       @endforeach
     </div>
   </div>

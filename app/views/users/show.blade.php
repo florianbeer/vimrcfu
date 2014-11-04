@@ -27,7 +27,7 @@
         <span class="badge">{{ $tags->count() }}</span>
         {{ Str::plural('Tag', $tags->count()) }}
       </p>
-      <p><a href="{{ $user->github_url }}">GitHub Page &raquo;</a></p>
+      <p><a href="{{ $user->github_url }}" target="_blank">GitHub Page &raquo;</a></p>
       <div>@include('partials.tagcloud', ['title' => ''])</div>
     </div>
 
@@ -38,7 +38,7 @@
         </div>
       </div>
       @foreach($snippets as $snippet)
-      @include('partials.snippet', ['img' => false])
+        @include('partials.snippet', ['img' => false])
       @endforeach
       <div class="row">
         <div class="col-xs-12">

@@ -1,7 +1,5 @@
 <?php namespace Vimrcfu\Snippets;
 
-use Tag;
-use Str;
 use Eloquent;
 
 class Snippet extends Eloquent {
@@ -10,22 +8,22 @@ class Snippet extends Eloquent {
 
   public function user()
   {
-    return $this->belongsTo('User');
+    return $this->belongsTo('Vimrcfu\Users\User');
   }
 
   public function comments()
   {
-    return $this->hasMany('Comment');
+    return $this->hasMany('Vimrcfu\Comments\Comment');
   }
 
   public function votes()
   {
-    return $this->hasMany('Vote');
+    return $this->hasMany('Vimrcfu\Votes\Vote');
   }
 
   public function tags()
   {
-    return $this->morphToMany('Tag', 'taggable');
+    return $this->morphToMany('Vimrcfu\Tags\Tag', 'taggable');
   }
 
   public function getScoreAttribute()
@@ -57,35 +55,6 @@ class Snippet extends Eloquent {
     }
 
     return $tagnames;
-  }
-
-  public function updateTags($tagnames)
-  {
-
-    $tags = $this->tagnames();
-
-    $tagsToRemove = array_diff($tags, $tagnames);
-    $tagsToAdd = array_diff($tagnames, $tags);
-
-    foreach($tagsToRemove as $tagname)
-    {
-      $tag = Tag::where('name', $tagname)->first();
-      $this->tags()->detach($tag->id);
-    }
-    foreach($tagsToAdd as $tagname)
-    {
-      $tag = Tag::firstOrCreate(['name' => $tagname]);
-
-      if ( empty($tag->name) )
-      {
-        $tag->fill([
-          'name' => $tagname,
-          'slug' => Str::slug($tagname)
-          ]);
-        $tag->save();
-      }
-      $this->tags()->attach($tag->id);
-    }
   }
 
 }

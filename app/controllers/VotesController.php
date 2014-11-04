@@ -1,5 +1,6 @@
 <?php
 
+use Vimrcfu\Votes\Vote;
 use Vimrcfu\Snippets\Snippet;
 
 class VotesController extends \BaseController {
@@ -10,41 +11,41 @@ class VotesController extends \BaseController {
   }
 
   /**
-   * Upvote Snippet and return score
+   * Upvote Snippet and return score.
    *
-   * @param string $id
-   * @return void
-   * @author Florian Beer
+   * @param string $snippet_id
+   * @return mixed
    */
-  public function up($id)
+  public function up($snippet_id)
   {
-    $vote = Vote::firstOrCreate(['user_id' => Auth::user()->id, 'snippet_id' => $id]);
-    $vote->user_id = Auth::user()->id;
-    $vote->snippet_id = $id;
+    $vote = Vote::firstOrNew([
+      'user_id'     => Auth::user()->id,
+      'snippet_id'  => $snippet_id
+      ]);
     $vote->score = 1;
     $vote->save();
 
-    $score = Snippet::find($id)->score;
+    $score = Snippet::find($snippet_id)->score;
 
     return Response::make($score, 200);;
   }
 
   /**
-   * Downvore Snippet and return score
+   * Downvote Snippet and return score.
    *
-   * @param string $id
-   * @return void
-   * @author Florian Beer
+   * @param string $snippet_id
+   * @return mixed
    */
-  public function down($id)
+  public function down($snippet_id)
   {
-    $vote = Vote::firstOrCreate(['user_id' => Auth::user()->id, 'snippet_id' => $id]);
-    $vote->user_id = Auth::user()->id;
-    $vote->snippet_id = $id;
+    $vote = Vote::firstOrNew([
+      'user_id'     => Auth::user()->id,
+      'snippet_id'  => $snippet_id
+      ]);
     $vote->score = -1;
     $vote->save();
 
-    $score = Snippet::find($id)->score;
+    $score = Snippet::find($snippet_id)->score;
 
     return Response::make($score, 200);;
   }

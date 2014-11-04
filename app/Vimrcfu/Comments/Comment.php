@@ -1,20 +1,18 @@
-<?php
+<?php namespace Vimrcfu\Comments;
+
+use Eloquent;
 
 class Comment extends Eloquent {
   protected $fillable = ['body', 'user_id', 'comment_id'];
 
-  public static $rules = [
-    'body' => 'required|min:4'
-    ];
-
   public function snippet()
   {
-    return $this->belongsTo('Snippet');
+    return $this->belongsTo('Vimrcfu\Snippets\Snippet');
   }
 
   public function user()
   {
-    return $this->belongsTo('User');
+    return $this->belongsTo('Vimrcfu\Users\User');
   }
 
 }

@@ -1,28 +1,50 @@
 <?php
 
+use Vimrcfu\Tags\Tag;
+use Vimrcfu\Tags\TagsRepository;
+
 class TagsController extends \BaseController {
 
   /**
-   * Incremental search for Tags
-   * Used in autocomplete input field
-   *
-   * @return Response
+   * @var Vimrcfu\Tags\TagsRepository
    */
-  public function search($string)
-  {
-    return Tag::where('name', 'LIKE', '%'.$string.'%')->get();
-  }
+  private $repository;
 
-  public function prefetch()
+  /**
+   * @param Vimrcfu\Tags\TagsRepository $repository
+   */
+  public function __construct(TagsRepository $repository)
   {
-    return Tag::topTags();
+    $this->repository = $repository;
   }
 
   /**
-   * Display the specified resource.
+   * Incremental search for Tags,
+   * Used in autocomplete input field.
    *
-   * @param  string  $slug
-   * @return Response
+   * @return mixed
+   */
+  public function search($string)
+  {
+    return $this->repository->getByName($string);
+  }
+
+  /**
+   * Returns top Tags array,
+   * Used in prefetch for autocomplete.
+   *
+   * @return array
+   */
+  public function prefetch()
+  {
+    return $this->repository->topTags();
+  }
+
+  /**
+   * Displays all Snippets for a specific Tag.
+   *
+   * @param string $slug
+   * @return mixed
    */
   public function show($slug)
   {

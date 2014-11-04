@@ -122,8 +122,7 @@ return array(
     'Illuminate\View\ViewServiceProvider',
     'Illuminate\Workbench\WorkbenchServiceProvider',
     'Artdarek\OAuth\OAuthServiceProvider',
-    'Vimrcfu\Providers\TextServiceProvider',
-    'Vimrcfu\Providers\SearchServiceProvider',
+    'Vimrcfu\Providers\CoreServiceProvider',
     'Vimrcfu\Providers\PersistenceServiceProvider',
 
   ),
@@ -194,7 +193,6 @@ return array(
     'View'              => 'Illuminate\Support\Facades\View',
     'OAuth'             => 'Artdarek\OAuth\Facade\OAuth',
     'Text'              => 'Vimrcfu\Facades\TextFacade',
-    'Search'            => 'Vimrcfu\Facades\SearchFacade',
 
   ),
 

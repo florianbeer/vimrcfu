@@ -1,5 +1,8 @@
 <?php
 
+use Vimrcfu\Votes\Vote;
+use Vimrcfu\Snippets\Snippet;
+
 class VotesTableSeeder extends Seeder {
 
   public function run()

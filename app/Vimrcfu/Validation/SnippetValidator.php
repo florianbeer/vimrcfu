@@ -2,7 +2,7 @@
 
 class SnippetValidator extends Validator {
 
-  /*
+  /**
    * Rules for a Snippet
    *
    * @var array

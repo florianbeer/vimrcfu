@@ -5,13 +5,13 @@ use Vimrcfu\Snippets\SnippetsRepository;
 
 class SnippetsController extends \BaseController {
 
-  /*
-   * @var \Vimrc\Snippets\SnippetsRepository
+  /**
+   * @var Vimrc\Snippets\SnippetsRepository
    */
   private $repository;
 
-  /*
-   * @param Vimrcfu\Snippets\SnippetsRepository $respository
+  /**
+   * @param Vimrcfu\Snippets\SnippetsRepository $repository
    */
   public function __construct(SnippetsRepository $repository)
   {
@@ -26,7 +26,7 @@ class SnippetsController extends \BaseController {
    */
   public function index()
   {
-    $snippets = $this->repository->snippetsWithCommentsPaginated();
+    $snippets = $this->repository->snippetsWithCommentsAndUsersPaginated();
 
     return View::make('snippets.index', compact('snippets'));
   }
@@ -50,7 +50,7 @@ class SnippetsController extends \BaseController {
   {
     $snippet = $this->repository->create(Input::all());
 
-    return \Redirect::route('snippet.show', $snippet->id);
+    return Redirect::route('snippet.show', $snippet->id);
   }
 
   /**

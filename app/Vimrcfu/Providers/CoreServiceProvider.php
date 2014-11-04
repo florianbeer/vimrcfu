@@ -2,11 +2,11 @@
 
 use Illuminate\Support\ServiceProvider;
 
-class TextServiceProvider extends ServiceProvider {
+class CoreServiceProvider extends ServiceProvider {
 
   public function register()
   {
-    $this->app->bind('text', 'Vimrcfu\Text\Text');
+    $this->app->bind('text', 'Vimrcfu\Core\Text');
   }
 
 }

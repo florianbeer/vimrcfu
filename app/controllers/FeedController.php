@@ -1,15 +1,30 @@
 <?php
 
+use Vimrcfu\Snippets\SnippetsRepository;
+
 class FeedController extends \BaseController {
 
   /**
-   * Display the RSS feed
+   * @var Vimrcfu\Snippets\SnippetsRepository
+   */
+  private $snippetsRepository;
+
+  /**
+   * @param Vimrcfu\Snippets\SnippetsRepository $snippetsRepository
+   */
+  public function __construct(SnippetsRepository $snippetsRepository)
+  {
+    $this->snippetsRepository = $snippetsRepository;
+  }
+
+  /**
+   * Shows RSS feed for the last 20 Snippets.
    *
-   * @return Response
+   * @return mixed
    */
   public function index()
   {
-    $snippets = Snippet::with('user')->orderBy('id', 'DESC')->take(20)->get();
+    $snippets = $this->snippetsRepository->snippetsForFeed();
     $content = View::make('pages.feed', compact('snippets'));
 
     return Response::make($content, '200')
