@@ -29,7 +29,7 @@
   <div class="row">
     <div class="col-sm-4 col-xs-12">
       <img src="{{ $snippet->user->avatar_url }}&s=100" class="img-responsive img-profile" alt="{{ $snippet->user->name }}">
-      <strong>{{ HTML::linkRoute('user.show', $snippet->user->name, $snippet->user->id) }}</strong>
+      {{ HTML::linkRoute('user.show', $snippet->user->name, $snippet->user->id) }}
       <p class="text-muted">{{ $snippet->created_at->diffForHumans() }}</p>
       @if(Auth::check() && Auth::user()->id == $snippet->user_id)
         <a class="btn btn-default btn-sm" href="{{ URL::route('snippet.edit', $snippet->id) }}" role="button">Edit &raquo;</a>
