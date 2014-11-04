@@ -40,6 +40,7 @@ class PagesController extends \BaseController {
     $topSnippet = $this->repository->topSnippet();
     $topCommented = $this->repository->topCommented();
     $topTags = $this->tagsRepository->topTags();
+    $title = 'Popular Tags';
 
     return View::make('pages.home')
       ->withSnippets($newSnippets)
@@ -48,7 +49,8 @@ class PagesController extends \BaseController {
       ->withUsersCount(User::remember(5)->get()->count())
       ->withTopSnippet($topSnippet)
       ->withTopComments($topCommented)
-      ->withTags($topTags);
+      ->withTags($topTags)
+      ->withTitle($title);
 
   }
 
