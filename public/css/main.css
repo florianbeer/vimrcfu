@@ -4,6 +4,17 @@ body
   padding-bottom: 20px;
 }
 
+a
+{
+  transition: all .2s ease-in;
+}
+
+a:hover, a:focus
+{
+  color: #17467b;
+  text-decoration: none;
+}
+
 a.navbar-brand
 {
   font-family: Courier, monospace;
