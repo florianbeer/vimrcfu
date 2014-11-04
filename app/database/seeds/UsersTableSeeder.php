@@ -25,7 +25,7 @@ class UsersTableSeeder extends Seeder {
     User::create([
       'github_id' => 75873,
       'github_url' => 'https://github.com/sommero',
-      'avatar_url' => 'https://avatars1.githubusercontent.com/u/75873?v=2&s=400',
+      'avatar_url' => 'https://avatars1.githubusercontent.com/u/75873?v=2',
       'email' => 'office@ojs.at',
       'name' => 'Oliver J. Sommer'
       ]);

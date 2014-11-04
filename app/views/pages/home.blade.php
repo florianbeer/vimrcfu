@@ -15,7 +15,7 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-sm-6 col-xs-12">
+    <div class="col-sm-6 col-xs-12 wow fadeIn" data-wow-delay=".5s">
       <h2>New Snippets</h2>
       @foreach($snippets as $snippet)
       @include('partials.snippet', ['img' => true])

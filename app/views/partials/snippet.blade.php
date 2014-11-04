@@ -1,23 +1,23 @@
 <div class="row snippet-box">
   @if($img == true)
   <div class="col-md-2 col-xs-3">
-    <a href="{{ URL::route('snippet.show', $snippet['id']) }}">
-      <img src="{{ $snippet['user']->avatar_url }}" class="img-responsive" alt="{{ $snippet['user']->name }}">
+    <a href="{{ URL::route('snippet.show', $snippet->id) }}">
+      <img src="{{ $snippet->user->avatar_url }}&s=100" class="img-responsive" alt="{{ $snippet->user->name }}">
     </a>
   </div>
   <div class="col-md-10 col-xs-9">
   @else
   <div class="col-md-10 col-xs-12">
   @endif
-    <h3><a href="{{ URL::route('snippet.show', $snippet['id']) }}">{{{ $snippet['title'] }}}</a></h3>
+    <h3><a href="{{ URL::route('snippet.show', $snippet->id) }}">{{{ $snippet->title }}}</a></h3>
     <div class="row">
       <p class="text-muted small col-md-6 col-xs-12">
-        {{ $snippet['created_at']->diffForHumans() }}
-        @if (Auth::check() && $snippet['user_id'] === Auth::user()->id)
-          <a href="{{ URL::route('snippet.edit', $snippet['id']) }}">[edit]</a>
+        {{ $snippet->created_at->diffForHumans() }}
+        @if (Auth::check() && $snippet->user_id === Auth::user()->id)
+          <a href="{{ URL::route('snippet.edit', $snippet->id) }}">[edit]</a>
         @endif
         <br>
-        by <a href="{{ URL::route('user.show', $snippet['user']->id)  }}">{{ $snippet['user']->name }}</a>
+        by <a href="{{ URL::route('user.show', $snippet->user->id)  }}">{{ $snippet->user->name }}</a>
       </p>
       <p class="text-muted small col-md-6 col-xs-12">
         <?php $score = $snippet->score; ?>

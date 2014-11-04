@@ -1,6 +1,6 @@
 <div class=" comment-box">
   <div class="col-xs-2">
-    <img src="{{ $comment->user->avatar_url }}" class="img-rounded img-responsive" alt="{{ $comment->user->name }}">
+    <img src="{{ $comment->user->avatar_url }}&s=100" class="img-responsive" alt="{{ $comment->user->name }}">
   </div>
   <div class="col-xs-10">
     <p><a href="{{ URL::route('user.show', $comment->user_id) }}">{{ $comment->user->name }}</a>

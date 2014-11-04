@@ -82,7 +82,8 @@ img.img-profile
   max-width: 100px;
   max-height: 100px;
   float: left;
-  margin-right: 10px
+  margin-right: 10px;
+  margin-bottom: 25px;
 }
 
 .score
