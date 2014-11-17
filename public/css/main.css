@@ -73,8 +73,18 @@ textarea.snippet
   font-size: 0.9em;
 }
 
+/* block code */
 .comment-box code
 {
+  display: block;
+  white-space: pre;
+  overflow: auto;
+}
+
+/* inline code */
+.comment-box p code
+{
+  display: inline;
   white-space: pre-line;
 }
 
