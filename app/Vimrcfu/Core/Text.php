@@ -1,6 +1,6 @@
 <?php namespace Vimrcfu\Core;
 
-use Michelf\Markdown;
+use Michelf\MarkdownExtra;
 
 class Text {
 
@@ -56,7 +56,7 @@ class Text {
    */
   private function renderMarkdown($text)
   {
-    return Markdown::defaultTransform($text);
+    return MarkdownExtra::defaultTransform($text);
   }
 
   /**
