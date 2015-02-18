@@ -8,6 +8,11 @@ interface TagsRepository {
   public function getByName($name);
 
   /*
+   * Searches Tags by name.
+   */
+  public function searchByName($name);
+
+  /*
    * Updates all Tags for a Snippet.
    */
   public function updateTags($snippet, $tags);

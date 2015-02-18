@@ -10,9 +10,14 @@ class EloquentTagsRepository implements TagsRepository {
    * @var string $name
    * @return mixed
    */
-  public function getByName($name)
+  public function searchByName($name)
   {
     return Tag::where('name', 'LIKE', '%'.$name.'%')->get();
+  }
+
+  public function getByName($name)
+  {
+    return Tag::whereName($name)->first();
   }
 
   /**
@@ -30,7 +35,7 @@ class EloquentTagsRepository implements TagsRepository {
     foreach($tagNamesToRemove as $tagname)
     {
       $tag = $this->getByName($tagname);
-      $snippet->tags()->detach($tag->id);
+      $snippet->tags()->detach($tag);
     }
 
     foreach($tagNamesToAdd as $tagname)

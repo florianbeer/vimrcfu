@@ -26,7 +26,7 @@ class TagsController extends \BaseController {
    */
   public function search($string)
   {
-    return $this->repository->getByName($string);
+    return $this->repository->searchByName($string);
   }
 
   /**
