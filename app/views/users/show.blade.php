@@ -14,7 +14,7 @@
 
   <div class="row">
     <div class="col-sm-4 col-xs-12">
-      <img src="{{ $user->avatar_url }}&s=100" class="img-responsive img-profile" alt="{{ $user->name }}">
+      <img src="{{ $user->avatar_url }}&s=100" class="img-responsive img-profile rounded" alt="{{ $user->name }}">
       <p>
         <span class="badge">{{ $total }}</span>
         {{ Str::plural('Snippet', $total) }}

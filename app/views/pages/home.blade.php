@@ -6,7 +6,7 @@
 
 <div class="jumbotron">
   <div class="container">
-    <h1 class="wow fadeInDown" data-wow-duration="1.4s"><i class="fa fa-fire"></i> Share your knowledge</h1>
+    <h1 class="wow fadeInDown" data-wow-duration="1.4s" data-wow-delay=".4s"><i class="fa fa-fire"></i> Share your knowledge</h1>
     <p>Gather your <tt>vimrc</tt> snippets on this site and let others learn from your <abbr title="[fu] The art of doing things.">fu</abbr>.</p>
     <p><a href="{{ URL::route('snippet.create') }}" class="btn btn-primary btn-lg" role="button">Post your first snippet &raquo;</a></p>
   </div>
@@ -15,7 +15,7 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-sm-6 col-xs-12 wow fadeIn" data-wow-delay=".5s">
+    <div class="col-sm-6 col-xs-12">
       <h2>New Snippets</h2>
       @foreach($snippets as $snippet)
       @include('partials.snippet', ['img' => true])

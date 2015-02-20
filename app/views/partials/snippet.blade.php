@@ -2,7 +2,7 @@
   @if($img == true)
   <div class="col-md-2 col-xs-3">
     <a href="{{ URL::route('snippet.show', $snippet->id) }}">
-      <img src="{{ $snippet->user->avatar_url }}&s=100" class="img-responsive" alt="{{ $snippet->user->name }}">
+      <img src="{{ $snippet->user->avatar_url }}&s=100" class="img-responsive rounded" alt="{{ $snippet->user->name }}">
     </a>
   </div>
   <div class="col-md-10 col-xs-9">

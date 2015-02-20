@@ -107,6 +107,12 @@ img.img-profile
   margin-bottom: 25px;
 }
 
+img.rounded
+{
+    border: 5px solid #ddd;
+    border-radius: 5em;
+}
+
 .score
 {
   margin-top: 21px;
