@@ -25,6 +25,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     return $this->hasMany('Vimrcfu\Comments\Comment')->orderBy('id', 'DESC');
   }
 
+  public function votes()
+  {
+    return $this->hasMany('Vimrcfu\Votes\Vote')->where('score', '=', 1)->orderBy('id', 'DESC');
+  }
+
   public function tags()
   {
     $tag_ids = [];

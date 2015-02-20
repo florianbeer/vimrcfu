@@ -7,12 +7,12 @@ class Vote extends Eloquent {
 
   public function user()
   {
-    return $this->belongsTo('User');
+    return $this->belongsTo('Vimrcfu\Users\User');
   }
 
   public function snippet()
   {
-    return $this->belongsTo('Snippet');
+    return $this->belongsTo('Vimrcfu\Snippets\Snippet');
   }
 
 }

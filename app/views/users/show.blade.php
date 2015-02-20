@@ -17,7 +17,11 @@
       <img src="{{ $user->avatar_url }}&s=100" class="img-responsive img-profile rounded" alt="{{ $user->name }}">
       <p>
         <span class="badge">{{ $total }}</span>
-        {{ Str::plural('Snippet', $total) }}
+        <a href="{{ URL::route('user.show', $user->id) }}">{{ Str::plural('Snippet', $total) }}</a>
+      </p>
+      <p>
+        <span class="badge">{{ $user->votes->count() }}</span>
+        <a href="{{ URL::route('user.votes', $user->id) }}">Up{{ Str::plural('vote', $user->votes->count()) }}</a>
       </p>
       <p>
         <span class="badge">{{ $user->comments->count() }}</span>
@@ -38,7 +42,11 @@
         </div>
       </div>
       @foreach($snippets as $snippet)
-        @include('partials.snippet', ['img' => false])
+        @if(Request::is('user/*/upvotes'))
+          @include('partials.snippet', ['img' => true])
+        @else
+          @include('partials.snippet', ['img' => false])
+        @endif
       @endforeach
       <div class="row">
         <div class="col-xs-12">

@@ -83,4 +83,24 @@ class UsersController extends \BaseController {
     return View::make('users.show', compact('user', 'snippets', 'total', 'tags'));
   }
 
+  /**
+   * Shows a User's upvoted Snippets
+   *
+   * @param Vimrcfu\Users\User $user
+   * @return mixed
+   */
+  public function upvotes($user)
+  {
+    $snippetsResult = Vimrcfu\Snippets\Snippet::select('snippets.*')
+      ->where('user_id', '!=', $user->id)
+      ->whereHas('votes', function ($q) use ($user) {
+        $q->where('user_id', $user->id)
+          ->where('score', '=', '1');
+      })->orderBy('created_at', 'DESC');
+    $total          = $snippetsResult->count();
+    $snippets       = $snippetsResult->simplePaginate(10);
+    $tags           = $user->tags();
+
+    return View::make('users.show', compact('user', 'snippets', 'total', 'tags'));
+  }
 }

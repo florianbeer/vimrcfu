@@ -17,6 +17,7 @@ Route::model('user', 'Vimrcfu\Users\User');
 Route::get('login', ['as' => 'login', 'uses' => 'UsersController@login']);
 Route::get('logout', ['as' => 'logout', 'uses' => 'UsersController@logout']);
 Route::resource('user', 'UsersController', ['only' => 'show']);
+Route::get('user/{user}/upvotes', ['as' => 'user.votes', 'uses' => 'UsersController@upvotes']);
 
 Route::model('comment', 'Vimrcfu\Comments\Comment');
 Route::resource('comment', 'CommentsController', ['only' => ['store', 'edit', 'update']]);
