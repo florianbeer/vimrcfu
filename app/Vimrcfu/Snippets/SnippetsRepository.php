@@ -6,7 +6,7 @@ interface SnippetsRepository {
    * Retrieves Snippets and their Comments from
    * storage and outputs them paginated.
    */
-  public function snippetsWithCommentsAndUsersPaginated();
+  public function snippetsWithCommentsAndUsersPaginated($order);
 
   /*
    * Returns the newest Snippets.

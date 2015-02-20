@@ -31,6 +31,14 @@ class SnippetsController extends \BaseController {
     return View::make('snippets.index', compact('snippets'));
   }
 
+  public function hot()
+  {
+    $snippets = $this->repository->snippetsWithCommentsAndUsersPaginated('hot');
+
+    return View::make('snippets.index', compact('snippets'))
+      ->with('title', 'Hot Snippets');
+  }
+
   /**
    * Shows the form for creating a new Snippet.
    *

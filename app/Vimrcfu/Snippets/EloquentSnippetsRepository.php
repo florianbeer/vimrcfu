@@ -30,11 +30,26 @@ class EloquentSnippetsRepository implements SnippetsRepository {
   }
 
   /**
+   * @var string
    * @return mixed
    */
-  public function snippetsWithCommentsAndUsersPaginated()
+  public function snippetsWithCommentsAndUsersPaginated($order = null)
   {
-    return  Snippet::with('comments', 'user')->orderBy('id', 'DESC')->paginate(10);
+    switch ($order)
+    {
+      case 'hot':
+        return Snippet::rightJoin('votes', 'votes.snippet_id', '=', 'snippets.id')
+          ->orderBy(DB::raw('sum(score)'), 'DESC')
+          ->orderBy('snippets.created_at', 'DESC')
+          ->groupBy('snippets.id')
+          ->havingRaw('sum(score) > 1')
+          ->with('comments', 'user')
+          ->paginate(10);
+      default:
+        return  Snippet::with('comments', 'user')->orderBy('id', 'DESC')->paginate(10);
+        break;
+    }
+
   }
 
   /**

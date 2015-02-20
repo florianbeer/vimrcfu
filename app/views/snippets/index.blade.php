@@ -10,7 +10,7 @@
 
   <div class="row">
     <div class="col-sm-8 col-xs-12">
-      <h1>{{{ $title or 'Browse all Snippets' }}}</h1>
+      <h1>{{{ $title or 'New Snippets' }}}</h1>
       <div class="text-muted">
         <?php $snippetsTotal = $snippets->getTotal(); ?>
         {{ $snippetsTotal }} {{ Str::plural('Snippet', $snippetsTotal) }}<br>
