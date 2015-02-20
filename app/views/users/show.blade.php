@@ -35,7 +35,7 @@
       <div>@include('partials.tagcloud', ['title' => ''])</div>
     </div>
 
-    <div class="col-sm-8 col-xs-12">
+    <div class="col-sm-6 col-sm-offset-2 col-xs-12">
       <div class="row">
         <div class="col-xs-12">
           @include('partials.paginator')
