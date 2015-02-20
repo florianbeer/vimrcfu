@@ -38,13 +38,15 @@ class EloquentSnippetsRepository implements SnippetsRepository {
     switch ($order)
     {
       case 'hot':
-        return Snippet::rightJoin('votes', 'votes.snippet_id', '=', 'snippets.id')
+        return Snippet::select('snippets.*')
+          ->rightJoin('votes', 'votes.snippet_id', '=', 'snippets.id')
           ->orderBy(DB::raw('sum(score)'), 'DESC')
           ->orderBy('snippets.created_at', 'DESC')
           ->groupBy('snippets.id')
           ->havingRaw('sum(score) > 1')
           ->with('comments', 'user')
           ->paginate(10);
+        break;
       default:
         return  Snippet::with('comments', 'user')->orderBy('id', 'DESC')->paginate(10);
         break;
