@@ -27,7 +27,7 @@
       <footer class="small text-muted">
         <div class="row">
           <p class="col-sm-6 col-xs-12">
-            &copy; 2014 <a href="http://blog.no-panic.at" target="_blank">Florian Beer</a> - made with Vim<br>
+            &copy; {{ date('Y')  }} <a href="http://blog.no-panic.at" target="_blank">Florian Beer</a> - made with Vim<br>
             Source code on <a href="https://github.com/florianbeer/vimrcfu">GitHub</a><br>
             Hosted by <a href="http://42dev.eu" target="_blank">42dev</a>
           </p>
