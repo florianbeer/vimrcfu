@@ -32,6 +32,8 @@ return [
   'APP_KEY'       => '',          # Choose a very random string with at least 32 characters
   'GITHUB_CLIENT' => '',          # Fill in your GitHub Client ID
   'GITHUB_SECRET' => '',          # Fill in your GitHub Client Secret
+  'PIWIK_URL'     => '',          # Fill in URL if you want Piwik tracking
+  'PIWIK_ID'      => '',          # Piwik site id
    ];
 ```
 
