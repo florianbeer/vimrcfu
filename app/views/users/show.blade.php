@@ -20,7 +20,7 @@
         <a href="{{ URL::route('user.show', $user->id) }}">{{ Str::plural('Snippet', $total) }}</a>
       </p>
       <p>
-        <span class="badge">{{ $user->votes->count() }}</span>
+      <span class="badge">{{ $user->votes->count() - $total}}</span>
         <a href="{{ URL::route('user.votes', $user->id) }}">Up{{ Str::plural('vote', $user->votes->count()) }}</a>
       </p>
       <p>
