@@ -97,7 +97,7 @@ class UsersController extends \BaseController {
         $q->where('user_id', $user->id)
           ->where('score', '=', '1');
       })->orderBy('created_at', 'DESC');
-    $total          = $snippetsResult->count();
+    $total          = $user->snippets()->count();
     $snippets       = $snippetsResult->simplePaginate(10);
     $tags           = $user->tags();
 
