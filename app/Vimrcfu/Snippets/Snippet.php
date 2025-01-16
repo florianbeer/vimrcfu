@@ -4,7 +4,7 @@ use Eloquent;
 
 class Snippet extends Eloquent {
   protected $fillable = ['title', 'description', 'body', 'user_id'];
-  protected $appends = array('score');
+  protected $appends = ['score'];
 
   public function user()
   {
@@ -48,7 +48,7 @@ class Snippet extends Eloquent {
   public function tagnames()
   {
     $tagnames = [];
-    $tags = $this->tags()->get(array('name'));
+    $tags = $this->tags()->get(['name']);
 
     foreach ($tags as $tag) {
       $tagnames[] = $tag->name;
