@@ -10,11 +10,18 @@ use Laravel\Socialite\Facades\Socialite;
 class AuthController extends Controller
 {
     /**
-     * Redirect to GitHub, or log the User in when
+     * Send requests on other hosts to the OAuth callback host, then
+     * redirect to GitHub, or log the User in when
      * GitHub redirects back with a code.
      */
     public function login(Request $request)
     {
+        $callbackHost = parse_url(config('services.github.redirect'), PHP_URL_HOST);
+
+        if ($callbackHost && $callbackHost !== $request->getHost()) {
+            return redirect()->away(config('services.github.redirect'));
+        }
+
         if (! $request->has('code')) {
             return Socialite::driver('github')->redirect();
         }

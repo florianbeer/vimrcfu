@@ -125,4 +125,26 @@ class PublicPagesTest extends TestCase
         $response->assertRedirect();
         $this->assertStringContainsString('github.com', $response->headers->get('Location'));
     }
+
+    public function test_login_on_another_host_redirects_to_the_callback_host(): void
+    {
+        config(['services.github.redirect' => 'https://vimrcfu.com/login']);
+
+        $this->get('https://vimrcfu.laravel.cloud/login')
+            ->assertRedirect('https://vimrcfu.com/login');
+    }
+
+    public function test_login_on_the_callback_host_redirects_to_github(): void
+    {
+        config([
+            'services.github.client_id' => 'test-client-id',
+            'services.github.redirect' => 'https://vimrcfu.com/login',
+        ]);
+
+        $response = $this->get('https://vimrcfu.com/login');
+
+        $response->assertRedirect();
+        $this->assertStringStartsWith('https://github.com/login/oauth/authorize', $response->headers->get('Location'));
+        $this->assertStringContainsString(urlencode('https://vimrcfu.com/login'), $response->headers->get('Location'));
+    }
 }
