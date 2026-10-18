@@ -292,3 +292,22 @@ kbd
   outline: 0;
   background-color: #1a6ecc;
 }
+
+.footer-social a
+{
+  color: #999;
+}
+
+.footer-social a:hover,
+.footer-social a:focus
+{
+  color: #555;
+}
+
+@media (min-width: 768px)
+{
+  .footer-social
+  {
+    text-align: right;
+  }
+}

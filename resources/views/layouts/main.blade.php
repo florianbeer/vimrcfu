@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-social.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}?v=1.2">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}?v=1.3">
     <link href="{{ config('app.url') }}/feed" rel="alternate" type="application/rss+xml" title="vimrcfu - Share your best vimrc snippets.">
   </head>
   <body>
@@ -28,8 +28,10 @@
             Source code on <a href="https://github.com/florianbeer/vimrcfu">GitHub</a><br>
             Hosted by <a href="http://42dev.eu" target="_blank">42dev</a>
           </p>
-          <p class="col-sm-6 col-xs-12">
-            <a href="https://twitter.com/azath0th" class="twitter-follow-button pull-right" data-show-count="false">Follow @azath0th</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          <p class="col-sm-6 col-xs-12 footer-social">
+            Find me on<br>
+            <a href="https://x.com/azath0th" target="_blank" rel="me noopener">X @azath0th</a><br>
+            <a href="https://dev-null.sh/@florianbeer" target="_blank" rel="me noopener">/dev/null @florianbeer</a>
           </p>
         </div>
       </footer>
