@@ -1,0 +1,19 @@
+<div class=" comment-box">
+  <div class="col-xs-2">
+    <img src="{{ $comment->user->avatar_url }}&s=100" class="img-responsive rounded" alt="{{ $comment->user->name }}">
+  </div>
+  <div class="col-xs-10">
+    <p><a href="{{ route('user.show', $comment->user_id) }}">{{ $comment->user->name }}</a>
+    <span class="text-muted small">
+      {{ $comment->created_at->diffForHumans() }}
+      @if(Auth::check() && Auth::user()->id == $comment->user_id)
+      <a href="{{ route('comment.edit', $comment->id) }}">[edit]</a>
+      @endif
+    </span>
+    @if($comment->created_at != $comment->updated_at && $comment->created_at->diffInMinutes($comment->updated_at) > 5)
+    <span class="pull-right text-muted" title="Edited" style="cursor:help;">&#9998;</span>
+    @endif
+    </p>
+    {!! Text::render($comment->body) !!}
+  </div>
+</div>
